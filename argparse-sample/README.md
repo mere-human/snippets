@@ -2,9 +2,10 @@
 
 This is a sample of command line options parsing using _argparse_ Python package.
 
-**Motivation:** It is easier just to copy from sample. Documentation is obscure and I don't remember all the tricks. 
+## Motivation
+It is easier just to copy from sample. Documentation is obscure and I don't remember all the tricks. 
 
-**Usage:**
+## Usage
 ```
 sample.py -h
 usage: sample.py [-h] [-f] --val VAL [--var {1,3,5}] [--push X] [-i | -e]
@@ -28,6 +29,6 @@ optional arguments:
   --version      prints version and exits
 ```
 
-**TODO:**
+## TODO
 * unit tests
 * automatically update usage from script output
