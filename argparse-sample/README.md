@@ -5,7 +5,8 @@ This is a sample of command line options parsing using _argparse_ Python package
 **Motivation:** It is easier just to copy from sample. Documentation is obscure and I don't remember all the tricks. 
 
 **Usage:**
-```sample.py -h
+```
+sample.py -h
 usage: sample.py [-h] [-f] --val VAL [--var {1,3,5}] [--push X] [-i | -e]
                  [--version]
                  N1 [N2 [N2 ...]]
