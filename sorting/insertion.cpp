@@ -3,16 +3,14 @@
 
 void insertion_sort(int* p, int n)
 {
-	for (int j = 1; j < n; ++j)
+	for (int i = 1; i < n; ++i)
 	{
-		auto key = p[j];
-		int i = j - 1;
-		while (i >= 0 && p[i] > key)
+		int j = i;
+		while (j > 0 && p[j - 1] > p[j])
 		{
-			p[i + 1] = p[i];
-			--i;
+			std::swap(p[j], p[j - 1]);
+			--j;
 		}
-		p[i + 1] = key;
 	}
 }
 
