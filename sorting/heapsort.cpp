@@ -30,11 +30,23 @@ void max_heapify(int* a, int i, const int heap_size)
 	}
 }
 
-void build_max_heap(int* a, int n)
+void build_max_heap(int* a, const int heap_size)
 {
-	for (int i = n / 2 - 1; i >= 0; --i)
+	for (int i = heap_size / 2 - 1; i >= 0; --i)
+		max_heapify(a, i, heap_size);
+}
+
+void heap_sort(int* a, int n)
+{
+	int heap_size = n;
+	build_max_heap(a, heap_size);
+	assert(std::is_heap(a, a + heap_size));
+	for (int i = n - 1; i > 0 && heap_size >= 2; --i)
 	{
-		max_heapify(a, i, n);
+		std::swap(a[0], a[i]);
+		--heap_size;
+		max_heapify(a, 0, heap_size);
+		assert(std::is_heap(a, a + heap_size));
 	}
 }
 
@@ -42,8 +54,7 @@ int main()
 {
 	int a[] = { 4, 1, 3, 2, 16, 9, 10, 14, 8, 7 };
 	assert(!std::is_sorted(std::begin(a), std::end(a)));
-	build_max_heap(a, std::size(a));
-	assert(std::is_heap(std::begin(a), std::end(a)));
-	//assert(std::is_sorted(std::begin(a), std::end(a)));
+	heap_sort(a, std::size(a));
+	assert(std::is_sorted(std::begin(a), std::end(a)));
 	return 0;
 }
