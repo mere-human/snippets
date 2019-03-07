@@ -2,7 +2,8 @@
 * CMake
 
 ## Build
-cmake . -Bbuild && make -C build
+`cmake . -Bbuild && make -C build`
 
 ## Run
-./build/bubble
+`./build/bubblesort`
+No output means everything is OK.
