@@ -6,4 +6,5 @@
 
 ## Run
 `./build/bubblesort`
-No output means everything is OK.
+
+No output means everything is OK
