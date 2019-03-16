@@ -19,14 +19,16 @@ int search(const std::string &pat, const std::string &txt)
     x = dfa[pat[j]][x];      // update restart state
   }
   // simulate operation of DFA on txt
-  const int n = txt.length();
-  int i = 0;
-  int j = 0;
-  for (; i < n && j < m; ++i)
-    j = dfa[txt[i]][j];
-  if (j == m)
-    return i - m; // found (hit end of pattern)
-  return -1;      // not found (hit end of text)
+  {
+    const int n = txt.length();
+    int i = 0;
+    int j = 0;
+    for (; i < n && j < m; ++i)
+      j = dfa[txt[i]][j];
+    if (j == m)
+      return i - m; // found (hit end of pattern)
+  }
+  return -1; // not found (hit end of text)
 }
 
 int main()
