@@ -1,3 +1,5 @@
+Here are examples of some essential computer algorithms. The implementation may be far from ideal but it shows the basics.
+
 ## Requirements
 * CMake
 
