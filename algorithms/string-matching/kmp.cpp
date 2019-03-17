@@ -33,8 +33,8 @@ int search(const std::string &pat, const std::string &txt)
 
 int main()
 {
-  std::string txt = "abacadabrac";
-  std::string pat = "abra";
+  std::string txt = "bcbaabacacababacaa";
+  std::string pat = "ababac";
   auto pos = search(pat, txt);
   if (pos >= 0)
     std::cout << "Found at " << pos << "\n";
