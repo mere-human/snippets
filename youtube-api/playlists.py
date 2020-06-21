@@ -8,12 +8,15 @@ import argparse
 import os
 import re
 import json
+import pickle
+import os.path
 
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
 
 
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
@@ -37,33 +40,41 @@ API_VERSION = 'v3'
 
 # Authorize the request and store authorization credentials.
 def get_authenticated_service():
-  flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-  credentials = flow.run_console()
-  return build(API_SERVICE_NAME, API_VERSION, credentials = credentials)
+  creds = None
+  # The file token.pickle stores the user's access and refresh tokens, and is
+  # created automatically when the authorization flow completes for the first
+  # time.
+  if os.path.exists('token.pickle'):
+    with open('token.pickle', 'rb') as token:
+      creds = pickle.load(token)
+  # If there are no (valid) credentials available, let the user log in.
+  if not creds or not creds.valid:
+      if creds and creds.expired and creds.refresh_token:
+          creds.refresh(Request())
+      else:
+        flow = InstalledAppFlow.from_client_secrets_file(
+            CLIENT_SECRETS_FILE, SCOPES)
+        creds = flow.run_local_server(port=0)
+  # Save the credentials for the next run
+  with open('token.pickle', 'wb') as token:
+            pickle.dump(creds, token)
+  return build(API_SERVICE_NAME, API_VERSION, credentials=creds)
+
 
 def get_my_playlists_list(youtube):
-  # Retrieve the contentDetails part of the channel resource for the
-  # authenticated user's channel.
   channels_response = youtube.playlists().list(
-    mine=True,
-    part='snippet'
+      mine=True,
+      part='snippet'
   ).execute()
-
   return channels_response['items']
 
-  # for channel in channels_response['items']:
-  #   # From the API response, extract the playlist ID that identifies the list
-  #   # of videos uploaded to the authenticated user's channel.
-  #   return channel['contentDetails']['relatedPlaylists']['uploads']
-
-  # return None
 
 def list_my_uploaded_videos(uploads_playlist_id):
   # Retrieve the list of videos uploaded to the authenticated user's channel.
   playlistitems_list_request = youtube.playlistItems().list(
-    playlistId=uploads_playlist_id,
-    part='snippet',
-    maxResults=5
+      playlistId=uploads_playlist_id,
+      part='snippet',
+      maxResults=5
   )
 
   print('Videos in list %s' % uploads_playlist_id)
@@ -77,7 +88,8 @@ def list_my_uploaded_videos(uploads_playlist_id):
       print('%s (%s)' % (title, video_id))
 
     playlistitems_list_request = youtube.playlistItems().list_next(
-      playlistitems_list_request, playlistitems_list_response)
+        playlistitems_list_request, playlistitems_list_response)
+
 
 if __name__ == '__main__':
   youtube = get_authenticated_service()
