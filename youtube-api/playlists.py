@@ -62,11 +62,18 @@ def get_authenticated_service():
 
 
 def get_my_playlists_list(youtube):
-  channels_response = youtube.playlists().list(
+  playlists_req = youtube.playlists().list(
       mine=True,
-      part='snippet'
-  ).execute()
-  return channels_response['items']
+      part='snippet',
+      maxResults=50
+  )
+  items = []
+  while playlists_req:
+      playlists_resp = playlists_req.execute()
+      items.extend(playlists_resp['items'])
+      playlists_req = youtube.playlists().list_next(
+          playlists_req, playlists_resp)
+  return items
 
 
 def get_playlist_videos(youtube, playlists):
@@ -85,6 +92,7 @@ def get_playlist_videos(youtube, playlists):
       playlistitems_list_request = youtube.playlistItems().list_next(
           playlistitems_list_request, playlistitems_list_response)
   return playlists
+
 
 if __name__ == '__main__':
   youtube = get_authenticated_service()
