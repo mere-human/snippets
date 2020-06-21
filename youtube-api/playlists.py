@@ -69,35 +69,31 @@ def get_my_playlists_list(youtube):
   return channels_response['items']
 
 
-def list_my_uploaded_videos(uploads_playlist_id):
-  # Retrieve the list of videos uploaded to the authenticated user's channel.
-  playlistitems_list_request = youtube.playlistItems().list(
-      playlistId=uploads_playlist_id,
-      part='snippet',
-      maxResults=5
-  )
-
-  print('Videos in list %s' % uploads_playlist_id)
-  while playlistitems_list_request:
-    playlistitems_list_response = playlistitems_list_request.execute()
-
-    # Print information about each video.
-    for playlist_item in playlistitems_list_response['items']:
-      title = playlist_item['snippet']['title']
-      video_id = playlist_item['snippet']['resourceId']['videoId']
-      print('%s (%s)' % (title, video_id))
-
-    playlistitems_list_request = youtube.playlistItems().list_next(
-        playlistitems_list_request, playlistitems_list_response)
-
+def get_playlist_videos(youtube, playlists):
+  for x in playlists:
+    print(x)
+    # Retrieve the list of videos uploaded to the authenticated user's channel.
+    playlistitems_list_request = youtube.playlistItems().list(
+        playlistId=x['id'],
+        part='snippet',
+        maxResults=50
+    )
+    x['items'] = []
+    while playlistitems_list_request:
+      playlistitems_list_response = playlistitems_list_request.execute()
+      x['items'].extend(playlistitems_list_response['items'])
+      playlistitems_list_request = youtube.playlistItems().list_next(
+          playlistitems_list_request, playlistitems_list_response)
+  return playlists
 
 if __name__ == '__main__':
   youtube = get_authenticated_service()
   try:
-    uploads_playlist_id = get_my_playlists_list(youtube)
-    if uploads_playlist_id:
-      # list_my_uploaded_videos(uploads_playlist_id)
-      print(json.dumps(uploads_playlist_id))
+    playlists = get_my_playlists_list(youtube)
+    if playlists:
+      videos = get_playlist_videos(youtube, playlists)
+      with open('response.json', 'w') as f:
+        f.write(json.dumps(videos, sort_keys=True, indent=4))
     else:
       print('There is no uploaded videos playlist for this user.')
   except HttpError as e:
