@@ -100,7 +100,8 @@ if __name__ == '__main__':
     if playlists:
       videos = get_playlist_videos(youtube, playlists)
       with open('response.json', 'w') as f:
-        f.write(json.dumps(videos, sort_keys=True, indent=4))
+        #sort_keys=True, indent=4
+        f.write(json.dumps(videos))
     else:
       print('There is no uploaded videos playlist for this user.')
   except HttpError as e:
