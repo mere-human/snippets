@@ -78,7 +78,6 @@ def get_my_playlists_list(youtube):
 
 def get_playlist_videos(youtube, playlists):
   for x in playlists:
-    print(x)
     # Retrieve the list of videos uploaded to the authenticated user's channel.
     playlistitems_list_request = youtube.playlistItems().list(
         playlistId=x['id'],
