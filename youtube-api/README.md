@@ -27,3 +27,4 @@ The script output is a `response.json` file which has a pretty-printed JSON of a
 
 * Detect deleted/private videos
 * Analyze diff and report which videos got deleted
+* HTML report
