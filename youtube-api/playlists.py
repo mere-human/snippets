@@ -11,6 +11,7 @@ import json
 import pickle
 import os.path
 
+from datetime import datetime
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 from googleapiclient.discovery import build
@@ -93,15 +94,25 @@ def get_playlist_videos(youtube, playlists):
   return playlists
 
 
+def prepare_dir():
+  dir_name = 'out'
+  if os.path.exists(dir_name) and not os.path.isdir(dir_name):
+    dir_name = '.'
+  else:
+    os.makedirs(dir_name, exist_ok=True)
+  return dir_name
+
+
 if __name__ == '__main__':
-  youtube = get_authenticated_service()
   try:
+    youtube = get_authenticated_service()
     playlists = get_my_playlists_list(youtube)
     if playlists:
       videos = get_playlist_videos(youtube, playlists)
-      with open('response.json', 'w') as f:
-        #sort_keys=True, indent=4
-        f.write(json.dumps(videos))
+      time_str = datetime.now().strftime('%Y-%m-%d.%H-%M-%S')
+      file_path = os.path.join(prepare_dir(), f'response.{time_str}.json')
+      with open(file_path, 'w') as f:
+        f.write(json.dumps(videos, sort_keys=True))
     else:
       print('There is no uploaded videos playlist for this user.')
   except HttpError as e:
