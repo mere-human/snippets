@@ -6,7 +6,7 @@ This script gets your YouTube playlists and items in them and dumps it in JSON f
 
 Run the script using the following command:
 
-`python playlists.py`
+`python dump.py`
 
 ### Authorization
 
