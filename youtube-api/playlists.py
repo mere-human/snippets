@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Retrieve the authenticated user's uploaded videos.
 # Sample usage:
@@ -8,6 +8,7 @@ import argparse
 import os
 import re
 import json
+import sys
 import pickle
 import os.path
 
@@ -104,6 +105,9 @@ def prepare_dir():
 
 
 if __name__ == '__main__':
+  if sys.version_info[0] < 3:
+    raise Exception("Must be using Python 3")
+  sys.exit()
   try:
     youtube = get_authenticated_service()
     playlists = get_my_playlists_list(youtube)
