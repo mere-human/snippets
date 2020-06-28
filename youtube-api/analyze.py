@@ -4,10 +4,17 @@ import os
 REPORTS_DIR = 'out'
 
 
-def list_playlists(j):
-    print('Playlists:', len(j))
-    for p in j:
-        print(' {}  --  {}'.format(p['snippet']['title'], p['id']))
+def list_playlists(root_json):
+    print('Playlists:', len(root_json))
+    for p in root_json:
+        print('  {} - {}'.format(p['snippet']['title'], p['id']))
+
+
+def list_videos(pl_json):
+    items = pl_json['items']
+    print('Videos:', len(items))
+    for x in items:
+        print('  {} {}'.format(x['snippet']['position'], x['snippet']['title']))
 
 
 if __name__ == '__main__':
@@ -18,8 +25,9 @@ if __name__ == '__main__':
              for x in files if os.path.splitext(x)[1] == '.json']
     files = sorted(files, key=os.path.getmtime)
     print(files)
-    j = None
+    root = None
     with open(files[-2]) as f:
-        j = json.load(f)
+        root = json.load(f)
     print('Loaded')
-    list_playlists(j)
+    list_playlists(root)
+    list_videos(root[0])
