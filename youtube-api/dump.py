@@ -78,21 +78,25 @@ def get_my_playlists_list(youtube):
   return items
 
 
-def get_playlist_videos(youtube, playlists):
+def get_playlists_videos(youtube, playlists):
   for x in playlists:
-    # Retrieve the list of videos uploaded to the authenticated user's channel.
-    playlistitems_list_request = youtube.playlistItems().list(
-        playlistId=x['id'],
-        part='snippet',
-        maxResults=50
-    )
-    x['items'] = []
-    while playlistitems_list_request:
-      playlistitems_list_response = playlistitems_list_request.execute()
-      x['items'].extend(playlistitems_list_response['items'])
-      playlistitems_list_request = youtube.playlistItems().list_next(
-          playlistitems_list_request, playlistitems_list_response)
+    x['items'] = get_playlist_videos(youtube, x['id'])
   return playlists
+
+
+def get_playlist_videos(youtube, id):
+  playlistitems_list_request = youtube.playlistItems().list(
+      playlistId=id,
+      part='snippet',
+      maxResults=50
+  )
+  items = []
+  while playlistitems_list_request:
+    playlistitems_list_response = playlistitems_list_request.execute()
+    items.extend(playlistitems_list_response['items'])
+    playlistitems_list_request = youtube.playlistItems().list_next(
+        playlistitems_list_request, playlistitems_list_response)
+  return items
 
 
 def prepare_dir():
@@ -107,16 +111,17 @@ def prepare_dir():
 if __name__ == '__main__':
   if sys.version_info[0] < 3:
     raise Exception("Must be using Python 3")
-  sys.exit()
   try:
     youtube = get_authenticated_service()
     playlists = get_my_playlists_list(youtube)
     if playlists:
-      videos = get_playlist_videos(youtube, playlists)
+      playlists.append({"id": "WL", "snippet": {"title": "Watch Later"}})
+      videos = get_playlists_videos(youtube, playlists)
       time_str = datetime.now().strftime('%Y-%m-%d.%H-%M-%S')
       file_path = os.path.join(prepare_dir(), f'response.{time_str}.json')
       with open(file_path, 'w') as f:
         f.write(json.dumps(videos, sort_keys=True))
+        print('Wrote', file_path)
     else:
       print('There is no uploaded videos playlist for this user.')
   except HttpError as e:
