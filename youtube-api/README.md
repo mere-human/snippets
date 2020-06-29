@@ -2,6 +2,8 @@
 
 This script gets your YouTube playlists and items in them and dumps it in JSON format. This helps you to track down the deleted videos.
 
+![deleted video](del.png)
+
 ## Details
 
 Run the script using the following command:
