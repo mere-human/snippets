@@ -87,7 +87,7 @@ def get_playlists_videos(youtube, playlists):
 def get_playlist_videos(youtube, pl_id):
   playlistitems_list_request = youtube.playlistItems().list(
       playlistId=pl_id,
-      part='snippet',
+      part='snippet,contentDetails',
       maxResults=50
   )
   items = []
