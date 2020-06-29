@@ -42,6 +42,26 @@ def detect_deleted_videos(pl_json):
     return result
 
 
+def diff_playlists(root1, root2):
+    print('Diff:')
+    if root1 == root2:
+        print('Identical')
+        return
+    map1 = dict()
+    map2 = dict()
+    for i, x in enumerate(root1):
+        map1[x['id']] = i
+    for i, x in enumerate(root2):
+        map2[x['id']] = i
+    if map1.keys() != map2.keys():
+        set1 = set(map1.keys())
+        set2 = set(map2.keys())
+        for x in set1.difference(set2):
+            print('-', root1[map1[x]]['snippet']['title'])
+        for x in set2.difference(set1):
+            print('+', root2[map2[x]]['snippet']['title'])
+
+
 if __name__ == '__main__':
     if not os.path.exists(REPORTS_DIR):
         raise Exception(f'{REPORTS_DIR} folder not found')
@@ -49,9 +69,17 @@ if __name__ == '__main__':
     files = [os.path.join(REPORTS_DIR, x)
              for x in files if os.path.splitext(x)[1] == '.json']
     files = sorted(files, key=os.path.getmtime)
-    root = None
-    file_name = files[-1]
-    with open(file_name) as f:
-        root = json.load(f)
-    print('Loaded', file_name)
-    list_playlists(root, show_len=True, show_missing=True)
+
+    file_name1 = files[-2]
+    with open(file_name1) as f:
+        root1 = json.load(f)
+    print('Loaded', file_name1)
+
+    file_name2 = files[-1]
+    with open(file_name2) as f:
+        root2 = json.load(f)
+    print('Loaded', file_name2)
+
+    list_playlists(root2, show_len=True, show_missing=True)
+
+    diff_playlists(root1, root2)
