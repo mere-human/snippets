@@ -25,9 +25,11 @@ The script output is a `response.json` file which has a pretty-printed JSON of a
 
 ## TODO
 
-* Detect deleted/private videos
-* Analyze diff and report which videos got deleted
-* HTML report
+* Scraping "Watch later" playlist
+* HTML report (use template generator)
+  * <https://www.yattag.org/>
+  * <https://jinja.palletsprojects.com/en/2.10.x/intro/>
+
 
 ## References
 
