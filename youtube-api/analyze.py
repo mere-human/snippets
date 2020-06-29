@@ -4,14 +4,22 @@ import os
 REPORTS_DIR = 'out'
 
 
-def list_playlists(root_json):
+def list_playlists(root_json, show_len=False, show_id=False, show_missing=False):
     print('Playlists:', len(root_json))
     for p in root_json:
-        print('  {} - {}'.format(p['snippet']['title'], p['id']))
-        missing_positions = detect_deleted_videos(p)
-        if missing_positions:
-            print('    Missing video position:',
-                  ', '.join(missing_positions).rstrip(','))
+        s = p['snippet']['title']
+        if show_len:
+            s += ' - '
+            s += str(len(p['items']))
+        if show_id:
+            s += ' - '
+            s += p['id']
+        print(' ', s)
+        if show_missing:
+            missing_positions = detect_deleted_videos(p)
+            if missing_positions:
+                print('    Missing videos: {} at {}'.format(len(missing_positions),
+                                                            ', '.join(missing_positions).rstrip(',')))
 
 
 def list_videos(pl_json):
@@ -41,9 +49,9 @@ if __name__ == '__main__':
     files = [os.path.join(REPORTS_DIR, x)
              for x in files if os.path.splitext(x)[1] == '.json']
     files = sorted(files, key=os.path.getmtime)
-    print(files)
     root = None
-    with open(files[-2]) as f:
+    file_name = files[-1]
+    with open(file_name) as f:
         root = json.load(f)
-    print('Loaded')
-    list_playlists(root)
+    print('Loaded', file_name)
+    list_playlists(root, show_len=True, show_missing=True)
