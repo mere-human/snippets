@@ -28,3 +28,10 @@ The script output is a `response.json` file which has a pretty-printed JSON of a
 * Detect deleted/private videos
 * Analyze diff and report which videos got deleted
 * HTML report
+
+## References
+
+* API and explorer: <https://developers.google.com/youtube/v3/docs>
+* Code samples: <https://developers.google.com/explorer-help/guides/code_samples#python>
+* Python API: <http://googleapis.github.io/google-api-python-client/docs/dyn/youtube_v3.html>
+* "Watch later" can no longer be retrieved through YouTube Data API v3 <https://developers.google.com/youtube/v3/revision_history#september-15,-2016>
