@@ -84,9 +84,9 @@ def get_playlists_videos(youtube, playlists):
   return playlists
 
 
-def get_playlist_videos(youtube, id):
+def get_playlist_videos(youtube, pl_id):
   playlistitems_list_request = youtube.playlistItems().list(
-      playlistId=id,
+      playlistId=pl_id,
       part='snippet',
       maxResults=50
   )
@@ -97,6 +97,38 @@ def get_playlist_videos(youtube, id):
     playlistitems_list_request = youtube.playlistItems().list_next(
         playlistitems_list_request, playlistitems_list_response)
   return items
+
+
+def get_liked_videos(youtube):
+  request = youtube.videos().list(
+      part='snippet,localizations',
+      myRating='like',
+      maxResults=50
+  )
+  items = []
+  while request:
+    response = request.execute()
+    items.extend(response['items'])
+    request = youtube.videos().list_next(request, response)
+  return items
+
+
+def fix_liked_videos(videos):
+  for x in videos:
+    snippet = x['snippet']
+    # Not used because: snippet.localized.description == snippet.description, snippet.localized.title == snippet.title
+    del snippet['localized']
+    if 'defaultLanguage' in snippet and not snippet['defaultLanguage'].startswith('en'):
+      localizations = x['localizations']
+      for loc in localizations:
+        if loc.startswith('en'):
+          # Use English localization title and description
+          snippet['title'] = localizations[loc]['title']
+          snippet['description'] = localizations[loc]['description']
+          del x['localizations']
+          break
+        else:
+          snippet['description'] = snippet['description'][:10] + '(...)'
 
 
 def prepare_dir():
@@ -110,13 +142,17 @@ def prepare_dir():
 
 if __name__ == '__main__':
   if sys.version_info[0] < 3:
-    raise Exception("Must be using Python 3")
+    raise Exception('Must be using Python 3')
   try:
     youtube = get_authenticated_service()
     playlists = get_my_playlists_list(youtube)
     if playlists:
-      playlists.append({"id": "WL", "snippet": {"title": "Watch Later"}})
       videos = get_playlists_videos(youtube, playlists)
+      liked = get_liked_videos(youtube)
+      if liked:
+        fix_liked_videos(liked)
+        videos.append(
+            {'id': '', 'snippet': {'title': 'Liked videos'}, 'items': liked})
       time_str = datetime.now().strftime('%Y-%m-%d.%H-%M-%S')
       file_path = os.path.join(prepare_dir(), f'response.{time_str}.json')
       with open(file_path, 'w') as f:
