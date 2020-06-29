@@ -99,6 +99,13 @@ def get_playlist_videos(youtube, pl_id):
   return items
 
 
+def get_liked_playlist(youtube):
+  # Get likes playlist id
+  response = youtube.channels().list(part='contentDetails', mine=True).execute()
+  id_likes = response['items'][0]['contentDetails']['relatedPlaylists']['likes']
+  return id_likes
+
+
 def get_liked_videos(youtube):
   request = youtube.videos().list(
       part='snippet,localizations',
@@ -147,12 +154,10 @@ if __name__ == '__main__':
     youtube = get_authenticated_service()
     playlists = get_my_playlists_list(youtube)
     if playlists:
+      likes_playlist = get_liked_playlist(youtube)
+      playlists.append(
+          {'id': likes_playlist, 'snippet': {'title': 'Liked videos'}})
       videos = get_playlists_videos(youtube, playlists)
-      liked = get_liked_videos(youtube)
-      if liked:
-        fix_liked_videos(liked)
-        videos.append(
-            {'id': '', 'snippet': {'title': 'Liked videos'}, 'items': liked})
       time_str = datetime.now().strftime('%Y-%m-%d.%H-%M-%S')
       file_path = os.path.join(prepare_dir(), f'response.{time_str}.json')
       with open(file_path, 'w') as f:
