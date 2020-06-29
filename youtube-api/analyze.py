@@ -4,6 +4,15 @@ import os
 REPORTS_DIR = 'out'
 
 
+def get_snippet_str(item, published=True):
+    snippet = item['snippet']
+    result = snippet['title']
+    if published and 'publishedAt' in snippet:
+        result += ' - '
+        result += snippet['publishedAt']
+    return result
+
+
 def list_playlists(root_json, show_len=False, show_id=False, show_missing=False):
     print('Playlists:', len(root_json))
     for p in root_json:
@@ -61,9 +70,9 @@ def diff_playlists(root1, root2):
     set2 = set(map2.keys())
     if map1.keys() != map2.keys():
         for x in set1.difference(set2):
-            print('-', root1[map1[x]]['snippet']['title'])
+            print('-', get_snippet_str(root1[map1[x]]))
         for x in set2.difference(set1):
-            print('+', root2[map2[x]]['snippet']['title'])
+            print('+', get_snippet_str(root2[map2[x]]))
 
     # 2. Check videos in playlists
     superset = set1.intersection(set2)
@@ -85,9 +94,9 @@ def diff_playlists(root1, root2):
         if set_keys1 != set_keys2:
             print('*', root1[map1[x]]['snippet']['title'])
             for y in set_keys1.difference(set_keys2):
-                print('  -', items1[map_items1[y]]['snippet']['title'])
+                print('  -', get_snippet_str(items1[map_items1[y]]))
             for y in set_keys2.difference(set_keys1):
-                print('  +', items2[map_items2[y]]['snippet']['title'])
+                print('  +', get_snippet_str(items2[map_items2[y]]))
 
 
 if __name__ == '__main__':
