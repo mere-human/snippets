@@ -47,19 +47,47 @@ def diff_playlists(root1, root2):
     if root1 == root2:
         print('Identical')
         return
+
+    # 1. Check playlists
     map1 = dict()
     map2 = dict()
+    # Map id to position
     for i, x in enumerate(root1):
         map1[x['id']] = i
     for i, x in enumerate(root2):
         map2[x['id']] = i
+    # Check ids
+    set1 = set(map1.keys())
+    set2 = set(map2.keys())
     if map1.keys() != map2.keys():
-        set1 = set(map1.keys())
-        set2 = set(map2.keys())
         for x in set1.difference(set2):
             print('-', root1[map1[x]]['snippet']['title'])
         for x in set2.difference(set1):
             print('+', root2[map2[x]]['snippet']['title'])
+
+    # 2. Check videos in playlists
+    superset = set1.intersection(set2)
+    for x in superset:
+        # Map video id to position
+        items1 = root1[map1[x]]['items']
+        map_items1 = dict()
+        for i, y in enumerate(items1):
+            map_items1[y['snippet']['resourceId']['videoId']] = i
+
+        items2 = root2[map2[x]]['items']
+        map_items2 = dict()
+        for i, y in enumerate(items2):
+            map_items2[y['snippet']['resourceId']['videoId']] = i
+
+        # Check ids
+        set_keys1 = set(map_items1.keys())
+        set_keys2 = set(map_items2.keys())
+        if set_keys1 != set_keys2:
+            print('*', root1[map1[x]]['snippet']['title'])
+            for y in set_keys1.difference(set_keys2):
+                print('  -', items1[map_items1[y]]['snippet']['title'])
+            for y in set_keys2.difference(set_keys1):
+                print('  +', items2[map_items2[y]]['snippet']['title'])
 
 
 if __name__ == '__main__':
