@@ -1,5 +1,7 @@
 import json
 import os
+from dump import DATETIME_FORMAT
+from datetime import datetime
 
 REPORTS_DIR = 'out'
 
@@ -51,8 +53,21 @@ def detect_deleted_videos(pl_json):
     return result
 
 
-def diff_playlists(root1, root2):
-    print('Diff:')
+def date_from_file_name(file_name):
+    base = os.path.basename(file_name)
+    sep = '.'
+    parts = base.split(sep)
+    if len(parts) == 4:
+        base = sep.join(parts[1:3])
+        return datetime.strptime(base, DATETIME_FORMAT)
+    ctime = os.path.getctime(file_name)
+    return datetime.fromtimestamp(ctime)
+
+
+def diff_playlists(root1, root2, file_name1, file_name2):
+    date1 = date_from_file_name(file_name1)
+    date2 = date_from_file_name(file_name2)
+    print('Diff ({}):'.format(date2-date1))
     if root1 == root2:
         print('Identical')
         return
@@ -119,4 +134,4 @@ if __name__ == '__main__':
 
     list_playlists(root2, show_len=True, show_missing=True)
 
-    diff_playlists(root1, root2)
+    diff_playlists(root1, root2, file_name1, file_name2)

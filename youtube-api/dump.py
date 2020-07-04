@@ -20,6 +20,7 @@ from googleapiclient.errors import HttpError
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+DATETIME_FORMAT = '%Y-%m-%d.%H-%M-%S'
 
 # The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
 # the OAuth 2.0 information for this application, including its client_id and
@@ -158,7 +159,7 @@ if __name__ == '__main__':
       playlists.append(
           {'id': likes_playlist, 'snippet': {'title': 'Liked videos'}})
       videos = get_playlists_videos(youtube, playlists)
-      time_str = datetime.now().strftime('%Y-%m-%d.%H-%M-%S')
+      time_str = datetime.now().strftime(DATETIME_FORMAT)
       file_path = os.path.join(prepare_dir(), f'response.{time_str}.json')
       with open(file_path, 'w') as f:
         f.write(json.dumps(videos, sort_keys=True))
