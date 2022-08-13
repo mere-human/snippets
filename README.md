@@ -1,2 +1,2 @@
-# playground
-Various programs that can be used as a sample code
+# Snippets
+Various programs, snippets, samples and experiments.
