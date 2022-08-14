@@ -59,7 +59,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     """
     url = f"https://api.twitter.com/2/users/{uid}/tweets"
     params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
-              'media.fields': 'type,url', 'start_time': start_time, 'end_time': end_time}
+              'media.fields': 'type,url,preview_image_url,variants', 'start_time': start_time, 'end_time': end_time}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
     check_response(response)
     jresp = response.json()
@@ -90,10 +90,15 @@ def parse_tweets(tweets_json):
     html_result.append(html_prefix)
     media_list = tweets_json['includes']['media']
     media_photos = {}
+    media_videos = {}
     attachments_only = True
     for media in media_list:
         if media['type'] == 'photo':
             media_photos[media['media_key']] = media['url']
+        elif media['type'] == 'video':
+            # TODO: use media['variants'] which looks like this:
+            #  "{'bit_rate': 950000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/ext_tw_video/1556488702926508032/pu/vid/480x614/Sm38KXv0hYqCKaEv.mp4?tag=12'}"
+            media_videos[media['media_key']] = media['preview_image_url']
     for tweet in tweets_json['data']:
         # TODO: substitute t.co link?
         attachement_list = tweet.get('attachments')
@@ -107,8 +112,14 @@ def parse_tweets(tweets_json):
         text = tweet['text']
         html_extra = []
         for attachement in attachement_list:
-            img_url = media_photos[attachement]
-            html_extra.append(html_img.format(url=img_url))
+            img_url = media_photos.get(attachement)
+            if img_url is None:
+                img_url = media_videos.get(attachement)
+                html_extra.append('<h3>Video preview</h3>')
+            if img_url is None:
+                logger.warning(f'Unknown attachment in tweet {tweet}')
+            if img_url:
+                html_extra.append(html_img.format(url=img_url))
         html_tweet = html_item.format(
             date=created, text=text, extra=''.join(html_extra))
         html_result.append(html_tweet)
@@ -121,7 +132,7 @@ def main():
     username = 'Niseworks'
     uid = get_user_id(username)
     logger.debug(f'{username}: {uid}')
-    tweets = get_tweets(uid, start_time='2022-08-12T20:28:53.000Z')
+    tweets = get_tweets(uid, max_results=100)
     parse_tweets(tweets)
 
 
