@@ -23,7 +23,8 @@ bearer_token = os.environ.get("BEARER_TOKEN")
 
 def check_response(response):
     if response.status_code != 200:
-        raise RuntimeError(f'Response error: {response.status_code} {response.text}')
+        raise RuntimeError(
+            f'Response error: {response.status_code} {response.text}')
 
 
 def bearer_oauth(r):
@@ -65,6 +66,7 @@ def get_tweets(uid, max_results=None, pagination_token=None):
     return jresp
 
 
+# TODO: split this func
 def parse_tweets(tweets_json):
     html_prefix = '''
 <!DOCTYPE html>
@@ -73,11 +75,11 @@ def parse_tweets(tweets_json):
 </head>
 <body>
     '''
-    html_suffix ='''
+    html_suffix = '''
 </body>
 </html>
     '''
-    html_item ='''
+    html_item = '''
 <h2>{date}</h2>
 <p>{text}</p>
 {extra}
@@ -88,15 +90,17 @@ def parse_tweets(tweets_json):
     html_result.append(html_prefix)
     media_list = tweets_json['includes']['media']
     media_photos = {}
+    attachments_only = True
     for media in media_list:
         if media['type'] == 'photo':
             media_photos[media['media_key']] = media['url']
     for tweet in tweets_json['data']:
-        # TODO: skip w/o attachments
         # TODO: substitute t.co link?
         attachement_list = tweet.get('attachments')
         if attachement_list:
             attachement_list = attachement_list['media_keys']
+        elif attachments_only:
+            continue
         else:
             attachement_list = []
         created = tweet['created_at']
@@ -105,7 +109,8 @@ def parse_tweets(tweets_json):
         for attachement in attachement_list:
             img_url = media_photos[attachement]
             html_extra.append(html_img.format(url=img_url))
-        html_tweet = html_item.format(date=created, text=text, extra=''.join(html_extra))
+        html_tweet = html_item.format(
+            date=created, text=text, extra=''.join(html_extra))
         html_result.append(html_tweet)
     html_result.append(html_suffix)
     with open('result.html', 'w') as f:
