@@ -46,7 +46,7 @@ def get_user_id(username):
     return jresp['data'][0]['id']
 
 
-def get_tweets(uid, max_results=None, pagination_token=None):
+def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, end_time=None):
     """
     max_results = [5,10] (default: 10)
     JSON response format:
@@ -59,7 +59,7 @@ def get_tweets(uid, max_results=None, pagination_token=None):
     """
     url = f"https://api.twitter.com/2/users/{uid}/tweets"
     params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
-              'media.fields': 'type,url'}
+              'media.fields': 'type,url', 'start_time': start_time, 'end_time': end_time}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
     check_response(response)
     jresp = response.json()
@@ -121,7 +121,7 @@ def main():
     username = 'Niseworks'
     uid = get_user_id(username)
     logger.debug(f'{username}: {uid}')
-    tweets = get_tweets(uid)
+    tweets = get_tweets(uid, start_time='2022-08-12T20:28:53.000Z')
     parse_tweets(tweets)
 
 
