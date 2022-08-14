@@ -68,6 +68,8 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
 
 # TODO: split this func
 def parse_tweets(tweets_json):
+    meta = tweets_json.get('meta')
+    logger.debug(f'meta: {meta}')
     html_prefix = '''
 <!DOCTYPE html>
 <html>
@@ -80,7 +82,7 @@ def parse_tweets(tweets_json):
 </html>
     '''
     html_item = '''
-<h2>{date}</h2>
+<h2>{title}</h2>
 <p>{text}</p>
 {extra}
 <hr/>
@@ -98,8 +100,9 @@ def parse_tweets(tweets_json):
         elif media['type'] == 'video':
             # TODO: use media['variants'] which looks like this:
             #  "{'bit_rate': 950000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/ext_tw_video/1556488702926508032/pu/vid/480x614/Sm38KXv0hYqCKaEv.mp4?tag=12'}"
+            # https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
             media_videos[media['media_key']] = media['preview_image_url']
-    for tweet in tweets_json['data']:
+    for i, tweet in enumerate(tweets_json['data']):
         # TODO: substitute t.co link?
         attachement_list = tweet.get('attachments')
         if attachement_list:
@@ -121,19 +124,26 @@ def parse_tweets(tweets_json):
             if img_url:
                 html_extra.append(html_img.format(url=img_url))
         html_tweet = html_item.format(
-            date=created, text=text, extra=''.join(html_extra))
+            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra))
         html_result.append(html_tweet)
     html_result.append(html_suffix)
     with open('result.html', 'w') as f:
         f.write(''.join(html_result))
 
 
+def merge_json(a, b):
+    a['data'].extend(b['data'])
+    a['includes']['media'].extend(b['includes']['media'])
+    return a
+
+
 def main():
     username = 'Niseworks'
     uid = get_user_id(username)
     logger.debug(f'{username}: {uid}')
-    tweets = get_tweets(uid, max_results=100)
-    parse_tweets(tweets)
+    tweets1 = get_tweets(uid, max_results=100)
+    tweets2 = get_tweets(uid, max_results=100, pagination_token=tweets1['meta']['next_token'])
+    parse_tweets(merge_json(tweets1, tweets2))
 
 
 if __name__ == "__main__":
