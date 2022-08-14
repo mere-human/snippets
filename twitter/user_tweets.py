@@ -21,6 +21,11 @@ logger = logging.getLogger('user_tweets')
 bearer_token = os.environ.get("BEARER_TOKEN")
 
 
+def check_response(response):
+    if response.status_code != 200:
+        raise RuntimeError(f'Response error: {response.status_code} {response.text}')
+
+
 def bearer_oauth(r):
     """
     Method required by bearer token authentication.
@@ -35,8 +40,7 @@ def get_user_id(username):
     url = f"https://api.twitter.com/2/users/by"
     params = {'usernames': username}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
-    if response.status_code != 200:
-        response.raise_for_status()
+    check_response(response)
     jresp = response.json()
     return jresp['data'][0]['id']
 
@@ -56,13 +60,12 @@ def get_tweets(uid, max_results=None, pagination_token=None):
     params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
               'media.fields': 'type,url'}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
-    assert (response.status_code == 200)
+    check_response(response)
     jresp = response.json()
     return jresp
 
 
 def parse_tweets(tweets_json):
-    # print(json.dumps(tweets_json, indent=4, sort_keys=True))
     html_prefix = '''
 <!DOCTYPE html>
 <html>
