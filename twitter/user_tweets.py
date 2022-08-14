@@ -5,6 +5,7 @@ https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Lookup/g
 https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Tweet-Timeline/user_tweets.py
 API playground:
 https://oauth-playground.glitch.me/
+https://developer.twitter.com/apitools/downloader
 '''
 
 import requests
@@ -67,6 +68,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
 
 
 # TODO: split this func
+# TODO: support pagination of output
 def parse_tweets(tweets_json):
     meta = tweets_json.get('meta')
     logger.debug(f'meta: {meta}')
@@ -120,6 +122,8 @@ def parse_tweets(tweets_json):
                 img_url = media_videos.get(attachement)
                 html_extra.append('<h3>Video preview</h3>')
             if img_url is None:
+                # TODO: support more types
+                # Unknown attachment in tweet {'attachments': {'media_keys': ['16_1149492687088676865']}, 'created_at': '2019-07-12T01:37:44.000Z', 'text': 'I forgot to upload this gif without sound. Hope you guys like it. Second part coming next week!\n#niseworks #nisego https://t.co/tSm5W7hV9L', 'id': '1149493010691813376'}
                 logger.warning(f'Unknown attachment in tweet {tweet}')
             if img_url:
                 html_extra.append(html_img.format(url=img_url))
@@ -132,18 +136,38 @@ def parse_tweets(tweets_json):
 
 
 def merge_json(a, b):
+    if not a and b:
+        return b
+    elif not b:
+        return a
     a['data'].extend(b['data'])
     a['includes']['media'].extend(b['includes']['media'])
     return a
+
+
+def get_tweets_iter(uid, max_results=None):
+    result = {}
+    pagination_token = None
+    try:
+        while True:
+            tweets = get_tweets(uid, max_results=100,
+                                pagination_token=pagination_token)
+            result = merge_json(result, tweets)
+            pagination_token = tweets['meta'].get('next_token')
+            if not pagination_token:
+                logger.debug(f'No pagination token, stop. {tweets["meta"]}')
+                break
+    except BaseException as err:
+        logger.exception(err)
+    return result
 
 
 def main():
     username = 'Niseworks'
     uid = get_user_id(username)
     logger.debug(f'{username}: {uid}')
-    tweets1 = get_tweets(uid, max_results=100)
-    tweets2 = get_tweets(uid, max_results=100, pagination_token=tweets1['meta']['next_token'])
-    parse_tweets(merge_json(tweets1, tweets2))
+    tweets = get_tweets_iter(uid)
+    parse_tweets(tweets)
 
 
 if __name__ == "__main__":
