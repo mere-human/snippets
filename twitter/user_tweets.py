@@ -69,7 +69,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
 
 # TODO: split this func
 # TODO: support pagination of output
-def parse_tweets(tweets_json):
+def parse_tweets(tweets_json, attachments_only=False):
     meta = tweets_json.get('meta')
     logger.debug(f'meta: {meta}')
     html_prefix = '''
@@ -83,8 +83,11 @@ def parse_tweets(tweets_json):
 </body>
 </html>
     '''
+    # TODO: replace id by a link:
+    #  https://twitter.com/Niseworks/status/594261874822279168
     html_item = '''
 <h2>{title}</h2>
+<p><b>id:</b>{id}</p>
 <p>{text}</p>
 {extra}
 <hr/>
@@ -95,7 +98,6 @@ def parse_tweets(tweets_json):
     media_list = tweets_json['includes']['media']
     media_photos = {}
     media_videos = {}
-    attachments_only = True
     for media in media_list:
         if media['type'] == 'photo':
             media_photos[media['media_key']] = media['url']
@@ -128,7 +130,7 @@ def parse_tweets(tweets_json):
             if img_url:
                 html_extra.append(html_img.format(url=img_url))
         html_tweet = html_item.format(
-            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra))
+            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'])
         html_result.append(html_tweet)
     html_result.append(html_suffix)
     with open('result.html', 'w') as f:
@@ -167,6 +169,9 @@ def main():
     uid = get_user_id(username)
     logger.debug(f'{username}: {uid}')
     tweets = get_tweets_iter(uid)
+    # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
+    # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
+    # oldest tweet http://t.co/hSPfs5deDf
     parse_tweets(tweets)
 
 
