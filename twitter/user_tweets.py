@@ -61,7 +61,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     url = f"https://api.twitter.com/2/users/{uid}/tweets"
     # exclude is a comma-separated list that can include retweets and replies. For retweets max tweets is 3200 but for replies max tweets is 800.
     params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
-              'media.fields': 'type,url,preview_image_url,variants', 'start_time': start_time, 'end_time': end_time, 'exclude': 'retweets'}
+              'media.fields': 'type,url,preview_image_url,variants,height,width', 'start_time': start_time, 'end_time': end_time, 'exclude': 'retweets'}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
     check_response(response)
     jresp = response.json()
@@ -93,22 +93,28 @@ def parse_tweets(tweets_json, user_name, attachments_only=False):
 <hr/>
     '''
     html_img = '<img src="{url}">'
+    html_vid = '''
+<video width="{w}" height="{h}" poster="{preview}" controls>
+    <source src="{url}" type="{t}">
+</video>'''
     html_result = []
-    html_result.append(html_prefix.format(user_name))
+    html_result.append(html_prefix.format(user_name=user_name))
     media_list = tweets_json['includes']['media'] if 'includes' in tweets_json else [
     ]
-    media_photos = {}
-    media_videos = {}
-    for media in media_list:
-        if media['type'] == 'photo':
-            media_photos[media['media_key']] = media['url']
-        elif media['type'] == 'video' or media['type'] == 'animated_gif':
-            # TODO: use media['variants'] which looks like this:
-            #  "{'bit_rate': 950000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/ext_tw_video/1556488702926508032/pu/vid/480x614/Sm38KXv0hYqCKaEv.mp4?tag=12'}"
-            # https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
-            media_videos[media['media_key']] = media['preview_image_url']
+    media = {}
+    for m in media_list:
+        # https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
+        # {'width': 1000, 'type': 'video', 'height': 1280, 'preview_image_url': 'https://pbs.twimg.com/ext_tw_video_thumb/1556488702926508032/pu/img/IpEtPoX8vyK_0pFM.jpg', 'media_key': '7_1556488702926508032', 'variants': [{...}, {...}, {...}, {...}]}
+        # {'url': 'https://pbs.twimg.com/media/FZgrgNHX0AESi_5.jpg', 'width': 2400, 'media_key': '3_1556041503532896257', 'type': 'photo', 'height': 3840}
+        if m['type'] == 'photo':
+            media[m['media_key']] = m
+        elif m['type'] in ['video', 'animated_gif']:
+            best_variant = max(
+                m['variants'], key=lambda x: x['bit_rate'] if 'bit_rate' in x else 0)
+            m.update(best_variant)
+            media[m['media_key']] = m
         else:
-            logger.warning(f'Unknown media type: {media["type"]} in {media}')
+            logger.warning(f'Unknown media type: {m["type"]} in {m}')
     logger.debug(f'"data" len: {len(tweets_json["data"])}')
     for i, tweet in enumerate(tweets_json['data']):
         # TODO: substitute t.co link?
@@ -123,14 +129,16 @@ def parse_tweets(tweets_json, user_name, attachments_only=False):
         text = tweet['text']
         html_extra = []
         for attachement in attachement_list:
-            img_url = media_photos.get(attachement)
-            if img_url is None:
-                img_url = media_videos.get(attachement)
-                html_extra.append('<h3>Video preview</h3>')
-            if img_url is None:
+            mv = media.get(attachement)
+            if mv is None:
                 logger.warning(f'Unknown attachment in tweet {tweet}')
-            if img_url:
-                html_extra.append(html_img.format(url=img_url))
+            if mv:
+                if mv['type'] == 'photo':
+                    html_extra.append(html_img.format(url=mv['url']))
+                else:
+                    html_extra.append('<p><small><i>Video:</i></small></p>')
+                    html_extra.append(html_vid.format(
+                        w=mv['width'], h=mv['height'], preview=mv['preview_image_url'], url=mv['url'], t=mv['content_type']))
         html_tweet = html_item.format(
             title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'], user_name=user_name)
         html_result.append(html_tweet)
