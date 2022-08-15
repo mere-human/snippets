@@ -85,11 +85,9 @@ def parse_tweets(tweets_json, user_name, attachments_only=False):
 </body>
 </html>
     '''
-    # TODO: replace id by a link:
-    #  https://twitter.com/Niseworks/status/594261874822279168
     html_item = '''
 <h2>{title}</h2>
-<p><b>id:</b>{id}</p>
+<p><a href="https://twitter.com/{user_name}/status/{id}">{id}</a></p>
 <p>{text}</p>
 {extra}
 <hr/>
@@ -134,7 +132,7 @@ def parse_tweets(tweets_json, user_name, attachments_only=False):
             if img_url:
                 html_extra.append(html_img.format(url=img_url))
         html_tweet = html_item.format(
-            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'])
+            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'], user_name=user_name)
         html_result.append(html_tweet)
     html_result.append(html_suffix)
     with open('result.html', 'w') as f:
