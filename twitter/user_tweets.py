@@ -59,7 +59,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     next_token is for pagination.
     """
     url = f"https://api.twitter.com/2/users/{uid}/tweets"
-    # exclude is a comma-separated list that can include retweets and replies. For retweets max tweets is 3200 but for replies max tweets is 800. 
+    # exclude is a comma-separated list that can include retweets and replies. For retweets max tweets is 3200 but for replies max tweets is 800.
     params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
               'media.fields': 'type,url,preview_image_url,variants', 'start_time': start_time, 'end_time': end_time, 'exclude': 'retweets'}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
@@ -96,17 +96,21 @@ def parse_tweets(tweets_json, attachments_only=False):
     html_img = '<img src="{url}">'
     html_result = []
     html_result.append(html_prefix)
-    media_list = tweets_json['includes']['media']
+    media_list = tweets_json['includes']['media'] if 'includes' in tweets_json else [
+    ]
     media_photos = {}
     media_videos = {}
     for media in media_list:
         if media['type'] == 'photo':
             media_photos[media['media_key']] = media['url']
-        elif media['type'] == 'video':
+        elif media['type'] == 'video' or media['type'] == 'animated_gif':
             # TODO: use media['variants'] which looks like this:
             #  "{'bit_rate': 950000, 'content_type': 'video/mp4', 'url': 'https://video.twimg.com/ext_tw_video/1556488702926508032/pu/vid/480x614/Sm38KXv0hYqCKaEv.mp4?tag=12'}"
             # https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/media
             media_videos[media['media_key']] = media['preview_image_url']
+        else:
+            logger.warning(f'Unknown media type: {media["type"]} in {media}')
+    logger.debug(f'"data" len: {len(tweets_json["data"])}')
     for i, tweet in enumerate(tweets_json['data']):
         # TODO: substitute t.co link?
         attachement_list = tweet.get('attachments')
@@ -173,7 +177,10 @@ def main():
     # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
     # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
     # oldest tweet http://t.co/hSPfs5deDf
-    parse_tweets(tweets)
+    parse_tweets(tweets, attachments_only=True)
+    if DEBUG_THIS:
+        with open('result.json', 'w') as f:
+            f.write(json.dumps(tweets, indent=4, sort_keys=True))
 
 
 if __name__ == "__main__":
