@@ -59,8 +59,9 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     next_token is for pagination.
     """
     url = f"https://api.twitter.com/2/users/{uid}/tweets"
+    # exclude is a comma-separated list that can include retweets and replies. For retweets max tweets is 3200 but for replies max tweets is 800. 
     params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
-              'media.fields': 'type,url,preview_image_url,variants', 'start_time': start_time, 'end_time': end_time}
+              'media.fields': 'type,url,preview_image_url,variants', 'start_time': start_time, 'end_time': end_time, 'exclude': 'retweets'}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
     check_response(response)
     jresp = response.json()
