@@ -70,7 +70,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
 
 # TODO: split this func
 # TODO: support pagination of output
-def parse_tweets(tweets_json, attachments_only=False):
+def parse_tweets(tweets_json, user_name, attachments_only=False):
     meta = tweets_json.get('meta')
     logger.debug(f'meta: {meta}')
     html_prefix = '''
@@ -79,6 +79,7 @@ def parse_tweets(tweets_json, attachments_only=False):
 <head>
 </head>
 <body>
+<h1>{user_name} tweets</h1>
     '''
     html_suffix = '''
 </body>
@@ -95,7 +96,7 @@ def parse_tweets(tweets_json, attachments_only=False):
     '''
     html_img = '<img src="{url}">'
     html_result = []
-    html_result.append(html_prefix)
+    html_result.append(html_prefix.format(user_name))
     media_list = tweets_json['includes']['media'] if 'includes' in tweets_json else [
     ]
     media_photos = {}
@@ -129,8 +130,6 @@ def parse_tweets(tweets_json, attachments_only=False):
                 img_url = media_videos.get(attachement)
                 html_extra.append('<h3>Video preview</h3>')
             if img_url is None:
-                # TODO: support more types
-                # Unknown attachment in tweet {'attachments': {'media_keys': ['16_1149492687088676865']}, 'created_at': '2019-07-12T01:37:44.000Z', 'text': 'I forgot to upload this gif without sound. Hope you guys like it. Second part coming next week!\n#niseworks #nisego https://t.co/tSm5W7hV9L', 'id': '1149493010691813376'}
                 logger.warning(f'Unknown attachment in tweet {tweet}')
             if img_url:
                 html_extra.append(html_img.format(url=img_url))
@@ -177,7 +176,7 @@ def main():
     # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
     # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
     # oldest tweet http://t.co/hSPfs5deDf
-    parse_tweets(tweets, attachments_only=True)
+    parse_tweets(tweets, username, attachments_only=True)
     if DEBUG_THIS:
         with open('result.json', 'w') as f:
             f.write(json.dumps(tweets, indent=4, sort_keys=True))
