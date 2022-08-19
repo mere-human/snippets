@@ -14,10 +14,6 @@ import json
 import logging
 import argparse
 
-DEBUG_THIS = 1
-logging.basicConfig(level=(logging.DEBUG if DEBUG_THIS else logging.INFO))
-logger = logging.getLogger('user_tweets')
-
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = os.environ.get("BEARER_TOKEN")
@@ -34,6 +30,8 @@ def parse_args():
                         help='Dump JSON file with response.')
     parser.add_argument('--reverse', action='store_true',
                         help='If specified, write user tweets are in chronological (reverse) order.')
+    parser.add_argument('--verbose', action='store_true',
+                        help='Print more info.')
     return parser.parse_args()
 
 
@@ -192,6 +190,11 @@ def get_tweets_iter(uid, max_results=None):
 
 def main():
     args = parse_args()
+
+    logging.basicConfig(level=(logging.DEBUG if args.verbose else logging.INFO))
+    global logger
+    logger = logging.getLogger('user_tweets')
+
     logger.debug(args)
 
     if args.json:
