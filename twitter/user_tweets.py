@@ -101,7 +101,7 @@ class HtmlFormatter:
         hr {{
             page-break-after: always;
         }}
-        p {{
+        p,div.twi_img {{
             page-break-inside: avoid;
         }}
     </style>
@@ -130,7 +130,7 @@ class HtmlFormatter:
 '''
 
     def get_img(self, url):
-        return f'<img src="{url}">'
+        return f'''<div class="tw_img"><img src="{url}"/><div/>'''
 
     def get_video(self, w, h, preview, url, type):
         return f'''
