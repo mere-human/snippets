@@ -134,12 +134,8 @@ class HtmlFormatter:
         return ''.join(self.lines)
 
 
-# TODO: split this func
-# TODO: support pagination of output
-def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
-    meta = tweets_json.get('meta')
-    logger.debug(f'meta: {meta}')
-
+# Returns media data by media_key
+def get_media_dict(tweets_json):
     media_list = tweets_json['includes']['media'] if 'includes' in tweets_json else [
     ]
     media = {}
@@ -156,35 +152,50 @@ def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
             media[m['media_key']] = m
         else:
             logger.warning(f'Unknown media type: {m["type"]} in {m}')
+    return media
+
+
+def generate_attachments(media, tweet_attachment, formatter, tweet_id):
+    result = []
+    for attachement in tweet_attachment:
+        mv = media.get(attachement)
+        if mv is None:
+            logger.warning(f'Unknown attachment in tweet "{tweet_id}"')
+        if mv:
+            if mv['type'] == 'photo':
+                result.append(formatter.get_img(url=mv['url']))
+            else:
+                result.append(formatter.get_video_header())
+                result.append(formatter.get_video(
+                    w=mv['width'], h=mv['height'], preview=mv['preview_image_url'], url=mv['url'], type=mv['content_type']))
+    return result
+
+# TODO: support pagination of output
+
+
+def generate_html(tweets_json, user_name, reverse=False, attachments_only=False):
+    meta = tweets_json.get('meta')
+    logger.debug(f'meta: {meta}')
     logger.debug(f'"data" len: {len(tweets_json["data"])}')
+
     formatter = HtmlFormatter(user_name)
     formatter.add_prolog()
+
     tweets_data = tweets_json['data']
     for i, tweet in enumerate(reversed(tweets_data) if reverse else tweets_data):
         # TODO: substitute t.co link?
-        attachement_list = tweet.get('attachments')
-        if attachement_list:
-            attachement_list = attachement_list['media_keys']
+        attachments = tweet.get('attachments')
+        if attachments:
+            attachments = attachments['media_keys']
         elif attachments_only:
             continue
         else:
-            attachement_list = []
+            attachments = []
         created = tweet['created_at']
-        text = tweet['text']
-        html_extra = []
-        for attachement in attachement_list:
-            mv = media.get(attachement)
-            if mv is None:
-                logger.warning(f'Unknown attachment in tweet {tweet}')
-            if mv:
-                if mv['type'] == 'photo':
-                    html_extra.append(formatter.get_img(url=mv['url']))
-                else:
-                    html_extra.append(formatter.get_video_header())
-                    html_extra.append(formatter.get_video(
-                        w=mv['width'], h=mv['height'], preview=mv['preview_image_url'], url=mv['url'], type=mv['content_type']))
+        html_extra = generate_attachments(get_media_dict(
+            tweets_json), attachments, formatter, created)
         formatter.add_tweet(
-            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'])
+            title=f'{i+1}. {created}', text=tweet['text'], extra=''.join(html_extra), id=tweet['id'])
     formatter.add_epilog()
     with open('result.html', 'w') as f:
         f.write(formatter.get_result())
@@ -243,7 +254,8 @@ def main():
     # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
     # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
     # oldest tweet http://t.co/hSPfs5deDf
-    parse_tweets(tweets, username, attachments_only=True, reverse=args.reverse)
+    generate_html(tweets, username, attachments_only=True,
+                  reverse=args.reverse)
 
 
 if __name__ == "__main__":
