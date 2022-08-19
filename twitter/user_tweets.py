@@ -97,6 +97,14 @@ class HtmlFormatter:
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        hr {{
+            page-break-after: always;
+        }}
+        p {{
+            page-break-inside: avoid;
+        }}
+    </style>
 </head>
 <body>
 <h1>{self.user_name} tweets</h1>'''
@@ -119,7 +127,7 @@ class HtmlFormatter:
 <p>{text}</p>
 {extra}
 <hr/>
-    '''
+'''
 
     def get_img(self, url):
         return f'<img src="{url}">'
@@ -198,7 +206,7 @@ def generate_html(tweets_json, user_name, reverse=False, attachments_only=False)
         html_extra = generate_attachments(get_media_dict(
             tweets_json), attachments, formatter, created)
         formatter.add_tweet(
-            title=f'{i+1}. {created}', text=tweet['text'], extra=''.join(html_extra), id=tweet['id'])
+            title=f'{i+1}. {created}', text=tweet['text'], extra='\n'.join(html_extra), id=tweet['id'])
     formatter.add_epilog()
     with open('result.html', 'w') as f:
         f.write(formatter.get_result())
