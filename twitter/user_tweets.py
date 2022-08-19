@@ -27,6 +27,8 @@ def parse_args():
         description="Generates user's tweets HTML report.")
     parser.add_argument('--user',
                         help='Twitter user name.')
+    parser.add_argument('--max', type=int,
+                        help='Max number of tweets to obtain.')
     parser.add_argument('--json',
                         help='Input JSON file with response to generate report from.')
     parser.add_argument('--dump', action='store_true',
@@ -222,18 +224,23 @@ def merge_json(a, b):
     return a
 
 
-def get_tweets_iter(uid, max_results=None):
+def get_tweets_iter(uid, max_tweets=None):
     result = {}
     pagination_token = None
     try:
         while True:
-            tweets = get_tweets(uid, max_results=100,
+            tweets = get_tweets(uid, max_results=min(100, max_tweets) if max_tweets else 100,
                                 pagination_token=pagination_token)
             result = merge_json(result, tweets)
             pagination_token = tweets['meta'].get('next_token')
             if not pagination_token:
                 logger.debug(f'No pagination token, stop. {tweets["meta"]}')
                 break
+            if max_tweets is not None:
+                max_tweets = max(max_tweets-100, 0)
+                logger.debug(f'Tweets left: {max_tweets}')
+                if max_tweets == 0:
+                    break
     except BaseException as err:
         logger.exception(err)
     return result
@@ -257,7 +264,7 @@ def main():
         username = args.user
         uid = get_user_id(username)
         logger.debug(f'{username}: {uid}')
-        tweets = get_tweets_iter(uid)
+        tweets = get_tweets_iter(uid, max_tweets=args.max)
         if args.dump:
             with open('result.json', 'w') as f:
                 f.write(json.dumps(tweets, indent=4, sort_keys=True))
