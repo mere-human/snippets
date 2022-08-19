@@ -106,6 +106,19 @@ class HtmlFormatter:
         p,div.twi_img {{
             page-break-inside: avoid;
         }}
+        @media not print {{
+            .printonly {{
+                display: none;
+            }}
+        }}
+        @media print {{
+            .noprint {{
+                display: none;
+            }}
+            .printonly {{
+                visibility: visible;
+            }}
+        }}
     </style>
 </head>
 <body>
@@ -136,9 +149,11 @@ class HtmlFormatter:
 
     def get_video(self, w, h, preview, url, type):
         return f'''
-<video width="{w}" height="{h}" poster="{preview}" controls>
+<video class="noprint" width="{w}" height="{h}" poster="{preview}" controls>
     <source src="{url}" type="{type}">
-</video>'''
+</video>
+<img class="twi_img printonly" src="{preview}" />
+'''
 
     def get_video_header(self):
         return '<p><small><i>Video:</i></small></p>'

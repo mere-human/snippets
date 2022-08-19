@@ -3,6 +3,16 @@
         {
             "attachments": {
                 "media_keys": [
+                    "7_1560716674415968256"
+                ]
+            },
+            "created_at": "2022-08-19T19:54:16.000Z",
+            "id": "1560716799993417731",
+            "text": ";) https://t.co/lIpGnb0LLu"
+        },
+        {
+            "attachments": {
+                "media_keys": [
                     "3_1560401852704890881"
                 ]
             },
@@ -922,23 +932,38 @@
             "created_at": "2022-04-14T01:08:32.000Z",
             "id": "1514410239172427782",
             "text": "..."
-        },
-        {
-            "attachments": {
-                "media_keys": [
-                    "3_1514409964239998979",
-                    "3_1514409964340719616",
-                    "3_1514409964445573122",
-                    "3_1514409964529463297"
-                ]
-            },
-            "created_at": "2022-04-14T01:08:30.000Z",
-            "id": "1514410233304686600",
-            "text": "... https://t.co/qCEBwo4yXs"
         }
     ],
     "includes": {
         "media": [
+            {
+                "height": 1280,
+                "media_key": "7_1560716674415968256",
+                "preview_image_url": "https://pbs.twimg.com/ext_tw_video_thumb/1560716674415968256/pu/img/WeqzhpHSowC-XGzN.jpg",
+                "type": "video",
+                "variants": [
+                    {
+                        "bit_rate": 950000,
+                        "content_type": "video/mp4",
+                        "url": "https://video.twimg.com/ext_tw_video/1560716674415968256/pu/vid/480x768/OFqS_MRcPFAbqycu.mp4?tag=12"
+                    },
+                    {
+                        "bit_rate": 632000,
+                        "content_type": "video/mp4",
+                        "url": "https://video.twimg.com/ext_tw_video/1560716674415968256/pu/vid/320x512/cFLLz4q5ZFL9ml0T.mp4?tag=12"
+                    },
+                    {
+                        "content_type": "application/x-mpegURL",
+                        "url": "https://video.twimg.com/ext_tw_video/1560716674415968256/pu/pl/QcW8456jGgcs66ap.m3u8?tag=12&container=fmp4"
+                    },
+                    {
+                        "bit_rate": 2176000,
+                        "content_type": "video/mp4",
+                        "url": "https://video.twimg.com/ext_tw_video/1560716674415968256/pu/vid/720x1152/qNxsOIUdf1AAZSDa.mp4?tag=12"
+                    }
+                ],
+                "width": 800
+            },
             {
                 "height": 4096,
                 "media_key": "3_1560401852704890881",
@@ -2100,41 +2125,13 @@
                 "type": "photo",
                 "url": "https://pbs.twimg.com/media/FQhJJbAXEAMOO0f.jpg",
                 "width": 4039
-            },
-            {
-                "height": 4096,
-                "media_key": "3_1514409964239998979",
-                "type": "photo",
-                "url": "https://pbs.twimg.com/media/FQRD1rrWUAMrr3F.jpg",
-                "width": 4039
-            },
-            {
-                "height": 4096,
-                "media_key": "3_1514409964340719616",
-                "type": "photo",
-                "url": "https://pbs.twimg.com/media/FQRD1sDXMAAp8sD.jpg",
-                "width": 4039
-            },
-            {
-                "height": 4096,
-                "media_key": "3_1514409964445573122",
-                "type": "photo",
-                "url": "https://pbs.twimg.com/media/FQRD1scXIAIFas5.jpg",
-                "width": 4039
-            },
-            {
-                "height": 4096,
-                "media_key": "3_1514409964529463297",
-                "type": "photo",
-                "url": "https://pbs.twimg.com/media/FQRD1swXMAEvVS4.jpg",
-                "width": 4039
             }
         ]
     },
     "meta": {
-        "newest_id": "1560401863794728960",
-        "next_token": "7140dibdnow9c7btw420yxm37po7jlmzxqh0i8e2yq71s",
-        "oldest_id": "1514410233304686600",
+        "newest_id": "1560716799993417731",
+        "next_token": "7140dibdnow9c7btw420yxm37po7jlrltryld2lppq81e",
+        "oldest_id": "1514410239172427782",
         "result_count": 100
     }
 }
