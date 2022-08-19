@@ -6,9 +6,14 @@ python3 user_tweets.py --json result.json --reverse --verbose --user Niseworks
 Examples:
 https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Lookup/get_users_with_user_context.py
 https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Tweet-Timeline/user_tweets.py
+
 API playground:
 https://oauth-playground.glitch.me/
 https://developer.twitter.com/apitools/downloader
+
+API Reference:
+https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets
+https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
 '''
 
 import requests
@@ -146,7 +151,7 @@ class HtmlFormatter:
 '''
 
     def get_img(self, url):
-        return f'''<div class="tw_img"><img src="{url}"/><div/>'''
+        return f'''<div class="tw_img"><img src="{url}"/></div>'''
 
     def get_video(self, w, h, preview, url, type):
         return f'''
