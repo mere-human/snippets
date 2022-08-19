@@ -1,5 +1,8 @@
 '''
 Script that obtains tweets of a specific account.
+Sample invocation:
+python3 user_tweets.py --json result.json --reverse --verbose --user Niseworks
+
 Examples:
 https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Lookup/get_users_with_user_context.py
 https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Tweet-Timeline/user_tweets.py
@@ -243,7 +246,7 @@ def main():
         with open(args.json, 'r') as f:
             tweets = json.load(f)
     else:
-        username = args.user  # 'Niseworks'
+        username = args.user
         uid = get_user_id(username)
         logger.debug(f'{username}: {uid}')
         tweets = get_tweets_iter(uid)
