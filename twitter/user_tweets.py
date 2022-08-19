@@ -16,6 +16,9 @@ https://developer.twitter.com/en/docs/twitter-api/tweets/timelines/api-reference
 https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/tweet
 '''
 
+# TODO: support pagination of output to avoid loading all img.
+# TODO: remove replies
+
 import requests
 import os
 import json
@@ -33,7 +36,7 @@ def parse_args():
     parser.add_argument('--user',
                         help='Twitter user name.')
     parser.add_argument('--max', type=int,
-                        help='Max number of tweets to obtain.')
+                        help='Number of tweets to obtain. Max supported value is 3200 (API limit).')
     parser.add_argument('--json',
                         help='Input JSON file with response to generate report from.')
     parser.add_argument('--dump', action='store_true',
@@ -42,6 +45,8 @@ def parse_args():
                         help='If specified, write user tweets are in chronological (reverse) order.')
     parser.add_argument('--verbose', action='store_true',
                         help='Print more info.')
+    parser.add_argument('--attachments', action='store_true',
+                        help='Include only tweets with attachments.')
     return parser.parse_args()
 
 
@@ -207,8 +212,6 @@ def generate_attachments(media, tweet_attachment, formatter, tweet_id):
                     w=mv['width'], h=mv['height'], preview=mv['preview_image_url'], url=mv['url'], type=mv['content_type']))
     return result
 
-# TODO: support pagination of output
-
 def expand_urls(tweet, text, formatter):
     entities = tweet.get('entities')
     if entities:
@@ -308,7 +311,7 @@ def main():
     # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
     # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
     # oldest tweet http://t.co/hSPfs5deDf
-    generate_html(tweets, username, attachments_only=True,
+    generate_html(tweets, username, attachments_only=args.attachments,
                   reverse=args.reverse)
 
 
