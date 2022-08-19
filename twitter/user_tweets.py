@@ -28,7 +28,9 @@ def parse_args():
     parser.add_argument('--user',
                         help='Twitter user name.')
     parser.add_argument('--json',
-                        help='JSON file with response to generate report from.')
+                        help='Input JSON file with response to generate report from.')
+    parser.add_argument('--dump', action='store_true',
+                        help='Dump JSON file with response.')
     return parser.parse_args()
 
 
@@ -196,7 +198,7 @@ def main():
         uid = get_user_id(username)
         logger.debug(f'{username}: {uid}')
         tweets = get_tweets_iter(uid)
-        if DEBUG_THIS:  # TODO: add arg for this?
+        if args.dump:
             with open('result.json', 'w') as f:
                 f.write(json.dumps(tweets, indent=4, sort_keys=True))
 
