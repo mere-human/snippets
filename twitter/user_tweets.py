@@ -81,37 +81,65 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     return jresp
 
 
-# TODO: split this func
-# TODO: support pagination of output
-def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
-    meta = tweets_json.get('meta')
-    logger.debug(f'meta: {meta}')
-    html_prefix = '''
+class HtmlFormatter:
+    def __init__(self, user_name):
+        self.user_name = user_name
+        self.lines = []
+
+    def add_prolog(self):
+        self.lines.append(self.get_prolog())
+
+    def get_prolog(self):
+        return f'''
 <!DOCTYPE html>
 <html>
 <head>
 </head>
 <body>
-<h1>{user_name} tweets</h1>
-    '''
-    html_suffix = '''
+<h1>{self.user_name} tweets</h1>'''
+
+    def get_epilog(self):
+        return '''
 </body>
-</html>
-    '''
-    html_item = '''
+</html>'''
+
+    def add_epilog(self):
+        self.lines.append(self.get_epilog())
+
+    def add_tweet(self, title, id, text, extra=''):
+        self.lines.append(self.get_h2(title, id, text, extra))
+
+    def get_h2(self, title, id, text, extra=''):
+        return f'''
 <h2>{title}</h2>
-<p><a href="https://twitter.com/{user_name}/status/{id}">{id}</a></p>
+<p><a href="https://twitter.com/{self.user_name}/status/{id}">{id}</a></p>
 <p>{text}</p>
 {extra}
 <hr/>
     '''
-    html_img = '<img src="{url}">'
-    html_vid = '''
+
+    def get_img(self, url):
+        return f'<img src="{url}">'
+
+    def get_video(self, w, h, preview, url, type):
+        return f'''
 <video width="{w}" height="{h}" poster="{preview}" controls>
-    <source src="{url}" type="{t}">
+    <source src="{url}" type="{type}">
 </video>'''
-    html_result = []
-    html_result.append(html_prefix.format(user_name=user_name))
+
+    def get_video_header(self):
+        return '<p><small><i>Video:</i></small></p>'
+
+    def get_result(self):
+        return ''.join(self.lines)
+
+
+# TODO: split this func
+# TODO: support pagination of output
+def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
+    meta = tweets_json.get('meta')
+    logger.debug(f'meta: {meta}')
+
     media_list = tweets_json['includes']['media'] if 'includes' in tweets_json else [
     ]
     media = {}
@@ -129,6 +157,8 @@ def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
         else:
             logger.warning(f'Unknown media type: {m["type"]} in {m}')
     logger.debug(f'"data" len: {len(tweets_json["data"])}')
+    formatter = HtmlFormatter(user_name)
+    formatter.add_prolog()
     tweets_data = tweets_json['data']
     for i, tweet in enumerate(reversed(tweets_data) if reverse else tweets_data):
         # TODO: substitute t.co link?
@@ -148,17 +178,16 @@ def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
                 logger.warning(f'Unknown attachment in tweet {tweet}')
             if mv:
                 if mv['type'] == 'photo':
-                    html_extra.append(html_img.format(url=mv['url']))
+                    html_extra.append(formatter.get_img(url=mv['url']))
                 else:
-                    html_extra.append('<p><small><i>Video:</i></small></p>')
-                    html_extra.append(html_vid.format(
-                        w=mv['width'], h=mv['height'], preview=mv['preview_image_url'], url=mv['url'], t=mv['content_type']))
-        html_tweet = html_item.format(
-            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'], user_name=user_name)
-        html_result.append(html_tweet)
-    html_result.append(html_suffix)
+                    html_extra.append(formatter.get_video_header())
+                    html_extra.append(formatter.get_video(
+                        w=mv['width'], h=mv['height'], preview=mv['preview_image_url'], url=mv['url'], type=mv['content_type']))
+        formatter.add_tweet(
+            title=f'{i+1}. {created}', text=text, extra=''.join(html_extra), id=tweet['id'])
+    formatter.add_epilog()
     with open('result.html', 'w') as f:
-        f.write(''.join(html_result))
+        f.write(formatter.get_result())
 
 
 def merge_json(a, b):
@@ -191,7 +220,8 @@ def get_tweets_iter(uid, max_results=None):
 def main():
     args = parse_args()
 
-    logging.basicConfig(level=(logging.DEBUG if args.verbose else logging.INFO))
+    logging.basicConfig(
+        level=(logging.DEBUG if args.verbose else logging.INFO))
     global logger
     logger = logging.getLogger('user_tweets')
 
