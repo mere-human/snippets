@@ -7,6 +7,18 @@
                 ]
             },
             "created_at": "2022-08-19T19:54:16.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/lIpGnb0LLu",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1560716799993417731/video/1",
+                        "media_key": "7_1560716674415968256",
+                        "start": 3,
+                        "url": "https://t.co/lIpGnb0LLu"
+                    }
+                ]
+            },
             "id": "1560716799993417731",
             "text": ";) https://t.co/lIpGnb0LLu"
         },
@@ -17,11 +29,50 @@
                 ]
             },
             "created_at": "2022-08-18T23:02:49.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/tKEXLpNFZR",
+                        "end": 45,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1560401863794728960/photo/1",
+                        "media_key": "3_1560401852704890881",
+                        "start": 22,
+                        "url": "https://t.co/tKEXLpNFZR"
+                    }
+                ]
+            },
             "id": "1560401863794728960",
             "text": "Wait, here's a Wonhan https://t.co/tKEXLpNFZR"
         },
         {
             "created_at": "2022-08-18T23:01:26.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "Wonhan, a berserker of the wastes, has encountered a sinister deceiver which now takes on the image of her departed mother. The once warm memories that have given Wonhan strength and the will to survive the harsh forbidden lands are being warped and used against her. Driven to despair and backed into a corner, Wonhan must find a new way to rely upon herself and overcome the deceiver's onslaught.",
+                        "display_url": "webtoons.com/en/challenge/t\u2026",
+                        "end": 252,
+                        "expanded_url": "https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323",
+                        "images": [
+                            {
+                                "height": 1200,
+                                "url": "https://pbs.twimg.com/news_img/1560366225762516994/E1AAKpHP?format=png&name=orig",
+                                "width": 1200
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560366225762516994/E1AAKpHP?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 229,
+                        "status": 200,
+                        "title": "The Winner's Smile",
+                        "unwound_url": "https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323",
+                        "url": "https://t.co/s9zq7FdTy5"
+                    }
+                ]
+            },
             "id": "1560401514811760641",
             "text": "Hi guys, sorry but there won't be any more updates in the story this week, I need to update my patreon with some content, in the meanwhile, you can check my webtoon entry, any rates, comments and likes are infinitely appreciated https://t.co/s9zq7FdTy5"
         },
@@ -32,6 +83,41 @@
                 ]
             },
             "created_at": "2022-08-16T20:01:27.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "Check out my webtoon! https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323 #webtoon #art #comic #sketch #artwork",
+                        "display_url": "tiktok.com/@niseworks/vid\u2026",
+                        "end": 23,
+                        "expanded_url": "https://www.tiktok.com/@niseworks/video/7132565372368211205?is_from_webapp=1&sender_device=pc&web_id=7114380728150492677",
+                        "images": [
+                            {
+                                "height": 720,
+                                "url": "https://pbs.twimg.com/news_img/1559631445009862657/Yjwo2lc1?format=jpg&name=orig",
+                                "width": 1280
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1559631445009862657/Yjwo2lc1?format=jpg&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 0,
+                        "status": 200,
+                        "title": "Nisego on TikTok",
+                        "unwound_url": "https://www.tiktok.com/@niseworks/video/7132565372368211205?is_from_webapp=1&sender_device=pc&web_id=7114380728150492677",
+                        "url": "https://t.co/OlZIeeSo5S"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/gasDD6OD3U",
+                        "end": 129,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1559631443730599936/photo/1",
+                        "media_key": "3_1559630948584640513",
+                        "start": 106,
+                        "url": "https://t.co/gasDD6OD3U"
+                    }
+                ]
+            },
             "id": "1559631443730599936",
             "text": "https://t.co/OlZIeeSo5S \nHey, I created a tiktok account to upload timelapses and some random animations. https://t.co/gasDD6OD3U"
         },
@@ -45,6 +131,42 @@
                 ]
             },
             "created_at": "2022-08-16T00:04:28.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/fzqqZvBog0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1559330212323655680/photo/1",
+                        "media_key": "3_1559330170871357440",
+                        "start": 0,
+                        "url": "https://t.co/fzqqZvBog0"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fzqqZvBog0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1559330212323655680/photo/1",
+                        "media_key": "3_1559330170858782721",
+                        "start": 0,
+                        "url": "https://t.co/fzqqZvBog0"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fzqqZvBog0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1559330212323655680/photo/1",
+                        "media_key": "3_1559330170863063040",
+                        "start": 0,
+                        "url": "https://t.co/fzqqZvBog0"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fzqqZvBog0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1559330212323655680/photo/1",
+                        "media_key": "3_1559330170854690816",
+                        "start": 0,
+                        "url": "https://t.co/fzqqZvBog0"
+                    }
+                ]
+            },
             "id": "1559330212323655680",
             "text": "https://t.co/fzqqZvBog0"
         },
@@ -55,6 +177,18 @@
                 ]
             },
             "created_at": "2022-08-15T12:25:00.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/u5QRKnreJl",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1559154186956296192/photo/1",
+                        "media_key": "3_1559154174192926721",
+                        "start": 0,
+                        "url": "https://t.co/u5QRKnreJl"
+                    }
+                ]
+            },
             "id": "1559154186956296192",
             "text": "https://t.co/u5QRKnreJl"
         },
@@ -68,6 +202,42 @@
                 ]
             },
             "created_at": "2022-08-13T22:27:36.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/qxdx4yCHwQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558581058970550273/photo/1",
+                        "media_key": "3_1558581034492592128",
+                        "start": 0,
+                        "url": "https://t.co/qxdx4yCHwQ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/qxdx4yCHwQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558581058970550273/photo/1",
+                        "media_key": "3_1558581034597421057",
+                        "start": 0,
+                        "url": "https://t.co/qxdx4yCHwQ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/qxdx4yCHwQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558581058970550273/photo/1",
+                        "media_key": "3_1558581034710700032",
+                        "start": 0,
+                        "url": "https://t.co/qxdx4yCHwQ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/qxdx4yCHwQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558581058970550273/photo/1",
+                        "media_key": "3_1558581034802941952",
+                        "start": 0,
+                        "url": "https://t.co/qxdx4yCHwQ"
+                    }
+                ]
+            },
             "id": "1558581058970550273",
             "text": "https://t.co/qxdx4yCHwQ"
         },
@@ -78,11 +248,58 @@
                 ]
             },
             "created_at": "2022-08-12T21:50:53.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/rrNgONAvkj",
+                        "end": 260,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558209431246196737/photo/1",
+                        "media_key": "3_1558209382265012225",
+                        "start": 237,
+                        "url": "https://t.co/rrNgONAvkj"
+                    }
+                ]
+            },
             "id": "1558209431246196737",
             "text": "The way to your destination is longer than you expected. You use that time to ask Wonhan a question.\n\nAsk about why she hasn't used the Breath of life yet.\n\nAsk her to explain what she perceives inside the oasis.\n\nAsk about her sisters. https://t.co/rrNgONAvkj"
         },
         {
             "created_at": "2022-08-12T20:56:19.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 9,
+                        "id": "488453065",
+                        "start": 0,
+                        "username": "Cloud_95"
+                    }
+                ],
+                "urls": [
+                    {
+                        "description": "Check out the Niseworks Voting Hub community on Discord - hang out with 4,743 other members and enjoy free voice and text chat.",
+                        "display_url": "discord.gg/tzUG3gVxvK",
+                        "end": 33,
+                        "expanded_url": "https://discord.gg/tzUG3gVxvK",
+                        "images": [
+                            {
+                                "height": 256,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=orig",
+                                "width": 256
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 10,
+                        "status": 200,
+                        "title": "Join the Niseworks Voting Hub Discord Server!",
+                        "unwound_url": "https://discord.com/invite/tzUG3gVxvK",
+                        "url": "https://t.co/3U5cCuiowM"
+                    }
+                ]
+            },
             "id": "1558195698998427648",
             "text": "@Cloud_95 https://t.co/3U5cCuiowM"
         },
@@ -96,6 +313,42 @@
                 ]
             },
             "created_at": "2022-08-12T20:28:53.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/vhU0Yw7y1S",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558188794867814407/photo/1",
+                        "media_key": "3_1558188407779631105",
+                        "start": 0,
+                        "url": "https://t.co/vhU0Yw7y1S"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/vhU0Yw7y1S",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558188794867814407/photo/1",
+                        "media_key": "3_1558188407788126210",
+                        "start": 0,
+                        "url": "https://t.co/vhU0Yw7y1S"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/vhU0Yw7y1S",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558188794867814407/photo/1",
+                        "media_key": "3_1558188407779639296",
+                        "start": 0,
+                        "url": "https://t.co/vhU0Yw7y1S"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/vhU0Yw7y1S",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558188794867814407/photo/1",
+                        "media_key": "3_1558188407783817216",
+                        "start": 0,
+                        "url": "https://t.co/vhU0Yw7y1S"
+                    }
+                ]
+            },
             "id": "1558188794867814407",
             "text": "https://t.co/vhU0Yw7y1S"
         },
@@ -106,6 +359,41 @@
                 ]
             },
             "created_at": "2022-08-12T13:40:37.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "I'm an aspiring artist who loves to draw. I'm often here sketching, studying, or drawing fan art. I want to learn more and more to be able to draw beautiful pieces someday!",
+                        "display_url": "twitch.tv/nisego",
+                        "end": 29,
+                        "expanded_url": "https://www.twitch.tv/nisego",
+                        "images": [
+                            {
+                                "height": 300,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=orig",
+                                "width": 300
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 6,
+                        "status": 200,
+                        "title": "Nisego - Twitch",
+                        "unwound_url": "https://www.twitch.tv/nisego",
+                        "url": "https://t.co/jRGr3R7ZAo"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/JOP3kj8u27",
+                        "end": 53,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1558086054481014785/photo/1",
+                        "media_key": "3_1558085974487453697",
+                        "start": 30,
+                        "url": "https://t.co/JOP3kj8u27"
+                    }
+                ]
+            },
             "id": "1558086054481014785",
             "text": "Live!\nhttps://t.co/jRGr3R7ZAo https://t.co/JOP3kj8u27"
         },
@@ -116,21 +404,63 @@
                 ]
             },
             "created_at": "2022-08-11T22:10:22.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/gOoB1DGGAF",
+                        "end": 70,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557851946895085568/photo/1",
+                        "media_key": "3_1557851808168640513",
+                        "start": 47,
+                        "url": "https://t.co/gOoB1DGGAF"
+                    }
+                ]
+            },
             "id": "1557851946895085568",
             "text": "This could be a cool sticker, don't you think? https://t.co/gOoB1DGGAF"
         },
         {
             "created_at": "2022-08-11T22:09:38.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 14,
+                        "id": "1469661943",
+                        "start": 0,
+                        "username": "TheN0LifeKing"
+                    }
+                ]
+            },
             "id": "1557851762555777024",
             "text": "@TheN0LifeKing Yes, after the contest is over I'll organize the story in long panels and upload it there"
         },
         {
             "created_at": "2022-08-11T14:15:54.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 11,
+                        "id": "255377989",
+                        "start": 0,
+                        "username": "Gx3RComics"
+                    }
+                ]
+            },
             "id": "1557732546200317952",
             "text": "@Gx3RComics Thanks!"
         },
         {
             "created_at": "2022-08-11T14:15:41.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 12,
+                        "id": "947083795534106629",
+                        "start": 0,
+                        "username": "_LandIubber"
+                    }
+                ]
+            },
             "id": "1557732490541903872",
             "text": "@_LandIubber haha, those are like 100 panels at least"
         },
@@ -141,6 +471,41 @@
                 ]
             },
             "created_at": "2022-08-11T14:10:38.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "Wonhan, a berserker of the wastes, has encountered a sinister deceiver which now takes on the image of her departed mother. The once warm memories that have given Wonhan strength and the will to survive the harsh forbidden lands are being warped and used against her. Driven to despair and backed into a corner, Wonhan must find a new way to rely upon herself and overcome the deceiver's onslaught.",
+                        "display_url": "webtoons.com/en/challenge/t\u2026",
+                        "end": 23,
+                        "expanded_url": "https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323",
+                        "images": [
+                            {
+                                "height": 1200,
+                                "url": "https://pbs.twimg.com/news_img/1560366225762516994/E1AAKpHP?format=png&name=orig",
+                                "width": 1200
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560366225762516994/E1AAKpHP?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 0,
+                        "status": 200,
+                        "title": "The Winner's Smile",
+                        "unwound_url": "https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323",
+                        "url": "https://t.co/s9zq7EWi9v"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/va0gH60LCB",
+                        "end": 202,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557731219231494144/photo/1",
+                        "media_key": "3_1557730889601191938",
+                        "start": 179,
+                        "url": "https://t.co/va0gH60LCB"
+                    }
+                ]
+            },
             "id": "1557731219231494144",
             "text": "https://t.co/s9zq7EWi9v\nHey everyone, remember to check my webtoon entry for the call to action contest, they are in the judging process so all engagement would be really helpful https://t.co/va0gH60LCB"
         },
@@ -151,6 +516,18 @@
                 ]
             },
             "created_at": "2022-08-10T21:41:38.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/w1eJRyo83L",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557482327554621440/photo/1",
+                        "media_key": "3_1557482268305784833",
+                        "start": 0,
+                        "url": "https://t.co/w1eJRyo83L"
+                    }
+                ]
+            },
             "id": "1557482327554621440",
             "text": "https://t.co/w1eJRyo83L"
         },
@@ -164,6 +541,42 @@
                 ]
             },
             "created_at": "2022-08-10T21:41:35.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/qbuCA6npnP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557482316401971200/photo/1",
+                        "media_key": "3_1557482236366266368",
+                        "start": 0,
+                        "url": "https://t.co/qbuCA6npnP"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/qbuCA6npnP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557482316401971200/photo/1",
+                        "media_key": "3_1557482236496302080",
+                        "start": 0,
+                        "url": "https://t.co/qbuCA6npnP"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/qbuCA6npnP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557482316401971200/photo/1",
+                        "media_key": "3_1557482236907233288",
+                        "start": 0,
+                        "url": "https://t.co/qbuCA6npnP"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/qbuCA6npnP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557482316401971200/photo/1",
+                        "media_key": "3_1557482236915712000",
+                        "start": 0,
+                        "url": "https://t.co/qbuCA6npnP"
+                    }
+                ]
+            },
             "id": "1557482316401971200",
             "text": "https://t.co/qbuCA6npnP"
         },
@@ -174,6 +587,18 @@
                 ]
             },
             "created_at": "2022-08-10T20:46:11.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/msv42ljDIf",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557468374040547330/photo/1",
+                        "media_key": "3_1557468343837380610",
+                        "start": 0,
+                        "url": "https://t.co/msv42ljDIf"
+                    }
+                ]
+            },
             "id": "1557468374040547330",
             "text": "https://t.co/msv42ljDIf"
         },
@@ -192,6 +617,42 @@
                 ]
             },
             "created_at": "2022-08-10T19:43:57.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/fSGG0pixMF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557452713767600132/photo/1",
+                        "media_key": "3_1557452665222828034",
+                        "start": 0,
+                        "url": "https://t.co/fSGG0pixMF"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fSGG0pixMF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557452713767600132/photo/1",
+                        "media_key": "3_1557452665218650112",
+                        "start": 0,
+                        "url": "https://t.co/fSGG0pixMF"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fSGG0pixMF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557452713767600132/photo/1",
+                        "media_key": "3_1557452665210159106",
+                        "start": 0,
+                        "url": "https://t.co/fSGG0pixMF"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/fSGG0pixMF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1557452713767600132/photo/1",
+                        "media_key": "3_1557452665210257411",
+                        "start": 0,
+                        "url": "https://t.co/fSGG0pixMF"
+                    }
+                ]
+            },
             "id": "1557452713767600132",
             "text": "https://t.co/fSGG0pixMF"
         },
@@ -207,6 +668,18 @@
                 ]
             },
             "created_at": "2022-08-08T14:47:19.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/jq7POfZicY",
+                        "end": 237,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556653288216567808/photo/1",
+                        "media_key": "3_1556653237742215171",
+                        "start": 214,
+                        "url": "https://t.co/jq7POfZicY"
+                    }
+                ]
+            },
             "id": "1556653288216567808",
             "text": "V\u0336\u0333\u030b\u030c\u030e\u0308\u0301G\u0338\u032c\u0349\u0332\u0316\u0313\u0313\u0350\u0307\u035cV\u0334\u0328\u0324\u032a\u0349\u0349\u0308\u0301\u0357\u0352\u034b\u034a\u035ds\u0338\u031c\u032b\u0303\u0315b\u0338\u031c\u0330\u031f\u0354\u0306\u0351\u0345C\u0334\u032f\u0348\u0326\u0348\u0333\u033b\u0357\u034b\u0308\u0301\u0310\u034b\u034bB\u0336\u0328\u0328\u031d\u0342\u0163\u0335\u034e\u0333\u033c\u030a\u033eZ\u0334\u0359\u0320\u0325\u033a\u034a\u0313\u034a\u0315S\u0338\u032b\u032a\u030d\u0300\u0313\u034b\u035d\u1e04\u0334\u0348\u0333\u035b\u0352\u0360\u00f4\u0334\u0331\u0326\u0320\u032d\u033d\u0302Z\u0335\u0318\u0356\u0324\u031d\u033c\u0339\u033d\u0314\u0303\u0312\u033e\u0358X\u0337\u032c\u0306\u0303\u0346\u0301\u0308\u0301\u031aI\u0334\u033c\u030ag\u0336\u035a\u0332\u0305\u0300b\u0337\u032a\u0309\u0308\u0305\u030cm\u0337\u032b\u0353\u031f\u032f\u0306\u0301\u034aF\u0336\u0327\u0327\u0321\u0348\u0354\u0308\u0301t\u0336\u034d\u034e\u033f\u0360Z\u0337\u032d\u0326\u0316\u0316\u0319\u0323\u030d\u0312\u0315\u035dQ\u0337\u0321\u0321\u0329\u0355\u0348\u0346=\u0337\u031c\u0317\u0319\u032d\u031e\u0351=\u0335\u033c\u033c\u0300\u0351\u034a\u033f\u030e\u0360 https://t.co/jq7POfZicY"
         },
@@ -217,6 +690,18 @@
                 ]
             },
             "created_at": "2022-08-08T04:01:21.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/41qGHJJLhZ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556490725084528640/video/1",
+                        "media_key": "7_1556488702926508032",
+                        "start": 0,
+                        "url": "https://t.co/41qGHJJLhZ"
+                    }
+                ]
+            },
             "id": "1556490725084528640",
             "text": "https://t.co/41qGHJJLhZ"
         },
@@ -235,6 +720,42 @@
                 ]
             },
             "created_at": "2022-08-06T22:16:26.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/h4ESckcV1h",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556041535602544641/photo/1",
+                        "media_key": "3_1556041503532896257",
+                        "start": 0,
+                        "url": "https://t.co/h4ESckcV1h"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/h4ESckcV1h",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556041535602544641/photo/1",
+                        "media_key": "3_1556041503511912453",
+                        "start": 0,
+                        "url": "https://t.co/h4ESckcV1h"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/h4ESckcV1h",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556041535602544641/photo/1",
+                        "media_key": "3_1556041503516102657",
+                        "start": 0,
+                        "url": "https://t.co/h4ESckcV1h"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/h4ESckcV1h",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556041535602544641/photo/1",
+                        "media_key": "3_1556041503532802049",
+                        "start": 0,
+                        "url": "https://t.co/h4ESckcV1h"
+                    }
+                ]
+            },
             "id": "1556041535602544641",
             "text": "https://t.co/h4ESckcV1h"
         },
@@ -248,6 +769,42 @@
                 ]
             },
             "created_at": "2022-08-06T21:20:10.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/U504Tz7LMU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556027374457835522/photo/1",
+                        "media_key": "3_1556027311857754112",
+                        "start": 0,
+                        "url": "https://t.co/U504Tz7LMU"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/U504Tz7LMU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556027374457835522/photo/1",
+                        "media_key": "3_1556027311874613249",
+                        "start": 0,
+                        "url": "https://t.co/U504Tz7LMU"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/U504Tz7LMU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556027374457835522/photo/1",
+                        "media_key": "3_1556027311862042624",
+                        "start": 0,
+                        "url": "https://t.co/U504Tz7LMU"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/U504Tz7LMU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1556027374457835522/photo/1",
+                        "media_key": "3_1556027311861940225",
+                        "start": 0,
+                        "url": "https://t.co/U504Tz7LMU"
+                    }
+                ]
+            },
             "id": "1556027374457835522",
             "text": "https://t.co/U504Tz7LMU"
         },
@@ -258,6 +815,41 @@
                 ]
             },
             "created_at": "2022-08-06T13:15:47.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "I'm an aspiring artist who loves to draw. I'm often here sketching, studying, or drawing fan art. I want to learn more and more to be able to draw beautiful pieces someday!",
+                        "display_url": "twitch.tv/nisego",
+                        "end": 29,
+                        "expanded_url": "https://www.twitch.tv/nisego",
+                        "images": [
+                            {
+                                "height": 300,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=orig",
+                                "width": 300
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 6,
+                        "status": 200,
+                        "title": "Nisego - Twitch",
+                        "unwound_url": "https://www.twitch.tv/nisego",
+                        "url": "https://t.co/jRGr3RpAYY"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/wPNtUIeRag",
+                        "end": 53,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555905474209390593/photo/1",
+                        "media_key": "3_1555905334652424194",
+                        "start": 30,
+                        "url": "https://t.co/wPNtUIeRag"
+                    }
+                ]
+            },
             "id": "1555905474209390593",
             "text": "Live!\nhttps://t.co/jRGr3RpAYY https://t.co/wPNtUIeRag"
         },
@@ -268,6 +860,18 @@
                 ]
             },
             "created_at": "2022-08-05T00:39:37.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/W5E17XIRii",
+                        "end": 38,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555352792419762177/video/1",
+                        "media_key": "7_1555352702095425539",
+                        "start": 15,
+                        "url": "https://t.co/W5E17XIRii"
+                    }
+                ]
+            },
             "id": "1555352792419762177",
             "text": "Volume Warning https://t.co/W5E17XIRii"
         },
@@ -281,6 +885,42 @@
                 ]
             },
             "created_at": "2022-08-04T23:46:57.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/jtj4sPLtw2",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555339539132174337/photo/1",
+                        "media_key": "3_1555338427247255553",
+                        "start": 0,
+                        "url": "https://t.co/jtj4sPLtw2"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/jtj4sPLtw2",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555339539132174337/photo/1",
+                        "media_key": "3_1555338427251433472",
+                        "start": 0,
+                        "url": "https://t.co/jtj4sPLtw2"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/jtj4sPLtw2",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555339539132174337/photo/1",
+                        "media_key": "3_1555338427259916289",
+                        "start": 0,
+                        "url": "https://t.co/jtj4sPLtw2"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/jtj4sPLtw2",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555339539132174337/photo/1",
+                        "media_key": "3_1555338427255721985",
+                        "start": 0,
+                        "url": "https://t.co/jtj4sPLtw2"
+                    }
+                ]
+            },
             "id": "1555339539132174337",
             "text": "https://t.co/jtj4sPLtw2"
         },
@@ -299,6 +939,42 @@
                 ]
             },
             "created_at": "2022-08-04T23:04:38.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/LzI0hSXbOQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555328889299378181/photo/1",
+                        "media_key": "3_1555328863336546305",
+                        "start": 0,
+                        "url": "https://t.co/LzI0hSXbOQ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/LzI0hSXbOQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555328889299378181/photo/1",
+                        "media_key": "3_1555328863353376770",
+                        "start": 0,
+                        "url": "https://t.co/LzI0hSXbOQ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/LzI0hSXbOQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555328889299378181/photo/1",
+                        "media_key": "3_1555328863332454400",
+                        "start": 0,
+                        "url": "https://t.co/LzI0hSXbOQ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/LzI0hSXbOQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1555328889299378181/photo/1",
+                        "media_key": "3_1555328863357571072",
+                        "start": 0,
+                        "url": "https://t.co/LzI0hSXbOQ"
+                    }
+                ]
+            },
             "id": "1555328889299378181",
             "text": "https://t.co/LzI0hSXbOQ"
         },
@@ -312,11 +988,74 @@
                 ]
             },
             "created_at": "2022-08-02T22:35:27.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/naxY5TduQi",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1554596770042286081/photo/1",
+                        "media_key": "3_1554596730963984385",
+                        "start": 0,
+                        "url": "https://t.co/naxY5TduQi"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/naxY5TduQi",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1554596770042286081/photo/1",
+                        "media_key": "3_1554596730976538625",
+                        "start": 0,
+                        "url": "https://t.co/naxY5TduQi"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/naxY5TduQi",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1554596770042286081/photo/1",
+                        "media_key": "3_1554596730989068288",
+                        "start": 0,
+                        "url": "https://t.co/naxY5TduQi"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/naxY5TduQi",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1554596770042286081/photo/1",
+                        "media_key": "3_1554596730976567303",
+                        "start": 0,
+                        "url": "https://t.co/naxY5TduQi"
+                    }
+                ]
+            },
             "id": "1554596770042286081",
             "text": "https://t.co/naxY5TduQi"
         },
         {
             "created_at": "2022-08-02T22:29:14.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "Check out the Niseworks Voting Hub community on Discord - hang out with 4,743 other members and enjoy free voice and text chat.",
+                        "display_url": "discord.gg/tzUG3gVxvK",
+                        "end": 149,
+                        "expanded_url": "https://discord.gg/tzUG3gVxvK",
+                        "images": [
+                            {
+                                "height": 256,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=orig",
+                                "width": 256
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 126,
+                        "status": 200,
+                        "title": "Join the Niseworks Voting Hub Discord Server!",
+                        "unwound_url": "https://discord.com/invite/tzUG3gVxvK",
+                        "url": "https://t.co/3U5cCuiowM"
+                    }
+                ]
+            },
             "id": "1554595203134197768",
             "text": "I'll wait an hour before posting the poll on discord, this one is important. If you want to vote, remember you can join here: https://t.co/3U5cCuiowM"
         },
@@ -327,11 +1066,57 @@
                 ]
             },
             "created_at": "2022-08-02T15:30:10.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "I'm an aspiring artist who loves to draw. I'm often here sketching, studying, or drawing fan art. I want to learn more and more to be able to draw beautiful pieces someday!",
+                        "display_url": "twitch.tv/nisego",
+                        "end": 49,
+                        "expanded_url": "https://www.twitch.tv/nisego",
+                        "images": [
+                            {
+                                "height": 300,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=orig",
+                                "width": 300
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 26,
+                        "status": 200,
+                        "title": "Nisego - Twitch",
+                        "unwound_url": "https://www.twitch.tv/nisego",
+                        "url": "https://t.co/jRGr3RpAYY"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/W9e77lpH1X",
+                        "end": 73,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1554489742972043266/photo/1",
+                        "media_key": "3_1554489620888444929",
+                        "start": 50,
+                        "url": "https://t.co/W9e77lpH1X"
+                    }
+                ]
+            },
             "id": "1554489742972043266",
             "text": "Working live on twitch!\n-\nhttps://t.co/jRGr3RpAYY https://t.co/W9e77lpH1X"
         },
         {
             "created_at": "2022-08-01T17:25:02.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "twitter.com/Nisego3/status\u2026",
+                        "end": 119,
+                        "expanded_url": "https://twitter.com/Nisego3/status/1554088225307873281",
+                        "start": 96,
+                        "url": "https://t.co/Q6STtk6PcU"
+                    }
+                ]
+            },
             "id": "1554156260869775360",
             "text": "My entry for the webtoon call to action contest is there. Likes and rt are greatly appreciated! https://t.co/Q6STtk6PcU"
         },
@@ -342,6 +1127,27 @@
                 ]
             },
             "created_at": "2022-07-30T21:15:07.000Z",
+            "entities": {
+                "annotations": [
+                    {
+                        "end": 90,
+                        "normalized_text": "Patreon",
+                        "probability": 0.3993,
+                        "start": 84,
+                        "type": "Organization"
+                    }
+                ],
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/lNxF3SYZ4p",
+                        "end": 164,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1553489387543056385/photo/1",
+                        "media_key": "3_1553483873694191616",
+                        "start": 141,
+                        "url": "https://t.co/lNxF3SYZ4p"
+                    }
+                ]
+            },
             "id": "1553489387543056385",
             "text": "The next post will be this next Tuesday, sorry but had to work in the next poll for Patreon, what do you think of the contestants this time? https://t.co/lNxF3SYZ4p"
         },
@@ -355,6 +1161,42 @@
                 ]
             },
             "created_at": "2022-07-28T21:14:24.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/vfA2P4TBMm",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552764434338152449/photo/1",
+                        "media_key": "3_1552764417586102272",
+                        "start": 0,
+                        "url": "https://t.co/vfA2P4TBMm"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/vfA2P4TBMm",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552764434338152449/photo/1",
+                        "media_key": "3_1552764417586126852",
+                        "start": 0,
+                        "url": "https://t.co/vfA2P4TBMm"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/vfA2P4TBMm",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552764434338152449/photo/1",
+                        "media_key": "3_1552764417598799872",
+                        "start": 0,
+                        "url": "https://t.co/vfA2P4TBMm"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/vfA2P4TBMm",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552764434338152449/photo/1",
+                        "media_key": "3_1552764417586200581",
+                        "start": 0,
+                        "url": "https://t.co/vfA2P4TBMm"
+                    }
+                ]
+            },
             "id": "1552764434338152449",
             "text": "https://t.co/vfA2P4TBMm"
         },
@@ -370,6 +1212,41 @@
                 ]
             },
             "created_at": "2022-07-28T12:41:50.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "I'm an aspiring artist who loves to draw. I'm often here sketching, studying, or drawing fan art. I want to learn more and more to be able to draw beautiful pieces someday!",
+                        "display_url": "twitch.tv/nisego",
+                        "end": 29,
+                        "expanded_url": "https://www.twitch.tv/nisego",
+                        "images": [
+                            {
+                                "height": 300,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=orig",
+                                "width": 300
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 6,
+                        "status": 200,
+                        "title": "Nisego - Twitch",
+                        "unwound_url": "https://www.twitch.tv/nisego",
+                        "url": "https://t.co/jRGr3RpAYY"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/l4b1zA24gn",
+                        "end": 53,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552635442151002112/photo/1",
+                        "media_key": "3_1552635369979535363",
+                        "start": 30,
+                        "url": "https://t.co/l4b1zA24gn"
+                    }
+                ]
+            },
             "id": "1552635442151002112",
             "text": "Live!\nhttps://t.co/jRGr3RpAYY https://t.co/l4b1zA24gn"
         },
@@ -380,11 +1257,50 @@
                 ]
             },
             "created_at": "2022-07-27T23:14:36.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/lKSDOfATMi",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552432296569061377/photo/1",
+                        "media_key": "3_1552432257943601152",
+                        "start": 0,
+                        "url": "https://t.co/lKSDOfATMi"
+                    }
+                ]
+            },
             "id": "1552432296569061377",
             "text": "https://t.co/lKSDOfATMi"
         },
         {
             "created_at": "2022-07-27T14:32:13.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "Check out the Niseworks Voting Hub community on Discord - hang out with 4,743 other members and enjoy free voice and text chat.",
+                        "display_url": "discord.gg/tzUG3gVxvK",
+                        "end": 23,
+                        "expanded_url": "https://discord.gg/tzUG3gVxvK",
+                        "images": [
+                            {
+                                "height": 256,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=orig",
+                                "width": 256
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 0,
+                        "status": 200,
+                        "title": "Join the Niseworks Voting Hub Discord Server!",
+                        "unwound_url": "https://discord.com/invite/tzUG3gVxvK",
+                        "url": "https://t.co/3U5cCuiowM"
+                    }
+                ]
+            },
             "id": "1552300830711218177",
             "text": "https://t.co/3U5cCuiowM Here's the server's link"
         },
@@ -398,6 +1314,42 @@
                 ]
             },
             "created_at": "2022-07-27T14:29:01.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/nUaGTXUQ4v",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552300028726857729/photo/1",
+                        "media_key": "3_1552299997823107075",
+                        "start": 0,
+                        "url": "https://t.co/nUaGTXUQ4v"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/nUaGTXUQ4v",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552300028726857729/photo/1",
+                        "media_key": "3_1552299997848387587",
+                        "start": 0,
+                        "url": "https://t.co/nUaGTXUQ4v"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/nUaGTXUQ4v",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552300028726857729/photo/1",
+                        "media_key": "3_1552299997839998976",
+                        "start": 0,
+                        "url": "https://t.co/nUaGTXUQ4v"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/nUaGTXUQ4v",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552300028726857729/photo/1",
+                        "media_key": "3_1552299997835759618",
+                        "start": 0,
+                        "url": "https://t.co/nUaGTXUQ4v"
+                    }
+                ]
+            },
             "id": "1552300028726857729",
             "text": "https://t.co/nUaGTXUQ4v"
         },
@@ -408,6 +1360,41 @@
                 ]
             },
             "created_at": "2022-07-27T12:52:47.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "I'm an aspiring artist who loves to draw. I'm often here sketching, studying, or drawing fan art. I want to learn more and more to be able to draw beautiful pieces someday!",
+                        "display_url": "twitch.tv/nisego",
+                        "end": 39,
+                        "expanded_url": "https://www.twitch.tv/nisego",
+                        "images": [
+                            {
+                                "height": 300,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=orig",
+                                "width": 300
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 16,
+                        "status": 200,
+                        "title": "Nisego - Twitch",
+                        "unwound_url": "https://www.twitch.tv/nisego",
+                        "url": "https://t.co/jRGr3RpAYY"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/YBhL0nK2UR",
+                        "end": 63,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1552275809045454848/photo/1",
+                        "media_key": "3_1552275672885780482",
+                        "start": 40,
+                        "url": "https://t.co/YBhL0nK2UR"
+                    }
+                ]
+            },
             "id": "1552275809045454848",
             "text": "Drawing live!\n-\nhttps://t.co/jRGr3RpAYY https://t.co/YBhL0nK2UR"
         },
@@ -418,11 +1405,62 @@
                 ]
             },
             "created_at": "2022-07-26T15:05:52.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "I'm an aspiring artist who loves to draw. I'm often here sketching, studying, or drawing fan art. I want to learn more and more to be able to draw beautiful pieces someday!",
+                        "display_url": "twitch.tv/nisego",
+                        "end": 42,
+                        "expanded_url": "https://www.twitch.tv/nisego",
+                        "images": [
+                            {
+                                "height": 300,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=orig",
+                                "width": 300
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560175123029786624/35toLRji?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 19,
+                        "status": 200,
+                        "title": "Nisego - Twitch",
+                        "unwound_url": "https://www.twitch.tv/nisego",
+                        "url": "https://t.co/jRGr3RpAYY"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Ywlmxdyee1",
+                        "end": 66,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1551946912705794048/photo/1",
+                        "media_key": "3_1551946827192213504",
+                        "start": 43,
+                        "url": "https://t.co/Ywlmxdyee1"
+                    }
+                ]
+            },
             "id": "1551946912705794048",
             "text": "Working right now!\nhttps://t.co/jRGr3RpAYY https://t.co/Ywlmxdyee1"
         },
         {
             "created_at": "2022-07-25T10:13:46.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 12,
+                        "id": "1181308061534887938",
+                        "start": 0,
+                        "username": "MAS40925456"
+                    },
+                    {
+                        "end": 29,
+                        "id": "3261831903",
+                        "start": 13,
+                        "username": "KnightSirAlonne"
+                    }
+                ]
+            },
             "id": "1551511015594119168",
             "text": "@MAS40925456 @KnightSirAlonne that's just for the compiling on webtoon(in case that happens) The story will still be uploaded here normally"
         },
@@ -433,21 +1471,105 @@
                 ]
             },
             "created_at": "2022-07-25T00:57:20.000Z",
+            "entities": {
+                "annotations": [
+                    {
+                        "end": 240,
+                        "normalized_text": "twitter",
+                        "probability": 0.755,
+                        "start": 234,
+                        "type": "Product"
+                    }
+                ],
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/pbFRYw1UFC",
+                        "end": 279,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1551370986234073088/photo/1",
+                        "media_key": "3_1551370966831439874",
+                        "start": 256,
+                        "url": "https://t.co/pbFRYw1UFC"
+                    }
+                ]
+            },
             "id": "1551370986234073088",
             "text": "I\u2019m super happy with the awesome reception the chapter had, thanks a lot for leaving your like and comment on webtoon as well. I\u2019ll rest tomorrow and continue from Tuesday doing my best with the future content, let\u2019s go!\nNext post on twitter this Thursday https://t.co/pbFRYw1UFC"
         },
         {
             "created_at": "2022-07-25T00:46:42.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 16,
+                        "id": "1507149513407954945",
+                        "start": 0,
+                        "username": "ElijahB51331405"
+                    }
+                ]
+            },
             "id": "1551368308594659328",
             "text": "@ElijahB51331405 Twitter"
         },
         {
             "created_at": "2022-07-25T00:14:55.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 16,
+                        "id": "3261831903",
+                        "start": 0,
+                        "username": "KnightSirAlonne"
+                    }
+                ]
+            },
             "id": "1551360311470395392",
             "text": "@KnightSirAlonne I have been thinking on doing that, leaving the spicy parts out can be a good way for new people to get the hang of the story"
         },
         {
             "created_at": "2022-07-24T21:12:25.000Z",
+            "entities": {
+                "annotations": [
+                    {
+                        "end": 171,
+                        "normalized_text": "twitter",
+                        "probability": 0.5855,
+                        "start": 165,
+                        "type": "Product"
+                    }
+                ],
+                "hashtags": [
+                    {
+                        "end": 233,
+                        "start": 225,
+                        "tag": "WEBTOON"
+                    }
+                ],
+                "urls": [
+                    {
+                        "description": "Wonhan, a berserker of the wastes, has encountered a sinister deceiver which now takes on the image of her departed mother. The once warm memories that have given Wonhan strength and the will to survive the harsh forbidden lands are being warped and used against her. Driven to despair and backed into a corner, Wonhan must find a new way to rely upon herself and overcome the deceiver's onslaught.",
+                        "display_url": "webtoons.com/en/challenge/t\u2026",
+                        "end": 224,
+                        "expanded_url": "https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323",
+                        "images": [
+                            {
+                                "height": 1200,
+                                "url": "https://pbs.twimg.com/news_img/1560366225762516994/E1AAKpHP?format=png&name=orig",
+                                "width": 1200
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1560366225762516994/E1AAKpHP?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 201,
+                        "status": 200,
+                        "title": "The Winner's Smile",
+                        "unwound_url": "https://www.webtoons.com/en/challenge/the-winners-smile/list?title_no=791323",
+                        "url": "https://t.co/s9zq7FdTy5"
+                    }
+                ]
+            },
             "id": "1551314380754657281",
             "text": "The conclusion to the fight is here, if you enjoy the content, please leave a like and a comment in the webtoon page, making a webtoon account takes just a sec with twitter.\nThanks a lot for Reading!\n https://t.co/s9zq7FdTy5 #WEBTOON"
         },
@@ -458,6 +1580,18 @@
                 ]
             },
             "created_at": "2022-07-24T20:54:31.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/4MXb5OfrBF",
+                        "end": 183,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1551309879998091266/photo/1",
+                        "media_key": "3_1551309706194554882",
+                        "start": 160,
+                        "url": "https://t.co/4MXb5OfrBF"
+                    }
+                ]
+            },
             "id": "1551309879998091266",
             "text": "Hey everyone, story is finally coming back, the next episode will come out shortly and the next chapter after that will be out on Thursday, Thanks for waiting! https://t.co/4MXb5OfrBF"
         },
@@ -470,16 +1604,73 @@
                 ]
             },
             "created_at": "2022-06-21T02:52:02.000Z",
+            "entities": {
+                "annotations": [
+                    {
+                        "end": 23,
+                        "normalized_text": "Patreon",
+                        "probability": 0.4979,
+                        "start": 17,
+                        "type": "Product"
+                    }
+                ],
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/YDd5oGghsl",
+                        "end": 84,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1539078661701259264/photo/1",
+                        "media_key": "3_1539078367646973954",
+                        "start": 61,
+                        "url": "https://t.co/YDd5oGghsl"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/YDd5oGghsl",
+                        "end": 84,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1539078661701259264/photo/1",
+                        "media_key": "3_1539078367646994432",
+                        "start": 61,
+                        "url": "https://t.co/YDd5oGghsl"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/YDd5oGghsl",
+                        "end": 84,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1539078661701259264/photo/1",
+                        "media_key": "3_1539078367647092736",
+                        "start": 61,
+                        "url": "https://t.co/YDd5oGghsl"
+                    }
+                ]
+            },
             "id": "1539078661701259264",
             "text": "Doujin is out on Patreon, now is time to work in the pages!! https://t.co/YDd5oGghsl"
         },
         {
             "created_at": "2022-06-11T00:38:57.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 12,
+                        "id": "1153874028454666241",
+                        "start": 0,
+                        "username": "SeerAngelic"
+                    }
+                ]
+            },
             "id": "1535421294405353472",
             "text": "@SeerAngelic With action it gets like that, lots of panels but in story time it's just an instant. these are at least 80 panels."
         },
         {
             "created_at": "2022-06-11T00:15:57.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 10,
+                        "id": "950924413763014656",
+                        "start": 0,
+                        "username": "JasonMx10"
+                    }
+                ]
+            },
             "id": "1535415505011482629",
             "text": "@JasonMx10 we got plenty of time buddy"
         },
@@ -493,6 +1684,42 @@
                 ]
             },
             "created_at": "2022-06-07T03:43:47.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/wQ0LJPX3y3",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534018257312788480/photo/1",
+                        "media_key": "3_1534018243232423937",
+                        "start": 0,
+                        "url": "https://t.co/wQ0LJPX3y3"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/wQ0LJPX3y3",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534018257312788480/photo/1",
+                        "media_key": "3_1534018243345661952",
+                        "start": 0,
+                        "url": "https://t.co/wQ0LJPX3y3"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/wQ0LJPX3y3",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534018257312788480/photo/1",
+                        "media_key": "3_1534018243442184192",
+                        "start": 0,
+                        "url": "https://t.co/wQ0LJPX3y3"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/wQ0LJPX3y3",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534018257312788480/photo/1",
+                        "media_key": "3_1534018243534495744",
+                        "start": 0,
+                        "url": "https://t.co/wQ0LJPX3y3"
+                    }
+                ]
+            },
             "id": "1534018257312788480",
             "text": "https://t.co/wQ0LJPX3y3"
         },
@@ -503,6 +1730,18 @@
                 ]
             },
             "created_at": "2022-06-07T02:51:59.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/lEtBmF7iC6",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534005221499756545/photo/1",
+                        "media_key": "3_1534005167850414081",
+                        "start": 0,
+                        "url": "https://t.co/lEtBmF7iC6"
+                    }
+                ]
+            },
             "id": "1534005221499756545",
             "text": "https://t.co/lEtBmF7iC6"
         },
@@ -516,6 +1755,42 @@
                 ]
             },
             "created_at": "2022-06-07T02:51:58.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/3tgk1X1z5Z",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534005213979344896/photo/1",
+                        "media_key": "3_1534004821807796224",
+                        "start": 0,
+                        "url": "https://t.co/3tgk1X1z5Z"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/3tgk1X1z5Z",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534005213979344896/photo/1",
+                        "media_key": "3_1534004821816135680",
+                        "start": 0,
+                        "url": "https://t.co/3tgk1X1z5Z"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/3tgk1X1z5Z",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534005213979344896/photo/1",
+                        "media_key": "3_1534004821820329987",
+                        "start": 0,
+                        "url": "https://t.co/3tgk1X1z5Z"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/3tgk1X1z5Z",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1534005213979344896/photo/1",
+                        "media_key": "3_1534004821811920898",
+                        "start": 0,
+                        "url": "https://t.co/3tgk1X1z5Z"
+                    }
+                ]
+            },
             "id": "1534005213979344896",
             "text": "https://t.co/3tgk1X1z5Z"
         },
@@ -526,6 +1801,18 @@
                 ]
             },
             "created_at": "2022-06-07T02:14:08.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/XyxHawVVwu",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1533995695144845312/photo/1",
+                        "media_key": "3_1533995648948871169",
+                        "start": 0,
+                        "url": "https://t.co/XyxHawVVwu"
+                    }
+                ]
+            },
             "id": "1533995695144845312",
             "text": "https://t.co/XyxHawVVwu"
         },
@@ -539,6 +1826,42 @@
                 ]
             },
             "created_at": "2022-06-07T02:14:06.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/YSoNdnloeC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1533995687607672832/photo/1",
+                        "media_key": "3_1533995622415613953",
+                        "start": 0,
+                        "url": "https://t.co/YSoNdnloeC"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/YSoNdnloeC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1533995687607672832/photo/1",
+                        "media_key": "3_1533995622415716353",
+                        "start": 0,
+                        "url": "https://t.co/YSoNdnloeC"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/YSoNdnloeC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1533995687607672832/photo/1",
+                        "media_key": "3_1533995622428291073",
+                        "start": 0,
+                        "url": "https://t.co/YSoNdnloeC"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/YSoNdnloeC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1533995687607672832/photo/1",
+                        "media_key": "3_1533995622424092673",
+                        "start": 0,
+                        "url": "https://t.co/YSoNdnloeC"
+                    }
+                ]
+            },
             "id": "1533995687607672832",
             "text": "https://t.co/YSoNdnloeC"
         },
@@ -549,6 +1872,18 @@
                 ]
             },
             "created_at": "2022-05-25T03:41:42.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/a60CNxQ5UQ",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529306688968396801/photo/1",
+                        "media_key": "3_1529302543624462337",
+                        "start": 0,
+                        "url": "https://t.co/a60CNxQ5UQ"
+                    }
+                ]
+            },
             "id": "1529306688968396801",
             "text": "https://t.co/a60CNxQ5UQ"
         },
@@ -562,6 +1897,42 @@
                 ]
             },
             "created_at": "2022-05-25T03:16:55.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/Hl6FrZHzss",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529300451576905728/photo/1",
+                        "media_key": "3_1529300413610086402",
+                        "start": 0,
+                        "url": "https://t.co/Hl6FrZHzss"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Hl6FrZHzss",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529300451576905728/photo/1",
+                        "media_key": "3_1529300413601783808",
+                        "start": 0,
+                        "url": "https://t.co/Hl6FrZHzss"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Hl6FrZHzss",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529300451576905728/photo/1",
+                        "media_key": "3_1529300413601787905",
+                        "start": 0,
+                        "url": "https://t.co/Hl6FrZHzss"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Hl6FrZHzss",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529300451576905728/photo/1",
+                        "media_key": "3_1529300413605978114",
+                        "start": 0,
+                        "url": "https://t.co/Hl6FrZHzss"
+                    }
+                ]
+            },
             "id": "1529300451576905728",
             "text": "https://t.co/Hl6FrZHzss"
         },
@@ -575,6 +1946,42 @@
                 ]
             },
             "created_at": "2022-05-25T02:49:07.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/UhrCMPokCU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529293458107678720/photo/1",
+                        "media_key": "3_1529293433860407297",
+                        "start": 0,
+                        "url": "https://t.co/UhrCMPokCU"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/UhrCMPokCU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529293458107678720/photo/1",
+                        "media_key": "3_1529293433852022786",
+                        "start": 0,
+                        "url": "https://t.co/UhrCMPokCU"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/UhrCMPokCU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529293458107678720/photo/1",
+                        "media_key": "3_1529293433898156032",
+                        "start": 0,
+                        "url": "https://t.co/UhrCMPokCU"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/UhrCMPokCU",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529293458107678720/photo/1",
+                        "media_key": "3_1529293433860411394",
+                        "start": 0,
+                        "url": "https://t.co/UhrCMPokCU"
+                    }
+                ]
+            },
             "id": "1529293458107678720",
             "text": "https://t.co/UhrCMPokCU"
         },
@@ -588,16 +1995,89 @@
                 ]
             },
             "created_at": "2022-05-25T02:12:54.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/3Q0d28GINP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529284341557252096/photo/1",
+                        "media_key": "3_1529284323467198470",
+                        "start": 0,
+                        "url": "https://t.co/3Q0d28GINP"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/3Q0d28GINP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529284341557252096/photo/1",
+                        "media_key": "3_1529284323479887872",
+                        "start": 0,
+                        "url": "https://t.co/3Q0d28GINP"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/3Q0d28GINP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529284341557252096/photo/1",
+                        "media_key": "3_1529284323475603456",
+                        "start": 0,
+                        "url": "https://t.co/3Q0d28GINP"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/3Q0d28GINP",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1529284341557252096/photo/1",
+                        "media_key": "3_1529284323475603457",
+                        "start": 0,
+                        "url": "https://t.co/3Q0d28GINP"
+                    }
+                ]
+            },
             "id": "1529284341557252096",
             "text": "https://t.co/3Q0d28GINP"
         },
         {
             "created_at": "2022-05-23T20:19:19.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 10,
+                        "id": "1126005635466686465",
+                        "start": 0,
+                        "username": "Lhata4564"
+                    }
+                ]
+            },
             "id": "1528832969825259522",
             "text": "@Lhata4564 This looks so good, I love it!!"
         },
         {
             "created_at": "2022-05-14T02:46:40.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "Check out the Niseworks Voting Hub community on Discord - hang out with 4,743 other members and enjoy free voice and text chat.",
+                        "display_url": "discord.gg/tzUG3gVxvK",
+                        "end": 196,
+                        "expanded_url": "https://discord.gg/tzUG3gVxvK",
+                        "images": [
+                            {
+                                "height": 256,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=orig",
+                                "width": 256
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1556837003949264896/Z1oiP0f0?format=jpg&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 173,
+                        "status": 200,
+                        "title": "Join the Niseworks Voting Hub Discord Server!",
+                        "unwound_url": "https://discord.com/invite/tzUG3gVxvK",
+                        "url": "https://t.co/3U5cCuiowM"
+                    }
+                ]
+            },
             "id": "1525306574687948807",
             "text": "New voting system on discord everyone, this server is public but is only for voting (maybe in a future we'll transform it into something else, we'll see) Feel free to join!\nhttps://t.co/3U5cCuiowM"
         },
@@ -611,6 +2091,42 @@
                 ]
             },
             "created_at": "2022-05-14T02:36:53.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/6qa1c273Rc",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1525304112836911105/photo/1",
+                        "media_key": "3_1525304072424890368",
+                        "start": 3,
+                        "url": "https://t.co/6qa1c273Rc"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/6qa1c273Rc",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1525304112836911105/photo/1",
+                        "media_key": "3_1525304072433287168",
+                        "start": 3,
+                        "url": "https://t.co/6qa1c273Rc"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/6qa1c273Rc",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1525304112836911105/photo/1",
+                        "media_key": "3_1525304072424890375",
+                        "start": 3,
+                        "url": "https://t.co/6qa1c273Rc"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/6qa1c273Rc",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1525304112836911105/photo/1",
+                        "media_key": "3_1525304072433172481",
+                        "start": 3,
+                        "url": "https://t.co/6qa1c273Rc"
+                    }
+                ]
+            },
             "id": "1525304112836911105",
             "text": "!! https://t.co/6qa1c273Rc"
         },
@@ -621,6 +2137,41 @@
                 ]
             },
             "created_at": "2022-05-12T12:36:09.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "description": "What's your opinion? Vote now: Try to groyup with Wonhan (Dex roll 20), Attract the deceiver's attention (-2 stamina), Use analyze...",
+                        "display_url": "strawpoll.com/polls/PKglzQ9V\u2026",
+                        "end": 72,
+                        "expanded_url": "https://strawpoll.com/polls/PKglzQ9V1yp",
+                        "images": [
+                            {
+                                "height": 630,
+                                "url": "https://pbs.twimg.com/news_img/1555424090646781960/8Hc_0254?format=png&name=orig",
+                                "width": 1200
+                            },
+                            {
+                                "height": 150,
+                                "url": "https://pbs.twimg.com/news_img/1555424090646781960/8Hc_0254?format=png&name=150x150",
+                                "width": 150
+                            }
+                        ],
+                        "start": 49,
+                        "status": 200,
+                        "title": "What will you do? - Online Poll - StrawPoll.com",
+                        "unwound_url": "https://strawpoll.com/polls/PKglzQ9V1yp",
+                        "url": "https://t.co/AWwsWnBrBg"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/jeqCRnQSRH",
+                        "end": 96,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524730143595544576/photo/1",
+                        "media_key": "3_1524730108552130564",
+                        "start": 73,
+                        "url": "https://t.co/jeqCRnQSRH"
+                    }
+                ]
+            },
             "id": "1524730143595544576",
             "text": "Ok, let's see how this goes -\n\nWhat will you do?\nhttps://t.co/AWwsWnBrBg https://t.co/jeqCRnQSRH"
         },
@@ -639,6 +2190,42 @@
                 ]
             },
             "created_at": "2022-05-11T21:07:15.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/JUqJZftGt0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524496381209100290/photo/1",
+                        "media_key": "3_1524496272085893120",
+                        "start": 0,
+                        "url": "https://t.co/JUqJZftGt0"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/JUqJZftGt0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524496381209100290/photo/1",
+                        "media_key": "3_1524496272090144771",
+                        "start": 0,
+                        "url": "https://t.co/JUqJZftGt0"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/JUqJZftGt0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524496381209100290/photo/1",
+                        "media_key": "3_1524496272077561857",
+                        "start": 0,
+                        "url": "https://t.co/JUqJZftGt0"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/JUqJZftGt0",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524496381209100290/photo/1",
+                        "media_key": "3_1524496272077606912",
+                        "start": 0,
+                        "url": "https://t.co/JUqJZftGt0"
+                    }
+                ]
+            },
             "id": "1524496381209100290",
             "text": "https://t.co/JUqJZftGt0"
         },
@@ -652,6 +2239,42 @@
                 ]
             },
             "created_at": "2022-05-11T20:30:56.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/rEk26D0xMe",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524487240021426184/photo/1",
+                        "media_key": "3_1524487144194158592",
+                        "start": 3,
+                        "url": "https://t.co/rEk26D0xMe"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/rEk26D0xMe",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524487240021426184/photo/1",
+                        "media_key": "3_1524487144194162695",
+                        "start": 3,
+                        "url": "https://t.co/rEk26D0xMe"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/rEk26D0xMe",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524487240021426184/photo/1",
+                        "media_key": "3_1524487144198356994",
+                        "start": 3,
+                        "url": "https://t.co/rEk26D0xMe"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/rEk26D0xMe",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524487240021426184/photo/1",
+                        "media_key": "3_1524487144189923329",
+                        "start": 3,
+                        "url": "https://t.co/rEk26D0xMe"
+                    }
+                ]
+            },
             "id": "1524487240021426184",
             "text": "!! https://t.co/rEk26D0xMe"
         },
@@ -662,6 +2285,18 @@
                 ]
             },
             "created_at": "2022-05-11T02:02:28.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/6aq6aEXd1p",
+                        "end": 103,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1524208284546252801/photo/1",
+                        "media_key": "3_1524207991838412801",
+                        "start": 80,
+                        "url": "https://t.co/6aq6aEXd1p"
+                    }
+                ]
+            },
             "id": "1524208284546252801",
             "text": "Next post will be out tomorrow (sorry for that, action scenes takes me so long) https://t.co/6aq6aEXd1p"
         },
@@ -672,6 +2307,18 @@
                 ]
             },
             "created_at": "2022-05-07T12:35:23.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/9ZcoqwywYg",
+                        "end": 208,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522918012524843009/photo/1",
+                        "media_key": "3_1522917729602347008",
+                        "start": 185,
+                        "url": "https://t.co/9ZcoqwywYg"
+                    }
+                ]
+            },
             "id": "1522918012524843009",
             "text": "For this battle, you'll receive damage even if you pick the right answers and obtain good rolls. The only way to end this battle unharmed is to obtain a perfect throw(24 in the dices). https://t.co/9ZcoqwywYg"
         },
@@ -690,6 +2337,42 @@
                 ]
             },
             "created_at": "2022-05-07T03:45:15.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/o64zLfImld",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522784599088189441/photo/1",
+                        "media_key": "3_1522784579555311616",
+                        "start": 3,
+                        "url": "https://t.co/o64zLfImld"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/o64zLfImld",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522784599088189441/photo/1",
+                        "media_key": "3_1522784579655979008",
+                        "start": 3,
+                        "url": "https://t.co/o64zLfImld"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/o64zLfImld",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522784599088189441/photo/1",
+                        "media_key": "3_1522784579773423622",
+                        "start": 3,
+                        "url": "https://t.co/o64zLfImld"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/o64zLfImld",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522784599088189441/photo/1",
+                        "media_key": "3_1522784579886751744",
+                        "start": 3,
+                        "url": "https://t.co/o64zLfImld"
+                    }
+                ]
+            },
             "id": "1522784599088189441",
             "text": "!! https://t.co/o64zLfImld"
         },
@@ -703,11 +2386,58 @@
                 ]
             },
             "created_at": "2022-05-07T03:15:27.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/sTwACnvoiI",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522777101866254339/photo/1",
+                        "media_key": "3_1522777076021055493",
+                        "start": 3,
+                        "url": "https://t.co/sTwACnvoiI"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/sTwACnvoiI",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522777101866254339/photo/1",
+                        "media_key": "3_1522777076000071680",
+                        "start": 3,
+                        "url": "https://t.co/sTwACnvoiI"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/sTwACnvoiI",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522777101866254339/photo/1",
+                        "media_key": "3_1522777076008370176",
+                        "start": 3,
+                        "url": "https://t.co/sTwACnvoiI"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/sTwACnvoiI",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1522777101866254339/photo/1",
+                        "media_key": "3_1522777076008370177",
+                        "start": 3,
+                        "url": "https://t.co/sTwACnvoiI"
+                    }
+                ]
+            },
             "id": "1522777101866254339",
             "text": "!! https://t.co/sTwACnvoiI"
         },
         {
             "created_at": "2022-05-04T22:48:04.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "twitter.com/jnyiks_/status\u2026",
+                        "end": 30,
+                        "expanded_url": "https://twitter.com/jnyiks_/status/1521983595740426241",
+                        "start": 7,
+                        "url": "https://t.co/GZG7rYXUV9"
+                    }
+                ]
+            },
             "id": "1521985034948911106",
             "text": "\u2764\ufe0f\u2764\ufe0f\u2764\ufe0f https://t.co/GZG7rYXUV9"
         },
@@ -718,6 +2448,18 @@
                 ]
             },
             "created_at": "2022-05-04T16:16:34.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/DCeZWLnxjW",
+                        "end": 89,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521886512413134848/photo/1",
+                        "media_key": "3_1521886183168557061",
+                        "start": 66,
+                        "url": "https://t.co/DCeZWLnxjW"
+                    }
+                ]
+            },
             "id": "1521886512413134848",
             "text": "You collected some data on the deceiver, thanks to your analysis. https://t.co/DCeZWLnxjW"
         },
@@ -733,6 +2475,18 @@
                 ]
             },
             "created_at": "2022-05-04T16:11:51.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/SywSerx5Nq",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521885326532395009/photo/1",
+                        "media_key": "3_1521884708166057984",
+                        "start": 0,
+                        "url": "https://t.co/SywSerx5Nq"
+                    }
+                ]
+            },
             "id": "1521885326532395009",
             "text": "https://t.co/SywSerx5Nq"
         },
@@ -743,6 +2497,18 @@
                 ]
             },
             "created_at": "2022-05-04T14:15:55.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/1Kywqtyjfm",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521856151469633537/photo/1",
+                        "media_key": "3_1521856087418355718",
+                        "start": 0,
+                        "url": "https://t.co/1Kywqtyjfm"
+                    }
+                ]
+            },
             "id": "1521856151469633537",
             "text": "https://t.co/1Kywqtyjfm"
         },
@@ -755,6 +2521,34 @@
                 ]
             },
             "created_at": "2022-05-04T02:28:45.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/mdKEicoLgq",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521678185687048193/photo/1",
+                        "media_key": "3_1521678066866696195",
+                        "start": 0,
+                        "url": "https://t.co/mdKEicoLgq"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/mdKEicoLgq",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521678185687048193/photo/1",
+                        "media_key": "3_1521678066854080512",
+                        "start": 0,
+                        "url": "https://t.co/mdKEicoLgq"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/mdKEicoLgq",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521678185687048193/photo/1",
+                        "media_key": "3_1521678066866696194",
+                        "start": 0,
+                        "url": "https://t.co/mdKEicoLgq"
+                    }
+                ]
+            },
             "id": "1521678185687048193",
             "text": "https://t.co/mdKEicoLgq"
         },
@@ -770,6 +2564,18 @@
                 ]
             },
             "created_at": "2022-05-03T02:23:20.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/NHD6gVjUbb",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521314434240716803/photo/1",
+                        "media_key": "3_1521313959252566016",
+                        "start": 0,
+                        "url": "https://t.co/NHD6gVjUbb"
+                    }
+                ]
+            },
             "id": "1521314434240716803",
             "text": "https://t.co/NHD6gVjUbb"
         },
@@ -783,11 +2589,57 @@
                 ]
             },
             "created_at": "2022-05-03T02:23:18.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/4HoCX97igL",
+                        "end": 32,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521314425126494208/photo/1",
+                        "media_key": "3_1521313828935540737",
+                        "start": 9,
+                        "url": "https://t.co/4HoCX97igL"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/4HoCX97igL",
+                        "end": 32,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521314425126494208/photo/1",
+                        "media_key": "3_1521313828960710656",
+                        "start": 9,
+                        "url": "https://t.co/4HoCX97igL"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/4HoCX97igL",
+                        "end": 32,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521314425126494208/photo/1",
+                        "media_key": "3_1521313829052891140",
+                        "start": 9,
+                        "url": "https://t.co/4HoCX97igL"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/4HoCX97igL",
+                        "end": 32,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1521314425126494208/photo/1",
+                        "media_key": "3_1521313828960706560",
+                        "start": 9,
+                        "url": "https://t.co/4HoCX97igL"
+                    }
+                ]
+            },
             "id": "1521314425126494208",
             "text": "Oh no... https://t.co/4HoCX97igL"
         },
         {
             "created_at": "2022-05-03T02:18:46.000Z",
+            "entities": {
+                "mentions": [
+                    {
+                        "end": 11,
+                        "id": "894202625671012352",
+                        "start": 0,
+                        "username": "_DeadSlug_"
+                    }
+                ]
+            },
             "id": "1521313284401598467",
             "text": "@_DeadSlug_ You always had"
         },
@@ -803,6 +2655,18 @@
                 ]
             },
             "created_at": "2022-04-30T13:30:12.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/2UZ7F0qFh8",
+                        "end": 170,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1520395092137324544/photo/1",
+                        "media_key": "3_1520394094329094144",
+                        "start": 147,
+                        "url": "https://t.co/2UZ7F0qFh8"
+                    }
+                ]
+            },
             "id": "1520395092137324544",
             "text": "I have been interested for a while in doing a Wonhan figure, if there was such item, how much would you be willing to pay for a product like that? https://t.co/2UZ7F0qFh8"
         },
@@ -818,6 +2682,18 @@
                 ]
             },
             "created_at": "2022-04-29T22:01:42.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/jg1EMf6R0P",
+                        "end": 25,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1520161430653358081/photo/1",
+                        "media_key": "3_1520161160644988928",
+                        "start": 2,
+                        "url": "https://t.co/jg1EMf6R0P"
+                    }
+                ]
+            },
             "id": "1520161430653358081",
             "text": "? https://t.co/jg1EMf6R0P"
         },
@@ -831,6 +2707,42 @@
                 ]
             },
             "created_at": "2022-04-29T21:41:24.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/g7fqM8O8F9",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1520156321273856000/photo/1",
+                        "media_key": "3_1520156224616124417",
+                        "start": 5,
+                        "url": "https://t.co/g7fqM8O8F9"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/g7fqM8O8F9",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1520156321273856000/photo/1",
+                        "media_key": "3_1520156224637091840",
+                        "start": 5,
+                        "url": "https://t.co/g7fqM8O8F9"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/g7fqM8O8F9",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1520156321273856000/photo/1",
+                        "media_key": "3_1520156224632897537",
+                        "start": 5,
+                        "url": "https://t.co/g7fqM8O8F9"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/g7fqM8O8F9",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1520156321273856000/photo/1",
+                        "media_key": "3_1520156224607694850",
+                        "start": 5,
+                        "url": "https://t.co/g7fqM8O8F9"
+                    }
+                ]
+            },
             "id": "1520156321273856000",
             "text": "Hey! https://t.co/g7fqM8O8F9"
         },
@@ -846,6 +2758,18 @@
                 ]
             },
             "created_at": "2022-04-28T01:39:57.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/S5Atw7oPnD",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519491575604256768/photo/1",
+                        "media_key": "3_1519491532503584768",
+                        "start": 3,
+                        "url": "https://t.co/S5Atw7oPnD"
+                    }
+                ]
+            },
             "id": "1519491575604256768",
             "text": "\u2764\ufe0f https://t.co/S5Atw7oPnD"
         },
@@ -856,6 +2780,18 @@
                 ]
             },
             "created_at": "2022-04-27T12:11:20.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/2zY5WQb24z",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519288083912564736/photo/1",
+                        "media_key": "3_1519288040056930305",
+                        "start": 0,
+                        "url": "https://t.co/2zY5WQb24z"
+                    }
+                ]
+            },
             "id": "1519288083912564736",
             "text": "https://t.co/2zY5WQb24z"
         },
@@ -868,6 +2804,34 @@
                 ]
             },
             "created_at": "2022-04-27T03:20:13.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/ZbsZDIXT5r",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519154420658884609/photo/1",
+                        "media_key": "3_1519154371401072641",
+                        "start": 5,
+                        "url": "https://t.co/ZbsZDIXT5r"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/ZbsZDIXT5r",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519154420658884609/photo/1",
+                        "media_key": "3_1519154371392647168",
+                        "start": 5,
+                        "url": "https://t.co/ZbsZDIXT5r"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/ZbsZDIXT5r",
+                        "end": 28,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519154420658884609/photo/1",
+                        "media_key": "3_1519154371405225984",
+                        "start": 5,
+                        "url": "https://t.co/ZbsZDIXT5r"
+                    }
+                ]
+            },
             "id": "1519154420658884609",
             "text": "\u2764\ufe0f\u2764\ufe0f https://t.co/ZbsZDIXT5r"
         },
@@ -881,6 +2845,42 @@
                 ]
             },
             "created_at": "2022-04-27T02:09:05.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/Ivsud9ZaZZ",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519136520090890243/photo/1",
+                        "media_key": "3_1519136418550976512",
+                        "start": 3,
+                        "url": "https://t.co/Ivsud9ZaZZ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Ivsud9ZaZZ",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519136520090890243/photo/1",
+                        "media_key": "3_1519136418534244356",
+                        "start": 3,
+                        "url": "https://t.co/Ivsud9ZaZZ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Ivsud9ZaZZ",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519136520090890243/photo/1",
+                        "media_key": "3_1519136418563567617",
+                        "start": 3,
+                        "url": "https://t.co/Ivsud9ZaZZ"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/Ivsud9ZaZZ",
+                        "end": 26,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1519136520090890243/photo/1",
+                        "media_key": "3_1519136418580385793",
+                        "start": 3,
+                        "url": "https://t.co/Ivsud9ZaZZ"
+                    }
+                ]
+            },
             "id": "1519136520090890243",
             "text": "\u2764\ufe0f https://t.co/Ivsud9ZaZZ"
         },
@@ -899,6 +2899,42 @@
                 ]
             },
             "created_at": "2022-04-22T02:26:57.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/TCJG2bBIqC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1517329079825059841/photo/1",
+                        "media_key": "3_1517328959960240129",
+                        "start": 0,
+                        "url": "https://t.co/TCJG2bBIqC"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/TCJG2bBIqC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1517329079825059841/photo/1",
+                        "media_key": "3_1517328960283103232",
+                        "start": 0,
+                        "url": "https://t.co/TCJG2bBIqC"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/TCJG2bBIqC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1517329079825059841/photo/1",
+                        "media_key": "3_1517328960148975616",
+                        "start": 0,
+                        "url": "https://t.co/TCJG2bBIqC"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/TCJG2bBIqC",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1517329079825059841/photo/1",
+                        "media_key": "3_1517328960249606150",
+                        "start": 0,
+                        "url": "https://t.co/TCJG2bBIqC"
+                    }
+                ]
+            },
             "id": "1517329079825059841",
             "text": "https://t.co/TCJG2bBIqC"
         },
@@ -912,6 +2948,42 @@
                 ]
             },
             "created_at": "2022-04-17T04:20:34.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/R76y2Djtu1",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545731477737473/photo/1",
+                        "media_key": "3_1515545455287021569",
+                        "start": 0,
+                        "url": "https://t.co/R76y2Djtu1"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/R76y2Djtu1",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545731477737473/photo/1",
+                        "media_key": "3_1515545455068864514",
+                        "start": 0,
+                        "url": "https://t.co/R76y2Djtu1"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/R76y2Djtu1",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545731477737473/photo/1",
+                        "media_key": "3_1515545455089827843",
+                        "start": 0,
+                        "url": "https://t.co/R76y2Djtu1"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/R76y2Djtu1",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545731477737473/photo/1",
+                        "media_key": "3_1515545455085641729",
+                        "start": 0,
+                        "url": "https://t.co/R76y2Djtu1"
+                    }
+                ]
+            },
             "id": "1515545731477737473",
             "text": "https://t.co/R76y2Djtu1"
         },
@@ -925,6 +2997,42 @@
                 ]
             },
             "created_at": "2022-04-17T04:20:32.000Z",
+            "entities": {
+                "urls": [
+                    {
+                        "display_url": "pic.twitter.com/R1JDKqedJF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545722363523072/photo/1",
+                        "media_key": "3_1515541700797739010",
+                        "start": 0,
+                        "url": "https://t.co/R1JDKqedJF"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/R1JDKqedJF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545722363523072/photo/1",
+                        "media_key": "3_1515541700797739009",
+                        "start": 0,
+                        "url": "https://t.co/R1JDKqedJF"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/R1JDKqedJF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545722363523072/photo/1",
+                        "media_key": "3_1515541700801875971",
+                        "start": 0,
+                        "url": "https://t.co/R1JDKqedJF"
+                    },
+                    {
+                        "display_url": "pic.twitter.com/R1JDKqedJF",
+                        "end": 23,
+                        "expanded_url": "https://twitter.com/Niseworks/status/1515545722363523072/photo/1",
+                        "media_key": "3_1515541700827090947",
+                        "start": 0,
+                        "url": "https://t.co/R1JDKqedJF"
+                    }
+                ]
+            },
             "id": "1515545722363523072",
             "text": "https://t.co/R1JDKqedJF"
         },

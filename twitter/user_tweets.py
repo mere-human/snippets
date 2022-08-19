@@ -70,7 +70,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     max_results = [5,10] (default: 10)
     JSON response format:
     {
-        data: [{attachements: {media_keys: [str, ...]}, created_at: str, id: str, text: str}, ...],
+        data: [{attachements: {media_keys: [str, ...]}, created_at: str, id: str, text: str, entities: {urls: []}}, ...],
         includes: {media: [{media_key: str, type: str, url: str}, ...]},
         meta: {newest_id: str, next_token: str, , oldest_id: str, result_count: int}
     }
@@ -78,7 +78,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
     """
     url = f"https://api.twitter.com/2/users/{uid}/tweets"
     # exclude is a comma-separated list that can include retweets and replies. For retweets max tweets is 3200 but for replies max tweets is 800.
-    params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at', 'expansions': 'attachments.media_keys',
+    params = {'max_results': max_results, 'pagination_token': pagination_token, 'tweet.fields': 'created_at,entities', 'expansions': 'attachments.media_keys',
               'media.fields': 'type,url,preview_image_url,variants,height,width', 'start_time': start_time, 'end_time': end_time, 'exclude': 'retweets'}
     response = requests.request("GET", url, params=params, auth=bearer_oauth)
     check_response(response)
@@ -133,6 +133,7 @@ class HtmlFormatter:
         self.lines.append(self.get_epilog())
 
     def add_tweet(self, title, id, text, extra=''):
+        text = text.replace('\n', '<br/>')
         self.lines.append(self.get_h2(title, id, text, extra))
 
     def get_h2(self, title, id, text, extra=''):
@@ -157,6 +158,9 @@ class HtmlFormatter:
 
     def get_video_header(self):
         return '<p><small><i>Video:</i></small></p>'
+
+    def get_url(self, url, text):
+        return f'<a href="{url}">{text}</a>'
 
     def get_result(self):
         return ''.join(self.lines)
@@ -200,6 +204,18 @@ def generate_attachments(media, tweet_attachment, formatter, tweet_id):
 
 # TODO: support pagination of output
 
+def expand_urls(tweet, text, formatter):
+    entities = tweet.get('entities')
+    if entities:
+        for u in entities['urls']:
+            expanded = u['expanded_url']
+            # Ignore links containing 'twitter'.
+            # It's mainly done because such links lead to media files.
+            # And media are handled separately as attachments.
+            replacement = '' if 'twitter' in expanded else formatter.get_url(
+                expanded, u['display_url'])
+            text = text.replace(u['url'], replacement)
+    return text
 
 def generate_html(tweets_json, user_name, reverse=False, attachments_only=False):
     meta = tweets_json.get('meta')
@@ -211,7 +227,6 @@ def generate_html(tweets_json, user_name, reverse=False, attachments_only=False)
 
     tweets_data = tweets_json['data']
     for i, tweet in enumerate(reversed(tweets_data) if reverse else tweets_data):
-        # TODO: substitute t.co link?
         attachments = tweet.get('attachments')
         if attachments:
             attachments = attachments['media_keys']
@@ -222,8 +237,9 @@ def generate_html(tweets_json, user_name, reverse=False, attachments_only=False)
         created = tweet['created_at']
         html_extra = generate_attachments(get_media_dict(
             tweets_json), attachments, formatter, created)
+        text = expand_urls(tweet, tweet['text'], formatter)
         formatter.add_tweet(
-            title=f'{i+1}. {created}', text=tweet['text'], extra='\n'.join(html_extra), id=tweet['id'])
+            title=f'{i+1}. {created}', text=text, extra='\n'.join(html_extra), id=tweet['id'])
     formatter.add_epilog()
     with open('result.html', 'w') as f:
         f.write(formatter.get_result())
