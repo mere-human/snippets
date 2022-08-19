@@ -12,6 +12,7 @@ import requests
 import os
 import json
 import logging
+import argparse
 
 DEBUG_THIS = 1
 logging.basicConfig(level=(logging.DEBUG if DEBUG_THIS else logging.INFO))
@@ -20,6 +21,15 @@ logger = logging.getLogger('user_tweets')
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = os.environ.get("BEARER_TOKEN")
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='User tweets dump')
+    parser.add_argument('--user',
+                        help='Twitter user name.')
+    parser.add_argument('--json',
+                        help='JSON file with response to generate report from.')
+    return parser.parse_args()
 
 
 def check_response(response):
@@ -175,17 +185,25 @@ def get_tweets_iter(uid, max_results=None):
 
 
 def main():
-    username = 'Niseworks'
-    uid = get_user_id(username)
-    logger.debug(f'{username}: {uid}')
-    tweets = get_tweets_iter(uid)
+    args = parse_args()
+
+    if args.json:
+        username = args.user if args.user else 'Unknown'
+        with open(args.json, 'r') as f:
+            tweets = json.load(f)
+    else:
+        username = args.user  # 'Niseworks'
+        uid = get_user_id(username)
+        logger.debug(f'{username}: {uid}')
+        tweets = get_tweets_iter(uid)
+        if DEBUG_THIS:  # TODO: add arg for this?
+            with open('result.json', 'w') as f:
+                f.write(json.dumps(tweets, indent=4, sort_keys=True))
+
     # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
     # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
     # oldest tweet http://t.co/hSPfs5deDf
     parse_tweets(tweets, username, attachments_only=True)
-    if DEBUG_THIS:
-        with open('result.json', 'w') as f:
-            f.write(json.dumps(tweets, indent=4, sort_keys=True))
 
 
 if __name__ == "__main__":
