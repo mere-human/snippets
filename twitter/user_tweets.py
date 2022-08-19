@@ -24,13 +24,16 @@ bearer_token = os.environ.get("BEARER_TOKEN")
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='User tweets dump')
+    parser = argparse.ArgumentParser(
+        description="Generates user's tweets HTML report.")
     parser.add_argument('--user',
                         help='Twitter user name.')
     parser.add_argument('--json',
                         help='Input JSON file with response to generate report from.')
     parser.add_argument('--dump', action='store_true',
                         help='Dump JSON file with response.')
+    parser.add_argument('--reverse', action='store_true',
+                        help='If specified, write user tweets are in chronological (reverse) order.')
     return parser.parse_args()
 
 
@@ -82,7 +85,7 @@ def get_tweets(uid, max_results=None, pagination_token=None, start_time=None, en
 
 # TODO: split this func
 # TODO: support pagination of output
-def parse_tweets(tweets_json, user_name, attachments_only=False):
+def parse_tweets(tweets_json, user_name, reverse=False, attachments_only=False):
     meta = tweets_json.get('meta')
     logger.debug(f'meta: {meta}')
     html_prefix = '''
@@ -128,7 +131,8 @@ def parse_tweets(tweets_json, user_name, attachments_only=False):
         else:
             logger.warning(f'Unknown media type: {m["type"]} in {m}')
     logger.debug(f'"data" len: {len(tweets_json["data"])}')
-    for i, tweet in enumerate(tweets_json['data']):
+    tweets_data = tweets_json['data']
+    for i, tweet in enumerate(reversed(tweets_data) if reverse else tweets_data):
         # TODO: substitute t.co link?
         attachement_list = tweet.get('attachments')
         if attachement_list:
@@ -188,6 +192,7 @@ def get_tweets_iter(uid, max_results=None):
 
 def main():
     args = parse_args()
+    logger.debug(args)
 
     if args.json:
         username = args.user if args.user else 'Unknown'
@@ -205,7 +210,7 @@ def main():
     # tweets = get_tweets(uid, end_time='2016-03-30T22:11:18.000Z', max_results=100)
     # oldest attachment: 2016-02-10T18:04:32.000Z https://t.co/8mSy5gFswd
     # oldest tweet http://t.co/hSPfs5deDf
-    parse_tweets(tweets, username, attachments_only=True)
+    parse_tweets(tweets, username, attachments_only=True, reverse=args.reverse)
 
 
 if __name__ == "__main__":
