@@ -1,0 +1,19 @@
+<httml>
+
+    <head>
+    </head>
+
+    <body>
+        <input id="text1" type="text" />
+    </body>
+    <script>
+        let t = document.getElementById("text1");
+        t.addEventListener("copy", function (e) { console.log(`${e.timeStamp} ${e.type}`); });
+        t.addEventListener("keydown", function (e) {
+            // if (e.key === "c" && e.metaKey)
+            //     e.preventDefault();
+            console.log(`${e.timeStamp} ${e.type} ${e.key}`);
+        });
+        t.addEventListener("keyup", function (e) { console.log(`${e.timeStamp} ${e.type} ${e.key}`); });
+    </script>
+</httml>
