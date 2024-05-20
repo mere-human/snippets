@@ -1,0 +1,167 @@
+<httml>
+
+    <head>
+    </head>
+
+    <body>
+        <div>
+            <input id="reset-btn" type="button" value="Reset" />
+            <label for="type-sel">Types:</label>
+            <select id="type-sel" disabled></select>
+            <label for="file-sel">Files:</label>
+            <select id="file-sel" disabled></select>
+        </div>
+        <div>
+            <p id="details" hidden="true"></p>
+            <img id="img1" hidden="true"/>
+            <textarea id="text1" readonly="readonly" hidden="true"></textarea>
+        </div>
+    </body>
+    <script>
+        let img = document.getElementById('img1');
+        let txt = document.getElementById('text1');
+        let details = document.getElementById('details');
+        let typeSel = document.querySelector('#type-sel');
+        let fileSel = document.querySelector('#file-sel');
+        let files = {};
+        let types = {};
+
+        function setText(text) {
+            let rows = 1;
+            let lineLen = 0;
+            let maxLineLen = 0;
+            for (let i = 0; i != text.length; ++i) {
+                let ch = text[i];
+                ++lineLen;
+                if (ch === '\n' || ch === '\r') {
+                    if (lineLen > maxLineLen)
+                        maxLineLen = lineLen;
+                    lineLen = 0;
+                    ++rows;
+                }
+            }
+            if (maxLineLen < lineLen)
+                maxLineLen = lineLen;
+
+            txt.textContent = text;
+            txt.rows = rows;
+            txt.cols = maxLineLen;
+
+            txt.hidden = false;
+        }
+
+        function setImage(data) {
+            img.src = URL.createObjectURL(data);
+            img.hidden = false;
+        }
+
+        function resetView() {
+            img.hidden = true;
+            txt.hidden = true;
+            details.hidden = true;
+        }
+        function resetAll() {
+            resetView();
+            typeSel.disabled = true;
+            while (typeSel.firstChild) {
+                typeSel.removeChild(typeSel.firstChild);
+            }
+            fileSel.disabled = true;
+            while (fileSel.firstChild) {
+                fileSel.removeChild(fileSel.firstChild);
+            }
+            files = {};
+            types = {};
+        }
+        document.querySelector("#reset-btn").addEventListener('click', (e) => resetAll());
+
+        function changeType(t) {
+            resetView();
+            let typeData = types[t];
+            if (typeData === undefined)
+                return;
+            fileSel.disabled = true;
+            details.hidden = false;
+            details.textContent = `size: ${typeData.length}`;
+            if (t.startsWith('image/')) {
+                setImage(typeData);
+            } else if (t.startsWith('text/')) {
+                setText(typeData);
+            } else if (t === 'Files') {
+                fileSel.disabled = false;
+                fileSel.selectedIndex = 1;
+                changeFile(Object.keys(files)[0]);
+            }
+        }
+
+        function changeFile(fileName) {
+            resetView();
+            let fileData = files[fileName];
+            if (fileData === undefined)
+                return;details.hidden = false;
+            details.textContent = `type: ${fileData.type}, size: ${fileData.size}, modified: ${new Date(fileData.lastModified)}`;
+            if (fileData.type.startsWith('image/')) {
+                setImage(fileData);
+            } else if (fileData.type.startsWith('text/')) {
+                fileData.text().then((t) => setText(t));
+            }
+        }
+
+        typeSel.addEventListener('change', function(e){
+            console.log(e);
+            console.log(e.target.value);
+            changeType(e.target.value);
+        });
+        fileSel.addEventListener('change', function(e){
+            console.log(e);
+            console.log(e.target.value);
+            changeFile(e.target.value);
+        });
+
+        document.addEventListener("copy", function (e) {
+            console.log(`${e.timeStamp} ${e.type}`);
+        });
+
+        document.addEventListener("paste", function (e) {
+            console.log(`${e.timeStamp} ${e.type}`);
+            resetAll();
+
+            console.log(`types: ${e.clipboardData.types}`);
+            
+            for (let i = 0; i != e.clipboardData.types.length; ++i) {
+                let type = e.clipboardData.types[i];
+                types[type] = e.clipboardData.getData(type);
+
+                typeSel.disabled = false;
+                let opt = document.createElement('option');
+                opt.id = `type-sel-${i}`;
+                opt.textContent = type;
+                typeSel.append(opt);
+            }
+
+            console.log(`files: ${e.clipboardData.files.length}`);
+
+            for (let i = 0; i != e.clipboardData.files.length; ++i) {
+
+                let f = e.clipboardData.files[i];
+
+                if (fileSel.disabled) {
+                    fileSel.disabled = false;
+                    let opt = document.createElement('option');
+                    fileSel.append(opt);
+                }
+                let opt = document.createElement('option');
+                opt.textContent = f.name;
+                fileSel.append(opt);
+
+                console.log(`  name: ${f.name}; type: ${f.type}; size: ${f.size}; modified: ${new Date(f.lastModified)}`);
+                files[f.name] = new File([f], f.name, {type: f.type, lastModified: f.lastModified});
+            }
+
+            if (Object.keys(types).length > 0) {
+                typeSel.selectedIndex = 0;
+                changeType(Object.keys(types)[0]);
+            }
+        });
+    </script>
+</httml>
