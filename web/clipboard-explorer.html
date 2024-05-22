@@ -6,7 +6,7 @@
     <body>
         <div>
             <p>Tip: Use copy/paste shortcuts or buttons.</p>
-            <input id="reset-btn" type="button" value="Reset" />
+            <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
             <label for="type-sel">Types:</label>
             <select id="type-sel" disabled></select>
             <label for="file-sel">Files:</label>
@@ -28,10 +28,19 @@
         let files = {};
         let types = {};
 
-        function setText(text) {
+        async function setText(text) {
+            if (text instanceof Blob)
+                text = await text.text();
+        
+            let isString = text => typeof text === 'string' || text instanceof String;
+            if (!isString(text)) {
+                console.error(`Unexpected text type ${text.constructor.name}`);
+                return;
+            }
             let rows = 1;
             let lineLen = 0;
             let maxLineLen = 0;
+            // TODO: word wrap
             for (let i = 0; i != text.length; ++i) {
                 let ch = text[i];
                 ++lineLen;
@@ -57,6 +66,11 @@
             img.hidden = false;
         }
 
+        function setDetails(text) {
+            details.hidden = false;
+            details.textContent = text;
+        }
+
         function resetView() {
             img.hidden = true;
             txt.hidden = true;
@@ -75,7 +89,39 @@
             files = {};
             types = {};
         }
-        document.querySelector("#reset-btn").addEventListener('click', (e) => resetAll());
+
+        document.querySelector("#paste-btn").addEventListener('click', async function(e) {
+            console.log(`${e.timeStamp} ${e.type}`);
+            resetAll();
+
+            console.assert(navigator.clipboard);
+            if (!navigator.clipboard) {
+                setDetails('Error: Cannot use Clipboard API.');
+                return;
+            }
+
+            let clipData = await navigator.clipboard.read();
+
+            for (let i = 0; i != clipData.length; ++i) {
+                let item = clipData[i];
+                console.log(`types: ${item.types}`);
+                for (let j = 0; j != item.types.length; ++j) {
+                    let type = item.types[j];
+                    types[type] = await item.getType(type);
+
+                    typeSel.disabled = false;
+                    let opt = document.createElement('option');
+                    opt.id = `type-sel-${i}`;
+                    opt.textContent = type;
+                    typeSel.append(opt);
+                }
+            }
+
+            if (Object.keys(types).length > 0) {
+                typeSel.selectedIndex = 0;
+                changeType(Object.keys(types)[0]);
+            }
+        });
 
         function changeType(t) {
             resetView();
@@ -83,8 +129,12 @@
             if (typeData === undefined)
                 return;
             fileSel.disabled = true;
-            details.hidden = false;
-            details.textContent = `size: ${typeData.length}`;
+
+            if (typeData.length !== undefined)
+                setDetails(`size: ${typeData.length}, type: ${typeData.constructor.name}`);
+            else if (typeData.size !== undefined)
+                setDetails(`size: ${typeData.size}, type: ${typeData.constructor.name}`);
+
             if (t.startsWith('image/')) {
                 setImage(typeData);
             } else if (t.startsWith('text/')) {
@@ -100,8 +150,8 @@
             resetView();
             let fileData = files[fileName];
             if (fileData === undefined)
-                return;details.hidden = false;
-            details.textContent = `type: ${fileData.type}, size: ${fileData.size}, modified: ${new Date(fileData.lastModified)}`;
+                return;
+            setDetails(`type: ${fileData.type}, size: ${fileData.size}, modified: ${new Date(fileData.lastModified)}`);
             if (fileData.type.startsWith('image/')) {
                 setImage(fileData);
             } else if (fileData.type.startsWith('text/')) {
