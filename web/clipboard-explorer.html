@@ -6,7 +6,7 @@
     <body>
         <div>
             <p>Tip: Use copy/paste shortcuts or buttons.</p>
-            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" disabled/>
+            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" disabled />
             <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
             <label for="clipboard-delay">Delay(ms):</label>
             <input id="clipboard-delay" type="number" step="100" style="width:6em" />
@@ -15,11 +15,11 @@
             <select id="type-sel" disabled></select>
             <label for="file-sel">Files:</label>
             <select id="file-sel" disabled></select>
-            <hr/>
+            <hr />
         </div>
         <div>
             <p id="details" hidden="true"></p>
-            <img id="img1" hidden="true"/>
+            <img id="img1" hidden="true" />
             <textarea id="text1" readonly="readonly" hidden="true" style="width:100%; height:80%;"></textarea>
         </div>
     </body>
@@ -41,7 +41,7 @@
                     return;
                 }
             }
-        
+
             let isString = text => typeof text === 'string' || text instanceof String;
             if (!isString(text)) {
                 console.error(`Unexpected text type ${text.constructor.name}`);
@@ -138,7 +138,7 @@
             }
         }
 
-        document.querySelector("#paste-btn").addEventListener('click', async function(e) {
+        document.querySelector("#paste-btn").addEventListener('click', async function (e) {
             console.log(`${e.timeStamp} ${e.type}`);
 
             let delayValue = document.querySelector('#clipboard-delay').value;
@@ -187,12 +187,12 @@
             }
         }
 
-        typeSel.addEventListener('change', function(e){
+        typeSel.addEventListener('change', function (e) {
             console.log(e);
             console.log(e.target.value);
             changeType(e.target.value);
         });
-        fileSel.addEventListener('change', function(e){
+        fileSel.addEventListener('change', function (e) {
             console.log(e);
             console.log(e.target.value);
             changeFile(e.target.value);
@@ -207,7 +207,7 @@
             resetAll();
 
             console.log(`types: ${e.clipboardData.types}`);
-            
+
             for (let i = 0; i != e.clipboardData.types.length; ++i) {
                 let type = e.clipboardData.types[i];
                 typeMap[type] = e.clipboardData.getData(type);
@@ -235,7 +235,7 @@
                 fileSel.append(opt);
 
                 console.log(`  name: ${f.name}; type: ${f.type}; size: ${f.size}; modified: ${new Date(f.lastModified)}`);
-                fileMap[f.name] = new File([f], f.name, {type: f.type, lastModified: f.lastModified});
+                fileMap[f.name] = new File([f], f.name, { type: f.type, lastModified: f.lastModified });
             }
 
             if (Object.keys(typeMap).length > 0) {
