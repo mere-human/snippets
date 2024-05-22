@@ -29,8 +29,8 @@
         let details = document.getElementById('details');
         let typeSel = document.querySelector('#type-sel');
         let fileSel = document.querySelector('#file-sel');
-        let files = {};
-        let types = {};
+        let fileMap = {};
+        let typeMap = {};
 
         async function setText(text) {
             if (text instanceof Blob) {
@@ -96,8 +96,8 @@
             while (fileSel.firstChild) {
                 fileSel.removeChild(fileSel.firstChild);
             }
-            files = {};
-            types = {};
+            fileMap = {};
+            typeMap = {};
         }
 
         async function pasteUsingApi() {
@@ -122,7 +122,7 @@
                 console.log(`types: ${item.types}`);
                 for (let j = 0; j != item.types.length; ++j) {
                     let type = item.types[j];
-                    types[type] = await item.getType(type);
+                    typeMap[type] = await item.getType(type);
 
                     typeSel.disabled = false;
                     let opt = document.createElement('option');
@@ -132,9 +132,9 @@
                 }
             }
 
-            if (Object.keys(types).length > 0) {
+            if (Object.keys(typeMap).length > 0) {
                 typeSel.selectedIndex = 0;
-                changeType(Object.keys(types)[0]);
+                changeType(Object.keys(typeMap)[0]);
             }
         }
 
@@ -151,9 +151,11 @@
 
         function changeType(t) {
             resetView();
-            let typeData = types[t];
-            if (typeData === undefined)
+            let typeData = typeMap[t];
+            if (typeData === undefined || typeData === null) {
+                setDetails(`Error: Data for ${t} is null`);
                 return;
+            }
             fileSel.disabled = true;
 
             if (typeData.length !== undefined)
@@ -168,13 +170,13 @@
             } else if (t === 'Files') {
                 fileSel.disabled = false;
                 fileSel.selectedIndex = 1;
-                changeFile(Object.keys(files)[0]);
+                changeFile(Object.keys(fileMap)[0]);
             }
         }
 
         function changeFile(fileName) {
             resetView();
-            let fileData = files[fileName];
+            let fileData = fileMap[fileName];
             if (fileData === undefined)
                 return;
             setDetails(`type: ${fileData.type}, size: ${fileData.size}, modified: ${new Date(fileData.lastModified)}`);
@@ -208,7 +210,7 @@
             
             for (let i = 0; i != e.clipboardData.types.length; ++i) {
                 let type = e.clipboardData.types[i];
-                types[type] = e.clipboardData.getData(type);
+                typeMap[type] = e.clipboardData.getData(type);
 
                 typeSel.disabled = false;
                 let opt = document.createElement('option');
@@ -233,12 +235,12 @@
                 fileSel.append(opt);
 
                 console.log(`  name: ${f.name}; type: ${f.type}; size: ${f.size}; modified: ${new Date(f.lastModified)}`);
-                files[f.name] = new File([f], f.name, {type: f.type, lastModified: f.lastModified});
+                fileMap[f.name] = new File([f], f.name, {type: f.type, lastModified: f.lastModified});
             }
 
-            if (Object.keys(types).length > 0) {
+            if (Object.keys(typeMap).length > 0) {
                 typeSel.selectedIndex = 0;
-                changeType(Object.keys(types)[0]);
+                changeType(Object.keys(typeMap)[0]);
             }
         });
     </script>
