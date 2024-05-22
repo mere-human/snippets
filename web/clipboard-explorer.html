@@ -6,7 +6,11 @@
     <body>
         <div>
             <p>Tip: Use copy/paste shortcuts or buttons.</p>
+            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" disabled/>
             <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
+            <label for="clipboard-delay">Delay(ms):</label>
+            <input id="clipboard-delay" type="number" step="100" style="width:6em" />
+            <span>|</span>
             <label for="type-sel">Types:</label>
             <select id="type-sel" disabled></select>
             <label for="file-sel">Files:</label>
@@ -29,8 +33,14 @@
         let types = {};
 
         async function setText(text) {
-            if (text instanceof Blob)
-                text = await text.text();
+            if (text instanceof Blob) {
+                try {
+                    text = await text.text();
+                } catch (e) {
+                    setDetails(e);
+                    return;
+                }
+            }
         
             let isString = text => typeof text === 'string' || text instanceof String;
             if (!isString(text)) {
@@ -90,8 +100,7 @@
             types = {};
         }
 
-        document.querySelector("#paste-btn").addEventListener('click', async function(e) {
-            console.log(`${e.timeStamp} ${e.type}`);
+        async function pasteUsingApi() {
             resetAll();
 
             console.assert(navigator.clipboard);
@@ -100,7 +109,13 @@
                 return;
             }
 
-            let clipData = await navigator.clipboard.read();
+            let clipData = null;
+            try {
+                clipData = await navigator.clipboard.read();
+            } catch (e) {
+                setDetails(e);
+                return;
+            }
 
             for (let i = 0; i != clipData.length; ++i) {
                 let item = clipData[i];
@@ -120,6 +135,17 @@
             if (Object.keys(types).length > 0) {
                 typeSel.selectedIndex = 0;
                 changeType(Object.keys(types)[0]);
+            }
+        }
+
+        document.querySelector("#paste-btn").addEventListener('click', async function(e) {
+            console.log(`${e.timeStamp} ${e.type}`);
+
+            let delayValue = document.querySelector('#clipboard-delay').value;
+            if (delayValue !== undefined && delayValue > 0) {
+                setTimeout(pasteUsingApi, delayValue);
+            } else {
+                pasteUsingApi();
             }
         });
 
