@@ -6,14 +6,15 @@
 <body>
     <div>
         <p>Tip: Use copy/paste shortcuts or buttons.</p>
+        <input type="checkbox" id="copy-check" title="Enable copy mode" />
         <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" disabled />
         <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
         <label for="clipboard-delay">Delay(ms):</label>
         <input id="clipboard-delay" type="number" step="100" style="width:6em" />
         <span>|</span>
-        <label for="type-sel">Types:</label>
+        <label for="type-sel">Type:</label>
         <select id="type-sel" disabled></select>
-        <label for="file-sel">Files:</label>
+        <label for="file-sel">File:</label>
         <select id="file-sel" disabled></select>
         <hr />
     </div>
@@ -21,18 +22,24 @@
         <p id="details" hidden="true"></p>
         <img id="img1" hidden="true" />
         <textarea id="text1" readonly="readonly" hidden="true" style="width:100%; height:80%;"></textarea>
+        <div id="for-html" hidden="true"></div>
     </div>
 </body>
 <script>
+    // TODO: radio button for copy/paste mode
+    // TODO: radio button for areas: Text, Image, HTML
+    // TODO: expandable section for weird stuff (delay, etc)
     let img = document.getElementById('img1');
     let txt = document.getElementById('text1');
     let details = document.getElementById('details');
     let typeSel = document.querySelector('#type-sel');
     let fileSel = document.querySelector('#file-sel');
+    let copyButton = document.querySelector("#copy-btn");
+    let forHtml = document.querySelector('#for-html');
     let fileMap = {};
     let typeMap = {};
 
-    async function setText(text) {
+    async function setText(text, mimeType) {
         if (text instanceof Blob) {
             try {
                 text = await text.text();
@@ -47,6 +54,13 @@
             console.error(`Unexpected text type ${text.constructor.name}`);
             return;
         }
+
+        if (mimeType === 'text/html') {
+            forHtml.hidden = false;
+            forHtml.innerHTML = text;
+            return;
+        }
+
         let rows = 1;
         let lineLen = 0;
         let maxLineLen = 0;
@@ -64,7 +78,7 @@
         if (maxLineLen < lineLen)
             maxLineLen = lineLen;
 
-        txt.textContent = text;
+        txt.value = text;
         txt.rows = rows;
         txt.cols = maxLineLen;
 
@@ -76,6 +90,7 @@
         img.hidden = false;
     }
 
+    // TODO: error color
     function setDetails(text) {
         details.hidden = false;
         details.textContent = text;
@@ -85,6 +100,7 @@
         img.hidden = true;
         txt.hidden = true;
         details.hidden = true;
+        forHtml.hidden = true;
     }
     function resetAll() {
         resetView();
@@ -141,6 +157,9 @@
     document.querySelector("#paste-btn").addEventListener('click', async function (e) {
         console.log(`${e.timeStamp} ${e.type}`);
 
+        document.querySelector('#copy-check').checked = false;
+        copyButton.disabled = true;
+
         let delayValue = document.querySelector('#clipboard-delay').value;
         if (delayValue !== undefined && delayValue > 0) {
             setTimeout(pasteUsingApi, delayValue);
@@ -166,7 +185,7 @@
         if (t.startsWith('image/')) {
             setImage(typeData);
         } else if (t.startsWith('text/')) {
-            setText(typeData);
+            setText(typeData, t);
         } else if (t === 'Files') {
             fileSel.disabled = false;
             fileSel.selectedIndex = 1;
@@ -198,8 +217,54 @@
         changeFile(e.target.value);
     });
 
+    document.querySelector('#copy-check').addEventListener('click', function (e) {
+        if (e.target.checked) {
+            copyButton.disabled = false;
+            txt.hidden = false;
+            txt.readOnly = undefined;
+        } else {
+            copyButton.disabled = true;
+            txt.hidden = true;
+            txt.readOnly = "readonly";
+        }
+    });
+
+    copyButton.addEventListener('click', function (e) {
+        console.log(`${e.timeStamp} ${e.type}`);
+        let delayValue = document.querySelector('#clipboard-delay').value;
+        // TODO: await? for safari
+        setTimeout(async function () {
+            console.assert(navigator.clipboard && typeof navigator.clipboard.read === 'function');
+            if (!navigator.clipboard) {
+                setDetails('Error: Cannot write using Clipboard API.');
+                return;
+            }
+            try {
+                // TODO: more types
+                let mimeType = "text/plain";
+
+                // TODO: make this a radio button choice
+                // function later(delay, value) {
+                //     return new Promise(function (resolve) {
+                //         setTimeout(resolve, delay, value);
+                //     });
+                // }
+                // let item = new ClipboardItem({ [mimeType]: later(2000, new Blob([txt.value], { type: mimeType })) });
+
+                let item = new ClipboardItem({ [mimeType]: new Blob([txt.value], { type: mimeType }) });
+                navigator.clipboard.write([item]);
+            } catch (e) {
+                setDetails(e);
+                return;
+            }
+        }, (delayValue !== undefined && delayValue > 0) ? delayValue : 0);
+    });
+
     document.addEventListener("copy", function (e) {
         console.log(`${e.timeStamp} ${e.type}`);
+        // TODO: more types
+        e.clipboardData.setData('text/html', txt.value);
+        e.preventDefault();
     });
 
     document.addEventListener("paste", function (e) {
