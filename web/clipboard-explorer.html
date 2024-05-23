@@ -270,35 +270,53 @@
         }
     });
 
+    function isSafari() {
+        if (window.safari !== undefined)
+            return true;
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf("safari/") !== -1 && ua.indexOf("chrom") === -1;
+    }
+
     copyButton.addEventListener('click', function (e) {
         console.log(`${e.timeStamp} ${e.type}`);
+        const canWriteClipboard = navigator.clipboard && typeof navigator.clipboard.write === 'function';
+        console.assert(canWriteClipboard);
+        if (!canWriteClipboard) {
+            setDetails('Error: Cannot write using Clipboard API.');
+            return;
+        }
         let delayValue = document.querySelector('#clipboard-delay').value;
-        // TODO: await? for safari
-        setTimeout(async function () {
-            console.assert(navigator.clipboard && typeof navigator.clipboard.read === 'function');
-            if (!navigator.clipboard) {
-                setDetails('Error: Cannot write using Clipboard API.');
-                return;
+        if (delayValue === undefined || delayValue < 0)
+            delayValue = 0;
+        // TODO: more types
+        let mimeType = "text/plain";
+        let item = null;
+        const usePromise = isSafari();  // this can be controlled from UI
+        if (usePromise) {
+            function later(delay, value) {
+                return new Promise((resolve) => setTimeout(resolve, delay, value));
             }
             try {
-                // TODO: more types
-                let mimeType = "text/plain";
-
-                // TODO: make this a radio button choice
-                // function later(delay, value) {
-                //     return new Promise(function (resolve) {
-                //         setTimeout(resolve, delay, value);
-                //     });
-                // }
-                // let item = new ClipboardItem({ [mimeType]: later(2000, new Blob([txt.value], { type: mimeType })) });
-
-                let item = new ClipboardItem({ [mimeType]: new Blob([txt.value], { type: mimeType }) });
+                item = new ClipboardItem({ [mimeType]: later(delayValue, new Blob([txt.value], { type: mimeType })) });
                 navigator.clipboard.write([item]);
+                console.log('copied');
             } catch (e) {
                 setDetails(e);
                 return;
             }
-        }, (delayValue !== undefined && delayValue > 0) ? delayValue : 0);
+        } else {
+            setTimeout(async function () {
+                try {
+                    // TODO: reduce duplication
+                    item = new ClipboardItem({ [mimeType]: new Blob([txt.value], { type: mimeType }) });
+                    navigator.clipboard.write([item]);
+                    console.log('copied');
+                } catch (e) {
+                    setDetails(e);
+                    return;
+                }
+            }, delayValue);
+        }
     });
 
     document.addEventListener("copy", function (e) {
