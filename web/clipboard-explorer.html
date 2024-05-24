@@ -39,7 +39,7 @@
         <fieldset style="display: inline;">
             <legend>Copy as</legend>
             <input type="checkbox" id="copy-as-check" />
-            <input type="text" id="copy-as-text" disabled/>
+            <input type="text" id="copy-as-text" disabled />
         </fieldset>
 
         <hr />
@@ -55,6 +55,9 @@
 <script>
     // TODO: expandable section for weird stuff (delay, etc)
     // TODO: consider textarea selection when copying
+    // TODO: update textare when typing
+    // TODO: treat HTML area as preview of text area
+    // TODO: disable image when there is none?
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
@@ -67,9 +70,10 @@
     let typeMap = {};
 
     let copyAsCheck = document.querySelector('#copy-as-check');
-    copyAsCheck.addEventListener('change', function(e){
-        let copyAsText = document.querySelector('#copy-as-text');
+    let copyAsText = document.querySelector('#copy-as-text');
+    copyAsCheck.addEventListener('change', function (e) {
         copyAsText.disabled = !e.target.checked;
+        copyAsText.value = typeSelect.value;
         typeSelect.disabled = e.target.checked;
         copyAsText.focus();
     });
@@ -222,6 +226,11 @@
     function getSelectedType() {
         return typeSelect.value;
     }
+    function getTypeToCopy() {
+        if (!copyAsText.disabled && copyAsText.value)
+            return copyAsText.value;
+        return typeSelect.value;
+    }
 
     function resetTypeUI() {
         typeSelect.hidden = false;
@@ -317,8 +326,8 @@
         let delayValue = document.querySelector('#clipboard-delay').value;
         if (delayValue === undefined || delayValue < 0)
             delayValue = 0;
-        // TODO: more types
-        let mimeType = "text/plain";
+
+        let mimeType = getTypeToCopy();
         let item = null;
         const usePromise = isSafari();  // this can be controlled from UI
         if (usePromise) {
@@ -350,8 +359,7 @@
 
     document.addEventListener("copy", function (e) {
         console.log(`${e.timeStamp} ${e.type}`);
-        // TODO: more types
-        e.clipboardData.setData('text/html', txt.value);
+        e.clipboardData.setData(getTypeToCopy(), txt.value);
         e.preventDefault();
     });
 
