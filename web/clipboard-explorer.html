@@ -6,8 +6,9 @@
 
 <body>
     <div>
-        <p>Tip: Use copy/paste shortcuts or buttons.</p>
+        <p>Tip: Use copy/paste shortcuts or buttons below.</p>
         <fieldset style="display: inline;">
+            <legend>Clipboard API</legend>
             <input type="checkbox" id="copy-check" title="Enable copy mode" />
             <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" disabled />
             <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
@@ -16,13 +17,14 @@
         </fieldset>
 
         <fieldset style="display: inline;">
+            <legend>Content</legend>
             <label for="type-sel">Type:</label>
             <select id="type-sel" disabled></select>
             <label for="file-sel">File:</label>
             <select id="file-sel" disabled></select>
         </fieldset>
         <fieldset style="display: inline;">
-            <span>View as:</span>
+            <legend>View as</legend>
             <input type="radio" id="mode1" name="mode" value="radio-text" checked />
             <label for="mode1">text</label>
 
@@ -39,7 +41,7 @@
         <p id="details" hidden="true"></p>
 
         <img id="image-area" hidden="true" />
-        <textarea id="text-area" style="width:100%; height:80%;"></textarea>
+        <textarea id="text-area" style="width:100%; height:80%;" autofocus></textarea>
         <div id="html-area" hidden="true"></div>
     </div>
 </body>
