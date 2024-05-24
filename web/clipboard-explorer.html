@@ -3,6 +3,8 @@
 
 <head>
     <title>Clipboard Explorer</title>
+    <style>
+    </style>
 </head>
 
 <body>
@@ -10,19 +12,12 @@
         <p>Tip: Use copy/paste shortcuts or buttons below.</p>
         <fieldset style="display: inline;">
             <legend>Clipboard API</legend>
-            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" />
-            <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
+            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API write()" />
+            <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API read()" />
             <label for="clipboard-delay">Delay(ms):</label>
             <input id="clipboard-delay" type="number" step="100" style="width:6em" />
         </fieldset>
 
-        <fieldset style="display: inline;">
-            <legend>Content</legend>
-            <label for="type-select">Type:</label>
-            <select id="type-select" disabled></select>
-            <label for="file-sel">File:</label>
-            <select id="file-sel" disabled></select>
-        </fieldset>
         <fieldset style="display: inline;">
             <legend>View as</legend>
             <input type="radio" id="radio-text" name="mode" value="radio-text" checked />
@@ -33,6 +28,18 @@
 
             <input type="radio" id="radio-img" name="mode" value="radio-img" />
             <label for="mode3">image</label>
+        </fieldset>
+        <fieldset style="display: inline;">
+            <legend>Content</legend>
+            <label for="type-select">Type:</label>
+            <select id="type-select" disabled></select>
+            <label for="file-sel">File:</label>
+            <select id="file-sel" disabled></select>
+        </fieldset>
+        <fieldset style="display: inline;">
+            <legend>Copy as</legend>
+            <input type="checkbox" id="copy-as-check" />
+            <input type="text" id="copy-as-text" disabled/>
         </fieldset>
 
         <hr />
@@ -46,7 +53,6 @@
     </div>
 </body>
 <script>
-    // TODO: radio button for areas: Text, Image, HTML
     // TODO: expandable section for weird stuff (delay, etc)
     // TODO: consider textarea selection when copying
     let img = document.getElementById('image-area');
@@ -55,8 +61,18 @@
     let fileSel = document.querySelector('#file-sel');
     let copyButton = document.querySelector("#copy-btn");
     let forHtml = document.querySelector('#html-area');
+
+    // Data
     let fileMap = {};
     let typeMap = {};
+
+    let copyAsCheck = document.querySelector('#copy-as-check');
+    copyAsCheck.addEventListener('change', function(e){
+        let copyAsText = document.querySelector('#copy-as-text');
+        copyAsText.disabled = !e.target.checked;
+        typeSelect.disabled = e.target.checked;
+        copyAsText.focus();
+    });
 
     function onRadioChange(e) {
         resetViewArea();
@@ -214,6 +230,8 @@
         while (typeSelect.firstChild) {
             typeSelect.removeChild(typeSelect.firstChild);
         }
+        if (copyAsCheck.checked)
+            copyAsCheck.click();
     }
 
     function addTypeOption(name) {
@@ -263,7 +281,7 @@
         }
     });
 
-    ///
+    /// File
 
     function changeFile(fileName) {
         resetView();
@@ -283,6 +301,8 @@
         console.log(e.target.value);
         changeFile(e.target.value);
     });
+
+    ///
 
     function isSafari() {
         if (window.safari !== undefined)
