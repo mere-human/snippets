@@ -162,12 +162,6 @@
     async function pasteUsingApi() {
         resetAll();
 
-        console.assert(navigator.clipboard);
-        if (!navigator.clipboard) {
-            setDetails('Error: Cannot use Clipboard API.');
-            return;
-        }
-
         let clipData = null;
         try {
             clipData = await navigator.clipboard.read();
@@ -266,12 +260,7 @@
 
     copyButton.addEventListener('click', function (e) {
         console.log(`${e.timeStamp} ${e.type}`);
-        const canWriteClipboard = navigator.clipboard && typeof navigator.clipboard.write === 'function';
-        console.assert(canWriteClipboard);
-        if (!canWriteClipboard) {
-            setDetails('Error: Cannot write using Clipboard API.');
-            return;
-        }
+
         let delayValue = document.querySelector('#clipboard-delay').value;
         if (delayValue === undefined || delayValue < 0)
             delayValue = 0;
