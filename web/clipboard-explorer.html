@@ -4,18 +4,39 @@
 <head>
     <title>Clipboard Explorer</title>
     <style>
+        fieldset {
+            vertical-align: top;
+        }
+        #tip {
+            margin: 10px;
+        }
+        .preference {
+            margin: 4px;
+        }
     </style>
 </head>
 
 <body>
     <div>
-        <p>Tip: Use copy/paste shortcuts or buttons below.</p>
+        <p id="tip">Tip: Use copy/paste shortcuts or buttons below.</p>
         <fieldset style="display: inline;">
             <legend>Clipboard API</legend>
-            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API write()" />
-            <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API read()" />
-            <label for="clipboard-delay">Delay(ms):</label>
-            <input id="clipboard-delay" type="number" step="100" style="width:6em" />
+            <div>
+                <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API write()" />
+                <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API read()" />
+                <input id="toggle-clipboard-prefs" type="button" value="+" title="Show options" />
+            </div>
+            <div id="prefs" hidden>
+            <hr>
+            <div class="preference">
+                <label for="clipboard-delay">Delay(ms):</label>
+                <input id="clipboard-delay" type="number" step="100" style="width:6em" />
+            </div>
+            <div class="preference">
+                <label for="clipboard-1">Shortcuts:</label>
+                <input id="clipboard-2" type="checkbox" />
+            </div>
+        </div>
         </fieldset>
 
         <fieldset style="display: inline;">
@@ -32,11 +53,11 @@
         <fieldset style="display: inline;">
             <legend>Content</legend>
             <label for="type-select">Type:</label>
-            <select id="type-select" disabled></select>
+            <select id="type-select" title="Pasted type or type to copy" disabled></select>
             <label for="file-sel">File:</label>
             <select id="file-sel" disabled></select>
         </fieldset>
-        <fieldset style="display: inline;">
+        <fieldset style="display: inline;" title="Set custom type to copy">
             <legend>Copy as</legend>
             <input type="checkbox" id="copy-as-check" />
             <input type="text" id="copy-as-text" disabled />
@@ -58,6 +79,7 @@
     // TODO: update textare when typing
     // TODO: treat HTML area as preview of text area
     // TODO: disable image when there is none?
+    // TODO: prevent copy paste events in textarea? "Disable shortcuts" checkbox
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
@@ -68,6 +90,17 @@
     // Data
     let fileMap = {};
     let typeMap = {};
+
+    document.querySelector('#toggle-clipboard-prefs').addEventListener('click', function(e){
+        let prefs = document.querySelector('#prefs');
+        if (prefs.hidden) {
+            prefs.hidden = false;
+            e.target.value = '-';
+        } else {
+            prefs.hidden = true;
+            e.target.value = '+'
+        }
+    });
 
     let copyAsCheck = document.querySelector('#copy-as-check');
     let copyAsText = document.querySelector('#copy-as-text');
