@@ -6,19 +6,19 @@
     <style>
         fieldset {
             vertical-align: top;
-        }
-        #tip {
-            margin: 10px;
+            border-width: 1px;
         }
         .preference {
             margin: 4px;
+        }
+        #html-area {
+            border: 1px solid lightgray;
         }
     </style>
 </head>
 
 <body>
     <div>
-        <p id="tip">Tip: Use copy/paste shortcuts or buttons below.</p>
         <fieldset style="display: inline;">
             <legend>Clipboard API</legend>
             <div>
@@ -88,6 +88,8 @@
     // Data
     let fileMap = {};
     let typeMap = {};
+
+    setDetails('Tip: Use copy/paste shortcuts or buttons below.');
 
     document.querySelector('#toggle-clipboard-prefs').addEventListener('click', function(e){
         let prefs = document.querySelector('#prefs');
