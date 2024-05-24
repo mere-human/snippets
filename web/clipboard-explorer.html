@@ -34,7 +34,7 @@
             </div>
             <div class="preference">
                 <label for="clipboard-shortcuts">Shortcuts:</label>
-                <input id="clipboard-shortcuts" type="checkbox" />
+                <input id="clipboard-shortcuts" type="checkbox" checked/>
             </div>
         </div>
         </fieldset>
@@ -74,12 +74,10 @@
     </div>
 </body>
 <script>
-    // TODO: expandable section for weird stuff (delay, etc)
     // TODO: consider textarea selection when copying
     // TODO: update textare when typing
     // TODO: treat HTML area as preview of text area
     // TODO: disable image when there is none?
-    // TODO: prevent copy paste events in textarea? "Disable shortcuts" checkbox
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
@@ -99,6 +97,16 @@
         } else {
             prefs.hidden = true;
             e.target.value = '+'
+        }
+    });
+
+    document.querySelector('#clipboard-shortcuts').addEventListener('click', function(e){
+        if (e.target.checked) {
+            document.addEventListener('copy', handleCopy);
+            document.addEventListener('paste', handlePaste);
+        } else {
+            document.removeEventListener('copy', handleCopy);
+            document.removeEventListener('paste', handlePaste);
         }
     });
 
@@ -390,13 +398,14 @@
         }
     });
 
-    document.addEventListener("copy", function (e) {
+    function handleCopy(e){
         console.log(`${e.timeStamp} ${e.type}`);
         e.clipboardData.setData(getTypeToCopy(), txt.value);
         e.preventDefault();
-    });
+    };
+    document.addEventListener("copy", handleCopy);
 
-    document.addEventListener("paste", function (e) {
+    function handlePaste (e) {
         console.log(`${e.timeStamp} ${e.type}`);
         resetAll();
 
@@ -430,7 +439,9 @@
         if (Object.keys(typeMap).length > 0) {
             changeType(Object.keys(typeMap)[0]);
         }
-    });
+    }
+    document.addEventListener("paste", handlePaste);
+
 </script>
 
 </html>
