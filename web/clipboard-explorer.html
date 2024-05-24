@@ -9,8 +9,7 @@
         <p>Tip: Use copy/paste shortcuts or buttons below.</p>
         <fieldset style="display: inline;">
             <legend>Clipboard API</legend>
-            <input type="checkbox" id="copy-check" title="Enable copy mode" />
-            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" disabled />
+            <input id="copy-btn" type="button" value="Copy" title="Copy using Clipboard API" />
             <input id="paste-btn" type="button" value="Paste" title="Paste using Clipboard API" />
             <label for="clipboard-delay">Delay(ms):</label>
             <input id="clipboard-delay" type="number" step="100" style="width:6em" />
@@ -46,9 +45,9 @@
     </div>
 </body>
 <script>
-    // TODO: radio button for copy/paste mode
     // TODO: radio button for areas: Text, Image, HTML
     // TODO: expandable section for weird stuff (delay, etc)
+    // TODO: consider textarea selection when copying
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
@@ -201,9 +200,6 @@
     document.querySelector("#paste-btn").addEventListener('click', async function (e) {
         console.log(`${e.timeStamp} ${e.type}`);
 
-        document.querySelector('#copy-check').checked = false;
-        copyButton.disabled = true;
-
         let delayValue = document.querySelector('#clipboard-delay').value;
         if (delayValue !== undefined && delayValue > 0) {
             setTimeout(pasteUsingApi, delayValue);
@@ -259,17 +255,6 @@
         console.log(e);
         console.log(e.target.value);
         changeFile(e.target.value);
-    });
-
-    document.querySelector('#copy-check').addEventListener('click', function (e) {
-        if (e.target.checked) {
-            copyButton.disabled = false;
-            txt.hidden = false;
-            txt.readOnly = undefined;
-        } else {
-            copyButton.disabled = true;
-            txt.hidden = true;
-        }
     });
 
     function isSafari() {
