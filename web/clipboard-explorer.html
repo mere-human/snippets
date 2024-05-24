@@ -18,8 +18,8 @@
 
         <fieldset style="display: inline;">
             <legend>Content</legend>
-            <label for="type-sel">Type:</label>
-            <select id="type-sel" disabled></select>
+            <label for="type-select">Type:</label>
+            <select id="type-select" disabled></select>
             <label for="file-sel">File:</label>
             <select id="file-sel" disabled></select>
         </fieldset>
@@ -52,7 +52,6 @@
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
-    let typeSel = document.querySelector('#type-sel');
     let fileSel = document.querySelector('#file-sel');
     let copyButton = document.querySelector("#copy-btn");
     let forHtml = document.querySelector('#html-area');
@@ -64,11 +63,11 @@
         // TODO: do not change content here but instead fill it elsewhere
         if (e.target.value === 'radio-text') {
             txt.hidden = false;
-            setText(typeMap[typeSel.value], 'text/plain');
+            setText(typeMap[getSelectedType()], 'text/plain');
         }
         else if (e.target.value === 'radio-html') {
             forHtml.hidden = false;
-            setText(typeMap[typeSel.value], 'text/html');
+            setText(typeMap[getSelectedType()], 'text/html');
         }
         else if (e.target.value === 'radio-img') {
             img.hidden = false;
@@ -92,7 +91,7 @@
 
         let isString = text => typeof text === 'string' || text instanceof String;
         if (!isString(text)) {
-            console.error(`Unexpected text type ${text.constructor.name}`);
+            console.error(`Unexpected text type ${text?.constructor?.name}`);
             return;
         }
 
@@ -153,10 +152,7 @@
     }
     function resetAll() {
         resetView();
-        typeSel.disabled = true;
-        while (typeSel.firstChild) {
-            typeSel.removeChild(typeSel.firstChild);
-        }
+        resetTypeUI();
         fileSel.disabled = true;
         while (fileSel.firstChild) {
             fileSel.removeChild(fileSel.firstChild);
@@ -182,17 +178,11 @@
             for (let j = 0; j != item.types.length; ++j) {
                 let type = item.types[j];
                 typeMap[type] = await item.getType(type);
-
-                typeSel.disabled = false;
-                let opt = document.createElement('option');
-                opt.id = `type-sel-${i}`;
-                opt.textContent = type;
-                typeSel.append(opt);
+                addTypeOption(type);
             }
         }
 
         if (Object.keys(typeMap).length > 0) {
-            typeSel.selectedIndex = 0;
             changeType(Object.keys(typeMap)[0]);
         }
     }
@@ -207,6 +197,35 @@
             pasteUsingApi();
         }
     });
+
+    /// Types
+
+    let typeSelect = document.querySelector('#type-select');
+    typeSelect.disabled = true;
+
+    function getSelectedType() {
+        return typeSelect.value;
+    }
+
+    function resetTypeUI() {
+        typeSelect.hidden = false;
+        typeSelect.disabled = true;
+        typeSelect.value = "";
+        while (typeSelect.firstChild) {
+            typeSelect.removeChild(typeSelect.firstChild);
+        }
+    }
+
+    function addTypeOption(name) {
+        typeSelect.disabled = false;
+        let opt = document.createElement('option');
+        // opt.id = `type-sel-${i}`;
+        opt.textContent = name;
+        typeSelect.append(opt);
+        if (!typeSelect.value) {
+            typeSelect.value = name;
+        }
+    }
 
     function changeType(t) {
         resetView();
@@ -232,6 +251,19 @@
             changeFile(Object.keys(fileMap)[0]);
         }
     }
+    typeSelect.addEventListener('change', function (e) {
+        console.log(e);
+        console.log(e.target.value);
+        if (e.target.value === '...') {
+            typeSelect.hidden = true;
+            typeInput.hidden = false;
+            typeInput.disabled = false;
+        } else {
+            changeType(e.target.value);
+        }
+    });
+
+    ///
 
     function changeFile(fileName) {
         resetView();
@@ -246,11 +278,6 @@
         }
     }
 
-    typeSel.addEventListener('change', function (e) {
-        console.log(e);
-        console.log(e.target.value);
-        changeType(e.target.value);
-    });
     fileSel.addEventListener('change', function (e) {
         console.log(e);
         console.log(e.target.value);
@@ -317,12 +344,7 @@
         for (let i = 0; i != e.clipboardData.types.length; ++i) {
             let type = e.clipboardData.types[i];
             typeMap[type] = e.clipboardData.getData(type);
-
-            typeSel.disabled = false;
-            let opt = document.createElement('option');
-            opt.id = `type-sel-${i}`;
-            opt.textContent = type;
-            typeSel.append(opt);
+            addTypeOption(type);
         }
 
         console.log(`files: ${e.clipboardData.files.length}`);
@@ -345,7 +367,6 @@
         }
 
         if (Object.keys(typeMap).length > 0) {
-            typeSel.selectedIndex = 0;
             changeType(Object.keys(typeMap)[0]);
         }
     });
