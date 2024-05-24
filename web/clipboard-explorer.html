@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -24,13 +25,13 @@
         </fieldset>
         <fieldset style="display: inline;">
             <legend>View as</legend>
-            <input type="radio" id="mode1" name="mode" value="radio-text" checked />
+            <input type="radio" id="radio-text" name="mode" value="radio-text" checked />
             <label for="mode1">text</label>
 
-            <input type="radio" id="mode2" name="mode" value="radio-html" />
+            <input type="radio" id="radio-html" name="mode" value="radio-html" />
             <label for="mode2">HTML</label>
 
-            <input type="radio" id="mode3" name="mode" value="radio-img" />
+            <input type="radio" id="radio-img" name="mode" value="radio-img" />
             <label for="mode3">image</label>
         </fieldset>
 
@@ -60,6 +61,7 @@
 
     function onRadioChange(e) {
         resetViewArea();
+        // TODO: do not change content here but instead fill it elsewhere
         if (e.target.value === 'radio-text') {
             txt.hidden = false;
             setText(typeMap[typeSel.value], 'text/plain');
@@ -95,7 +97,7 @@
         }
 
         if (mimeType === 'text/html') {
-            forHtml.hidden = false;
+            document.querySelector('#radio-html').click();
             forHtml.innerHTML = text;
             return;
         }
@@ -121,12 +123,12 @@
         txt.rows = rows;
         txt.cols = maxLineLen;
 
-        txt.hidden = false;
+        document.querySelector('#radio-text').click();
     }
 
     function setImage(data) {
         img.src = URL.createObjectURL(data);
-        img.hidden = false;
+        document.querySelector('#radio-img').click();
     }
 
     // TODO: error color
@@ -143,6 +145,10 @@
 
     function resetView() {
         details.hidden = true;
+        let modeRadio = document.querySelectorAll('input[type="radio"][name="mode"]');
+        for (let i = 0; i != modeRadio.length; ++i) {
+            modeRadio[i].checked = false;
+        }
         resetViewArea();
     }
     function resetAll() {
