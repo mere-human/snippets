@@ -8,9 +8,11 @@
             vertical-align: top;
             border-width: 1px;
         }
+
         .preference {
             margin: 4px;
         }
+
         #html-area {
             border: 1px solid lightgray;
         }
@@ -27,16 +29,16 @@
                 <input id="toggle-clipboard-prefs" type="button" value="+" title="Show options" />
             </div>
             <div id="prefs" hidden>
-            <hr>
-            <div class="preference">
-                <label for="clipboard-delay">Delay(ms):</label>
-                <input id="clipboard-delay" type="number" step="100" style="width:6em" />
+                <hr>
+                <div class="preference">
+                    <label for="clipboard-delay">Delay(ms):</label>
+                    <input id="clipboard-delay" type="number" step="100" style="width:6em" />
+                </div>
+                <div class="preference">
+                    <label for="clipboard-shortcuts">Shortcuts:</label>
+                    <input id="clipboard-shortcuts" type="checkbox" checked />
+                </div>
             </div>
-            <div class="preference">
-                <label for="clipboard-shortcuts">Shortcuts:</label>
-                <input id="clipboard-shortcuts" type="checkbox" checked/>
-            </div>
-        </div>
         </fieldset>
 
         <fieldset style="display: inline;">
@@ -91,7 +93,7 @@
 
     setDetails('Tip: Use copy/paste shortcuts or buttons below.');
 
-    document.querySelector('#toggle-clipboard-prefs').addEventListener('click', function(e){
+    document.querySelector('#toggle-clipboard-prefs').addEventListener('click', function (e) {
         let prefs = document.querySelector('#prefs');
         if (prefs.hidden) {
             prefs.hidden = false;
@@ -102,7 +104,7 @@
         }
     });
 
-    document.querySelector('#clipboard-shortcuts').addEventListener('click', function(e){
+    document.querySelector('#clipboard-shortcuts').addEventListener('click', function (e) {
         if (e.target.checked) {
             document.addEventListener('copy', handleCopy);
             document.addEventListener('paste', handlePaste);
@@ -354,7 +356,7 @@
         changeFile(e.target.value);
     });
 
-    ///
+    /// Copy
 
     function isSafari() {
         if (window.safari !== undefined)
@@ -363,51 +365,56 @@
         return ua.indexOf("safari/") !== -1 && ua.indexOf("chrom") === -1;
     }
 
-    copyButton.addEventListener('click', function (e) {
-        console.log(`${e.timeStamp} ${e.type}`);
-
-        let delayValue = document.querySelector('#clipboard-delay').value;
-        if (delayValue === undefined || delayValue < 0)
-            delayValue = 0;
-
+    function copyUsingApi(delayValue) {
         let mimeType = getTypeToCopy();
-        let item = null;
-        const usePromise = isSafari();  // this can be controlled from UI
-        if (usePromise) {
-            function later(delay, value) {
-                return new Promise((resolve) => setTimeout(resolve, delay, value));
-            }
+        console.assert(mimeType);
+        if (!mimeType)
+            mimeType = 'text/plain';
+
+        const getData = () => new Blob([txt.value], { type: mimeType });
+        async function writeClipboard(data) {
             try {
-                item = new ClipboardItem({ [mimeType]: later(delayValue, new Blob([txt.value], { type: mimeType })) });
+                item = new ClipboardItem({ [mimeType]: data });
                 navigator.clipboard.write([item]);
                 console.log('copied');
             } catch (e) {
                 setDetails(e);
                 return;
             }
+        };
+
+        // On Safari, clipboard will fail with NotAllowedError if more than 1s passed since user event
+        const usePromise = isSafari();
+
+        if (!delayValue) {
+            writeClipboard(getData());
+        } else if (usePromise) {
+            const later = (delay, value) => new Promise((resolve, reject) => setTimeout(resolve, delay, value));
+            writeClipboard(later(delayValue, getData()));
         } else {
-            setTimeout(async function () {
-                try {
-                    // TODO: reduce duplication
-                    item = new ClipboardItem({ [mimeType]: new Blob([txt.value], { type: mimeType }) });
-                    navigator.clipboard.write([item]);
-                    console.log('copied');
-                } catch (e) {
-                    setDetails(e);
-                    return;
-                }
-            }, delayValue);
+            setTimeout(() => writeClipboard(getData()), delayValue);
         }
+    };
+
+    copyButton.addEventListener('click', function (e) {
+            console.log(`${e.timeStamp} ${e.type}`);
+
+            let delayValue = document.querySelector('#clipboard-delay').value;
+            if (delayValue === undefined || delayValue < 0)
+                delayValue = 0;
+            copyUsingApi(delayValue);
     });
 
-    function handleCopy(e){
+    function handleCopy(e) {
         console.log(`${e.timeStamp} ${e.type}`);
         e.clipboardData.setData(getTypeToCopy(), txt.value);
         e.preventDefault();
     };
     document.addEventListener("copy", handleCopy);
 
-    function handlePaste (e) {
+    /// Paste
+
+    function handlePaste(e) {
         console.log(`${e.timeStamp} ${e.type}`);
         resetAll();
 
