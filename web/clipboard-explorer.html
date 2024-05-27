@@ -80,6 +80,7 @@
     // TODO: update textare when typing
     // TODO: treat HTML area as preview of text area
     // TODO: disable image when there is none?
+    // TODO: display as HEX or bas64
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
@@ -201,6 +202,13 @@
         details.textContent = text;
     }
 
+    function isSafari() {
+        if (window.safari !== undefined)
+            return true;
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf("safari/") !== -1 && ua.indexOf("chrom") === -1;
+    }
+
     function resetViewArea() {
         img.hidden = true;
         txt.hidden = true;
@@ -215,6 +223,7 @@
         }
         resetViewArea();
     }
+
     function resetAll() {
         resetView();
         resetTypeUI();
@@ -225,43 +234,6 @@
         fileMap = {};
         typeMap = {};
     }
-
-    async function pasteUsingApi() {
-        resetAll();
-
-        let clipData = null;
-        try {
-            clipData = await navigator.clipboard.read();
-        } catch (e) {
-            setDetails(e);
-            return;
-        }
-
-        for (let i = 0; i != clipData.length; ++i) {
-            let item = clipData[i];
-            console.log(`types: ${item.types}`);
-            for (let j = 0; j != item.types.length; ++j) {
-                let type = item.types[j];
-                typeMap[type] = await item.getType(type);
-                addTypeOption(type);
-            }
-        }
-
-        if (Object.keys(typeMap).length > 0) {
-            changeType(Object.keys(typeMap)[0]);
-        }
-    }
-
-    document.querySelector("#paste-btn").addEventListener('click', async function (e) {
-        console.log(`${e.timeStamp} ${e.type}`);
-
-        let delayValue = document.querySelector('#clipboard-delay').value;
-        if (delayValue !== undefined && delayValue > 0) {
-            setTimeout(pasteUsingApi, delayValue);
-        } else {
-            pasteUsingApi();
-        }
-    });
 
     /// Types
 
@@ -358,13 +330,6 @@
 
     /// Copy
 
-    function isSafari() {
-        if (window.safari !== undefined)
-            return true;
-        var ua = navigator.userAgent.toLowerCase();
-        return ua.indexOf("safari/") !== -1 && ua.indexOf("chrom") === -1;
-    }
-
     function copyUsingApi(delayValue) {
         let mimeType = getTypeToCopy();
         console.assert(mimeType);
@@ -397,12 +362,12 @@
     };
 
     copyButton.addEventListener('click', function (e) {
-            console.log(`${e.timeStamp} ${e.type}`);
+        console.log(`${e.timeStamp} ${e.type}`);
 
-            let delayValue = document.querySelector('#clipboard-delay').value;
-            if (delayValue === undefined || delayValue < 0)
-                delayValue = 0;
-            copyUsingApi(delayValue);
+        let delayValue = document.querySelector('#clipboard-delay').value;
+        if (delayValue === undefined || delayValue < 0)
+            delayValue = 0;
+        copyUsingApi(delayValue);
     });
 
     function handleCopy(e) {
@@ -413,6 +378,43 @@
     document.addEventListener("copy", handleCopy);
 
     /// Paste
+
+    async function pasteUsingApi() {
+        resetAll();
+
+        let clipData = null;
+        try {
+            clipData = await navigator.clipboard.read();
+        } catch (e) {
+            setDetails(e);
+            return;
+        }
+
+        for (let i = 0; i != clipData.length; ++i) {
+            let item = clipData[i];
+            console.log(`types: ${item.types}`);
+            for (let j = 0; j != item.types.length; ++j) {
+                let type = item.types[j];
+                typeMap[type] = await item.getType(type);
+                addTypeOption(type);
+            }
+        }
+
+        if (Object.keys(typeMap).length > 0) {
+            changeType(Object.keys(typeMap)[0]);
+        }
+    }
+
+    document.querySelector("#paste-btn").addEventListener('click', async function (e) {
+        console.log(`${e.timeStamp} ${e.type}`);
+
+        let delayValue = document.querySelector('#clipboard-delay').value;
+        if (delayValue !== undefined && delayValue > 0) {
+            setTimeout(pasteUsingApi, delayValue);
+        } else {
+            pasteUsingApi();
+        }
+    });
 
     function handlePaste(e) {
         console.log(`${e.timeStamp} ${e.type}`);
