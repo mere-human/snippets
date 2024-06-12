@@ -161,7 +161,7 @@
             return;
         }
 
-        if (mimeType === 'text/html') {
+        if (mimeType === 'text/html' || mimeType === 'image/svg+xml') {
             document.querySelector('#radio-html').click();
             forHtml.innerHTML = text;
             return;
@@ -192,6 +192,7 @@
     }
 
     function setImage(data) {
+        console.assert(data);
         img.src = URL.createObjectURL(data);
         document.querySelector('#radio-img').click();
     }
@@ -286,7 +287,11 @@
             setDetails(`size: ${typeData.size}, type: ${typeData.constructor.name}`);
 
         if (t.startsWith('image/')) {
-            setImage(typeData);
+            if (t.startsWith('image/svg+xml')) {
+                setText(typeData, t);
+            } else {
+                setImage(typeData);
+            }
         } else if (t.startsWith('text/')) {
             setText(typeData, t);
         } else if (t === 'Files') {
