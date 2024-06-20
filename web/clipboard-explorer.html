@@ -76,11 +76,11 @@
     </div>
 </body>
 <script>
-    // TODO: consider textarea selection when copying
+    // TODO: move script to a separate file
     // TODO: update textare when typing
     // TODO: treat HTML area as preview of text area
     // TODO: disable image when there is none?
-    // TODO: display as HEX or bas64
+    // TODO: display as HEX or base64
     let img = document.getElementById('image-area');
     let txt = document.getElementById('text-area');
     let details = document.getElementById('details');
@@ -137,8 +137,8 @@
         }
         else if (e.target.value === 'radio-img') {
             img.hidden = false;
+            setImage(typeMap[getSelectedType()]);
         }
-
     }
     let modeRadio = document.querySelectorAll('input[type="radio"][name="mode"]');
     for (let i = 0; i != modeRadio.length; ++i) {
