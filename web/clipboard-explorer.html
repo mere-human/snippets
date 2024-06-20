@@ -44,13 +44,16 @@
         <fieldset style="display: inline;">
             <legend>View as</legend>
             <input type="radio" id="radio-text" name="mode" value="radio-text" checked />
-            <label for="mode1">text</label>
+            <label for="mode1">Text</label>
 
             <input type="radio" id="radio-html" name="mode" value="radio-html" />
             <label for="mode2">HTML</label>
 
             <input type="radio" id="radio-img" name="mode" value="radio-img" />
-            <label for="mode3">image</label>
+            <label for="mode3">Image</label>
+
+            <input type="radio" id="radio-bin" name="mode" value="radio-bin" />
+            <label for="mode4">HEX</label>
         </fieldset>
         <fieldset style="display: inline;">
             <legend>Content</legend>
@@ -139,13 +142,48 @@
             img.hidden = false;
             setImage(typeMap[getSelectedType()]);
         }
+        else if (e.target.value === 'radio-bin') {
+            setBinary(typeMap[getSelectedType()]);
+        }
     }
     let modeRadio = document.querySelectorAll('input[type="radio"][name="mode"]');
     for (let i = 0; i != modeRadio.length; ++i) {
         modeRadio[i].addEventListener('change', onRadioChange);
     }
 
-    async function setText(text, mimeType) {
+    let isString = text => typeof text === 'string' || text instanceof String;
+
+    async function setBinary(data) {
+        let str = "";
+        if (data instanceof Blob) {
+            try {
+                data = await data.arrayBuffer();
+                data = new Uint8Array(data);
+                for (let x of data) {
+                    let hex = x.toString(16);
+                    str += hex.padStart(2, '0');
+                }
+            } catch (e) {
+                setDetails(e);
+                return;
+            }
+        }
+        else if (isString(data)) {
+            for (let i = 0; i < data.length; ++i) {
+                let ch = data.charCodeAt(i).toString(16);
+                if (ch.length > 0 && ch.length < 2)
+                    ch = ch.padStart(2, '0');
+                else if (ch.length > 2 && ch.length < 4)
+                    ch = ch.padStart(4, '0');
+                str += ch;
+                str += ' ';
+            }
+        }
+        txt.value = str;
+        txt.hidden = false;
+    }
+
+    async function setText(text, mimeType, shouldClick = true) {
         if (text instanceof Blob) {
             try {
                 text = await text.text();
@@ -155,7 +193,6 @@
             }
         }
 
-        let isString = text => typeof text === 'string' || text instanceof String;
         if (!isString(text)) {
             console.error(`Unexpected text type ${text?.constructor?.name}`);
             return;
@@ -188,7 +225,7 @@
         txt.rows = rows;
         txt.cols = maxLineLen;
 
-        document.querySelector('#radio-text').click();
+        document.querySelector('#radio-text').click();  // TODO: avoid click here
     }
 
     function setImage(data) {
